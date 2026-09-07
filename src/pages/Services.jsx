@@ -7,15 +7,16 @@ import {
   FiActivity,
   FiHeart,
 } from "react-icons/fi";
-
+import service from '../assets/service.jpg'
+import service2 from '../assets/service2.jpg'
 import { services } from "../data/services";
 import "./Services.css";
 
 const heroImage =
-  "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1800&q=90";
+  service;
 
 const supportImage =
-  "https://images.unsplash.com/photo-1571019613914-85f342c55b1f?auto=format&fit=crop&w=1400&q=90";
+  service2;
 
 const approachImage =
   "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1500&q=90";

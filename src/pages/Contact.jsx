@@ -11,16 +11,19 @@ import {
 } from "react-icons/fi";
 
 import "./Contact.css";
+import contactherp from '../assets/contactherp.jpg'
+import contact1 from '../assets/contact1.jpg'
+import contact2 from '../assets/contact2.jpg'
+
 
 const images = {
-  hero:
-    "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1800&q=90",
+  hero: contactherp,
 
   consultation:
-    "https://images.unsplash.com/photo-1571019613914-85f342c55b1f?auto=format&fit=crop&w=1500&q=90",
+    contact1,
 
   clinic:
-    "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?auto=format&fit=crop&w=1700&q=90",
+    contact2,
 };
 
 const reveal = {

@@ -10,7 +10,9 @@ import {
 } from "react-icons/fi";
 
 import "./PatientStories.css";
-
+import story1 from '../assets/story1.jpg'
+import story2 from '../assets/story2.jpg'
+import story3 from '../assets/story3.jpg'
 const stories = [
   {
     number: "01",
@@ -54,7 +56,7 @@ const stories = [
     outcome: "[Verified patient outcome]",
     icon: FiTrendingUp,
     image:
-      "https://images.unsplash.com/photo-1571019613914-85f342c55b1f?auto=format&fit=crop&w=1300&q=90",
+      story1,
   },
 ];
 
@@ -179,7 +181,7 @@ export default function PatientStories() {
 
               <div className="patient-stories-hero-image">
                 <img
-                  src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=1800&q=90"
+                  src={story3}
                   alt="Runner returning to activity"
                 />
               </div>
@@ -407,7 +409,7 @@ export default function PatientStories() {
 
               <div className="patient-stories-journey-image">
                 <img
-                  src="https://images.unsplash.com/photo-1571019613914-85f342c55b1f?auto=format&fit=crop&w=1500&q=90"
+                  src={story2}
                   alt="Physiotherapist working with a patient"
                 />
               </div>

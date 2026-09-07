@@ -8,7 +8,10 @@ import {
   FiUser,
   FiUsers,
 } from "react-icons/fi";
-
+import doctor1 from '../assets/doctor1.jpg'
+import doctor2 from '../assets/doctor2.jpg'
+import doctor4 from '../assets/doctor4.jpg'
+import doctor5 from '../assets/doctor5.jpg'
 import "./Team.css";
 
 const team = [
@@ -28,7 +31,7 @@ const team = [
     qualification: "[Qualification]",
     focus: "[Area of Focus]",
     image:
-      "https://images.unsplash.com/photo-1594824804732-ca8db6d3c8d5?auto=format&fit=crop&w=1200&q=90",
+      doctor1,
   },
   {
     number: "03",
@@ -37,7 +40,7 @@ const team = [
     qualification: "[Qualification]",
     focus: "[Area of Focus]",
     image:
-      "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=1200&q=90",
+      doctor2,
   },
 ];
 
@@ -162,7 +165,7 @@ export default function Team() {
 
               <div className="team-hero-image">
                 <img
-                  src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1700&q=90"
+                  src={doctor5}
                   alt="Physiotherapy team working together"
                 />
               </div>
@@ -466,7 +469,7 @@ export default function Team() {
 
               <div className="team-standards-image">
                 <img
-                  src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1500&q=90"
+                  src={doctor4}
                   alt="Physiotherapist consulting with a patient"
                 />
               </div>

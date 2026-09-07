@@ -10,12 +10,12 @@ import {
 } from "react-icons/fi";
 
 import "./Conditions.css";
+import condition2 from '../assets/condition2.jpg'
+import condition from '../assets/condition.jpg'
+const heroImage = condition;
 
-const heroImage =
-  "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1800&q=90";
-
-const guidanceImage =
-  "https://images.unsplash.com/photo-1571019613914-85f342c55b1f?auto=format&fit=crop&w=1500&q=90";
+const guidanceImage = condition2
+  
 
 const groups = [
   {

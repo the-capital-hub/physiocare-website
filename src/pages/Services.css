@@ -1384,4 +1384,495 @@
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}/* =========================================================
+   PHYSIOCARE — GLOBAL PAGE THEME OVERRIDES
+   Premium black / red / off-white visual system
+========================================================= */
+
+:root {
+  --pc-black: #080808;
+  --pc-black-soft: #111111;
+  --pc-card: #171717;
+  --pc-red: #e62b2b;
+  --pc-red-bright: #ff3b30;
+  --pc-off: #f5f3ee;
+  --pc-white: #ffffff;
+  --pc-ink: #111111;
+  --pc-muted: #686868;
+}
+
+.about-v7,
+.conditions-page,
+.contact-page,
+.faqs-page,
+.patient-stories-page,
+.services-page,
+.team-page {
+  --navy: var(--pc-black);
+  --navy-deep: var(--pc-black);
+  --sand: var(--pc-off);
+  --white: var(--pc-white);
+  --terracotta: var(--pc-red);
+  --terracotta-light: var(--pc-red-bright);
+  --slate: #686868;
+  --muted: #777;
+  --pale-blue: #e8e5df;
+  font-family: "DM Sans", sans-serif;
+}
+
+.about-v7 h1,
+.about-v7 h2,
+.about-v7 h3,
+.conditions-page h1,
+.conditions-page h2,
+.conditions-page h3,
+.contact-page h1,
+.contact-page h2,
+.contact-page h3,
+.faqs-page h1,
+.faqs-page h2,
+.faqs-page h3,
+.patient-stories-page h1,
+.patient-stories-page h2,
+.patient-stories-page h3,
+.services-page h1,
+.services-page h2,
+.services-page h3,
+.team-page h1,
+.team-page h2,
+.team-page h3 {
+  font-family: "Manrope", sans-serif;
+  letter-spacing: -0.045em;
+}
+
+/* HEROES — all inner pages start in black */
+.about-v7-hero,
+.conditions-hero,
+.contact-hero,
+.faqs-hero,
+.patient-stories-hero,
+.services-hero,
+.team-hero {
+  background: var(--pc-black) !important;
+  color: var(--pc-white) !important;
+  position: relative;
+}
+
+.about-v7-hero h1,
+.conditions-hero h1,
+.contact-hero h1,
+.faqs-hero h1,
+.patient-stories-hero h1,
+.services-hero h1,
+.team-hero h1,
+.about-v7-hero p,
+.conditions-hero p,
+.contact-hero p,
+.faqs-hero p,
+.patient-stories-hero p,
+.services-hero p,
+.team-hero p {
+  color: inherit !important;
+}
+
+.about-v7-kicker,
+.conditions-tag,
+.contact-tag,
+.faqs-tag,
+.patient-stories-tag,
+.services-tag,
+.team-tag {
+  color: var(--pc-red) !important;
+}
+
+.about-v7-primary-btn,
+.conditions-primary-btn,
+.contact-primary-btn,
+.faqs-primary-btn,
+.patient-stories-primary-btn,
+.services-primary-btn,
+.team-primary-btn,
+.conditions-final-btn,
+.contact-submit-btn,
+.faqs-final-btn,
+.patient-stories-final-btn,
+.services-final-btn,
+.team-final-btn,
+.about-v7-final-btn {
+  background: var(--pc-red) !important;
+  color: #fff !important;
+  border-color: var(--pc-red) !important;
+  box-shadow: 0 16px 35px rgba(230,43,43,.2) !important;
+}
+
+.about-v7-primary-btn:hover,
+.conditions-primary-btn:hover,
+.contact-primary-btn:hover,
+.faqs-primary-btn:hover,
+.patient-stories-primary-btn:hover,
+.services-primary-btn:hover,
+.team-primary-btn:hover,
+.conditions-final-btn:hover,
+.contact-submit-btn:hover,
+.faqs-final-btn:hover,
+.patient-stories-final-btn:hover,
+.services-final-btn:hover,
+.team-final-btn:hover,
+.about-v7-final-btn:hover {
+  background: var(--pc-red-bright) !important;
+  transform: translateY(-3px);
+}
+
+.about-v7-link-btn,
+.conditions-text-btn,
+.contact-text-btn,
+.faqs-text-btn,
+.patient-stories-text-btn,
+.services-text-btn,
+.team-text-btn {
+  color: #fff !important;
+}
+
+/* alternating light / dark sections */
+.about-v7-intro,
+.about-v7-story,
+.about-v7-process,
+.about-v7-mission,
+.about-v7-principles,
+.conditions-list-section,
+.conditions-guidance,
+.contact-details-section,
+.contact-visit-section,
+.faqs-list-section,
+.faqs-reassurance,
+.patient-stories-intro,
+.patient-stories-list,
+.patient-stories-journey,
+.services-list-section,
+.services-guidance,
+.services-approach,
+.team-intro-section,
+.team-members-section,
+.team-standards-section {
+  background: var(--pc-off) !important;
+  color: var(--pc-ink) !important;
+}
+
+.about-v7-intro h2,
+.about-v7-intro h3,
+.about-v7-story h2,
+.about-v7-story h3,
+.about-v7-process h2,
+.about-v7-process h3,
+.about-v7-mission h2,
+.about-v7-mission h3,
+.about-v7-principles h2,
+.about-v7-principles h3,
+.conditions-list-section h2,
+.conditions-list-section h3,
+.conditions-guidance h2,
+.conditions-guidance h3,
+.contact-details-section h2,
+.contact-details-section h3,
+.contact-visit-section h2,
+.contact-visit-section h3,
+.faqs-list-section h2,
+.faqs-list-section h3,
+.faqs-reassurance h2,
+.faqs-reassurance h3,
+.patient-stories-intro h2,
+.patient-stories-intro h3,
+.patient-stories-list h2,
+.patient-stories-list h3,
+.patient-stories-journey h2,
+.patient-stories-journey h3,
+.services-list-section h2,
+.services-list-section h3,
+.services-guidance h2,
+.services-guidance h3,
+.services-approach h2,
+.services-approach h3,
+.team-intro-section h2,
+.team-intro-section h3,
+.team-members-section h2,
+.team-members-section h3,
+.team-standards-section h2,
+.team-standards-section h3 {
+  color: var(--pc-ink) !important;
+}
+
+/* cards */
+.conditions-card,
+.services-card,
+.team-member-card,
+.patient-story-card,
+.contact-info-card,
+.faqs-question,
+.about-v7-process-card,
+.about-v7-intro-card,
+.about-v7-highlight,
+.services-approach-card,
+.team-standards-card {
+  border-color: rgba(17,17,17,.12) !important;
+}
+
+.conditions-card:hover,
+.services-card:hover,
+.team-member-card:hover,
+.patient-story-card:hover,
+.contact-info-card:hover,
+.about-v7-process-card:hover,
+.services-approach-card:hover {
+  border-color: rgba(230,43,43,.42) !important;
+  box-shadow: 0 20px 50px rgba(0,0,0,.12) !important;
+}
+
+/* dark statement / philosophy bands */
+.about-v7-statement,
+.conditions-statement,
+.patient-stories-statement,
+.team-philosophy {
+  background: var(--pc-black) !important;
+  color: #fff !important;
+}
+
+.about-v7-statement h2,
+.conditions-statement h2,
+.patient-stories-statement h2,
+.team-philosophy h2,
+.about-v7-statement p,
+.conditions-statement p,
+.patient-stories-statement p,
+.team-philosophy p {
+  color: #fff !important;
+}
+
+.about-v7-light-tag,
+.conditions-light-tag,
+.patient-stories-light-tag,
+.services-light-tag,
+.team-light-tag,
+.faqs-light-tag {
+  color: var(--pc-red) !important;
+}
+
+/* final CTAs — black */
+.about-v7-final,
+.conditions-final,
+.contact-final,
+.faqs-final,
+.patient-stories-final,
+.services-final,
+.team-final {
+  background: var(--pc-black) !important;
+  color: #fff !important;
+}
+
+.about-v7-final h2,
+.conditions-final h2,
+.contact-final h2,
+.faqs-final h2,
+.patient-stories-final h2,
+.services-final h2,
+.team-final h2,
+.about-v7-final p,
+.conditions-final p,
+.contact-final p,
+.faqs-final p,
+.patient-stories-final p,
+.services-final p,
+.team-final p {
+  color: #fff !important;
+}
+
+/* decorative system */
+.about-v7-orbit,
+.conditions-hero-circle,
+.contact-hero-circle,
+.faqs-hero-circle,
+.patient-stories-hero-circle,
+.services-hero-circle,
+.team-hero-circle,
+.about-v7-story-circle,
+.conditions-final-circle,
+.contact-visit-circle,
+.faqs-final-circle,
+.patient-stories-final-circle,
+.services-final-circle,
+.team-final-circle {
+  border-color: rgba(230,43,43,.3) !important;
+}
+
+.about-v7-hero-grid-pattern,
+.conditions-hero-grid,
+.contact-hero-grid,
+.faqs-hero-grid,
+.patient-stories-hero-grid,
+.services-hero-grid,
+.team-hero-grid {
+  opacity: .45;
+}
+
+/* forms */
+.contact-form-wrap,
+.contact-form {
+  background: var(--pc-white) !important;
+  color: var(--pc-ink) !important;
+  border-color: rgba(17,17,17,.12) !important;
+}
+
+.contact-field input,
+.contact-field textarea,
+.contact-field select {
+  background: #faf9f6 !important;
+  color: var(--pc-ink) !important;
+  border-color: rgba(17,17,17,.14) !important;
+}
+
+.contact-field input:focus,
+.contact-field textarea:focus,
+.contact-field select:focus {
+  border-color: var(--pc-red) !important;
+  box-shadow: 0 0 0 3px rgba(230,43,43,.1) !important;
+}
+
+/* FAQ accordion */
+.faqs-question {
+  background: #fff !important;
+  color: var(--pc-ink) !important;
+}
+
+.faqs-question-text,
+.faqs-question-number {
+  color: var(--pc-ink) !important;
+}
+
+.faqs-question-icon {
+  color: var(--pc-red) !important;
+}
+
+/* imagery */
+.about-v7-hero-image,
+.conditions-hero-image,
+.contact-hero-image,
+.faqs-hero-card,
+.patient-stories-hero-image,
+.services-hero-image,
+.team-hero-image,
+.about-v7-story-main-image,
+.conditions-guidance-image,
+.contact-booking-image,
+.contact-visit-image,
+.patient-stories-journey-image,
+.services-guidance-image,
+.services-approach-image,
+.team-standards-image {
+  border-radius: 4px;
+}
+
+/* mobile polish */
+@media (max-width: 768px) {
+  .about-v7-hero,
+  .conditions-hero,
+  .contact-hero,
+  .faqs-hero,
+  .patient-stories-hero,
+  .services-hero,
+  .team-hero {
+    min-height: auto;
+  }
+
+  .about-v7-primary-btn,
+  .conditions-primary-btn,
+  .contact-primary-btn,
+  .faqs-primary-btn,
+  .patient-stories-primary-btn,
+  .services-primary-btn,
+  .team-primary-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-v7 *, .conditions-page *, .contact-page *, .faqs-page *,
+  .patient-stories-page *, .services-page *, .team-page * {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+/* PHYSIOCARE — BLACK + RED VISUAL REFINEMENT */
+:root{
+  --pc-black:#090909;
+  --pc-black-2:#121212;
+  --pc-red:#e62b2b;
+  --pc-red-bright:#ff3b30;
+  --pc-white:#ffffff;
+  --pc-cream:#f5f3ee;
+  --pc-muted:#686868;
+}
+
+/* Keep sections visually dense and image-led — avoid oversized empty space. */
+.about-v7,.conditions-page,.contact-page,.faqs-page,.patient-stories-page,.services-page,.team-page{background:var(--pc-cream)!important;color:#151515!important}
+.about-v7 section,.conditions-page section,.contact-page section,.faqs-page section,.patient-stories-page section,.services-page section,.team-page section{padding-top:82px!important;padding-bottom:82px!important}
+.about-v7-container,.conditions-container,.contact-container,.faqs-container,.patient-stories-container,.services-container,.team-container{width:min(1240px,calc(100% - 48px))!important}
+
+/* Every inner page starts dark, then alternates light/dark for rhythm. */
+.about-v7-hero,.conditions-hero,.contact-hero,.faqs-hero,.patient-stories-hero,.services-hero,.team-hero{background:var(--pc-black)!important;color:var(--pc-white)!important;padding-top:88px!important;padding-bottom:88px!important}
+.about-v7-hero h1,.conditions-hero h1,.contact-hero h1,.faqs-hero h1,.patient-stories-hero h1,.services-hero h1,.team-hero h1{color:#fff!important}
+.about-v7-intro,.about-v7-story,.conditions-list-section,.contact-visit-section,.faqs-list-section,.patient-stories-intro,.patient-stories-list,.services-list-section,.team-intro-section,.team-members-section{background:var(--pc-cream)!important;color:#151515!important}
+.about-v7-statement,.about-v7-process,.conditions-guidance,.faqs-reassurance,.patient-stories-journey,.services-guidance,.services-approach,.team-standards-section{background:var(--pc-black)!important;color:#fff!important}
+.about-v7-mission,.about-v7-principles,.conditions-statement,.patient-stories-statement,.team-philosophy{background:#fff!important;color:#151515!important}
+.about-v7-final,.conditions-final,.contact-final,.faqs-final,.patient-stories-final,.services-final,.team-final{background:var(--pc-black)!important;color:#fff!important;padding-top:86px!important;padding-bottom:86px!important}
+
+/* Headings — strong but not oversized. */
+.about-v7 h1,.conditions-page h1,.contact-page h1,.faqs-page h1,.patient-stories-page h1,.services-page h1,.team-page h1{font-size:clamp(48px,6vw,78px)!important;line-height:.96!important;letter-spacing:-.055em!important}
+.about-v7 h2,.conditions-page h2,.contact-page h2,.faqs-page h2,.patient-stories-page h2,.services-page h2,.team-page h2{font-size:clamp(34px,4.2vw,58px)!important;line-height:1.02!important;letter-spacing:-.045em!important}
+.about-v7 h3,.conditions-page h3,.contact-page h3,.faqs-page h3,.patient-stories-page h3,.services-page h3,.team-page h3{letter-spacing:-.025em!important}
+.about-v7 p,.conditions-page p,.contact-page p,.faqs-page p,.patient-stories-page p,.services-page p,.team-page p{font-size:15.5px;line-height:1.7}
+
+/* Hero image treatment — large, crisp, cinematic, never a tiny thumbnail. */
+.about-v7-hero-image,.conditions-hero-image,.contact-hero-image,.patient-stories-hero-image,.services-hero-image,.team-hero-image{height:clamp(420px,54vw,650px)!important;border-radius:26px!important;overflow:hidden!important;box-shadow:0 30px 80px rgba(0,0,0,.38)!important}
+.about-v7-hero-image img,.conditions-hero-image img,.contact-hero-image img,.patient-stories-hero-image img,.services-hero-image img,.team-hero-image img{width:100%!important;height:100%!important;object-fit:cover!important;display:block!important;filter:saturate(.92) contrast(1.06)!important}
+.about-v7-hero-image::after,.conditions-hero-image::after,.contact-hero-image::after,.patient-stories-hero-image::after,.services-hero-image::after,.team-hero-image::after{content:"";position:absolute;inset:auto 0 0;height:42%;background:linear-gradient(transparent,rgba(0,0,0,.62));pointer-events:none}
+
+/* Red accents and CTA consistency. */
+.about-v7 .about-v7-primary-btn,.conditions-page .conditions-primary-btn,.contact-page .contact-primary-btn,.faqs-page .faqs-primary-btn,.patient-stories-page .patient-stories-primary-btn,.services-page .services-primary-btn,.team-page .team-primary-btn,
+.about-v7 .about-v7-final-btn,.conditions-page .conditions-final-btn,.contact-page .contact-final-btn,.faqs-page .faqs-final-btn,.patient-stories-page .patient-stories-final-btn,.services-page .services-final-btn,.team-page .team-final-btn{background:var(--pc-red)!important;color:#fff!important;border:1px solid var(--pc-red)!important;box-shadow:0 16px 38px rgba(230,43,43,.22)!important}
+.about-v7 .about-v7-primary-btn:hover,.conditions-page .conditions-primary-btn:hover,.contact-page .contact-primary-btn:hover,.faqs-page .faqs-primary-btn:hover,.patient-stories-page .patient-stories-primary-btn:hover,.services-page .services-primary-btn:hover,.team-page .team-primary-btn:hover{background:var(--pc-red-bright)!important;transform:translateY(-2px)}
+.about-v7 .about-v7-section-tag,.conditions-page .conditions-tag,.contact-page .contact-tag,.faqs-page .faqs-tag,.patient-stories-page .patient-stories-tag,.services-page .services-tag,.team-page .team-tag{color:var(--pc-red)!important}
+
+/* Cards: compact, premium, image-first. */
+.about-v7-principle-card,.about-v7-process-card,.conditions-card-intro,.conditions-card-content,.services-card-content,.services-approach-card,.team-standards-card,.team-member-content,.patient-story-content,.contact-info-card,.faqs-side-panel{border-color:rgba(230,43,43,.16)!important;box-shadow:0 18px 45px rgba(0,0,0,.08)!important}
+.about-v7-principle-card:hover,.about-v7-process-card:hover,.conditions-card-content:hover,.services-card-content:hover,.services-approach-card:hover,.team-member-content:hover,.patient-story-content:hover,.contact-info-card:hover{border-color:rgba(230,43,43,.42)!important;transform:translateY(-4px)}
+
+/* Section imagery on light sections. */
+.about-v7-intro-image,.about-v7-story-main-image,.about-v7-mission-image,.conditions-guidance-image,.patient-stories-journey-image,.services-guidance-image,.services-approach-image,.team-standards-image,.contact-visit-image{border-radius:24px!important;overflow:hidden!important;box-shadow:0 24px 60px rgba(0,0,0,.15)!important}
+.about-v7-intro-image img,.about-v7-story-main-image img,.about-v7-mission-image img,.conditions-guidance-image img,.patient-stories-journey-image img,.services-guidance-image img,.services-approach-image img,.team-standards-image img,.contact-visit-image img{width:100%!important;height:100%!important;object-fit:cover!important;display:block!important}
+
+/* Final CTA images should be visible, not buried under huge black areas. */
+.about-v7-final-image,.conditions-final-image,.contact-final-image,.faqs-final-image,.patient-stories-final-image,.services-final-image,.team-final-image{min-height:420px!important;border-radius:26px!important;overflow:hidden!important}
+.about-v7-final-image img,.conditions-final-image img,.contact-final-image img,.faqs-final-image img,.patient-stories-final-image img,.services-final-image img,.team-final-image img{width:100%!important;height:100%!important;min-height:420px!important;object-fit:cover!important}
+
+/* FAQ / list density. */
+.faqs-question{padding:20px 0!important}
+.faqs-answer{max-width:760px!important}
+
+/* Footer */
+.physio-footer{background:var(--pc-black)!important;color:#fff!important}
+.footer-cta{background:var(--pc-red)!important;color:#fff!important}
+.footer-cta-button{background:#fff!important;color:#111!important}
+.footer-logo-mark{background:var(--pc-red)!important;color:#fff!important}
+.footer-brand,.footer-column h4{color:#fff!important}
+.footer-column a,.footer-contact,.footer-bottom{color:rgba(255,255,255,.68)!important}
+.footer-column a:hover{color:var(--pc-red-bright)!important}
+
+/* Mobile: reduce padding and keep images prominent. */
+@media(max-width:700px){
+  .about-v7 section,.conditions-page section,.contact-page section,.faqs-page section,.patient-stories-page section,.services-page section,.team-page section{padding-top:58px!important;padding-bottom:58px!important}
+  .about-v7-hero,.conditions-hero,.contact-hero,.faqs-hero,.patient-stories-hero,.services-hero,.team-hero{padding-top:64px!important;padding-bottom:64px!important}
+  .about-v7-hero-image,.conditions-hero-image,.contact-hero-image,.patient-stories-hero-image,.services-hero-image,.team-hero-image{height:390px!important}
+  .about-v7-final-image,.conditions-final-image,.contact-final-image,.faqs-final-image,.patient-stories-final-image,.services-final-image,.team-final-image{min-height:300px!important}
+  .about-v7-final-image img,.conditions-final-image img,.contact-final-image img,.faqs-final-image img,.patient-stories-final-image img,.services-final-image img,.team-final-image img{min-height:300px!important}
+  .about-v7-container,.conditions-container,.contact-container,.faqs-container,.patient-stories-container,.services-container,.team-container{width:calc(100% - 28px)!important}
 }

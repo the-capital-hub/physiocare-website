@@ -106,6 +106,8 @@ export default function FAQs() {
 
           <div className="faqs-hero-layout">
 
+            {/* HERO CONTENT */}
+
             <motion.div
               className="faqs-hero-copy"
               initial="hidden"
@@ -135,6 +137,7 @@ export default function FAQs() {
                 className="faqs-hero-actions"
                 variants={reveal}
               >
+
                 <Link
                   to="/contact"
                   className="faqs-primary-btn"
@@ -150,9 +153,12 @@ export default function FAQs() {
                   Explore our services
                   <FiArrowUpRight />
                 </Link>
+
               </motion.div>
 
             </motion.div>
+
+            {/* HERO VISUAL */}
 
             <motion.div
               className="faqs-hero-visual"
@@ -225,12 +231,14 @@ export default function FAQs() {
                   ease: "easeInOut",
                 }}
               >
+
                 <FiMessageCircle />
 
                 <div>
                   <strong>Still unsure?</strong>
                   <span>We can guide you</span>
                 </div>
+
               </motion.div>
 
             </motion.div>
@@ -238,7 +246,9 @@ export default function FAQs() {
           </div>
 
         </div>
+
       </section>
+
 
       {/* =========================================
           FAQ SECTION
@@ -249,6 +259,8 @@ export default function FAQs() {
         <div className="faqs-container">
 
           <div className="faqs-content-layout">
+
+            {/* LEFT INFORMATION PANEL */}
 
             <motion.aside
               className="faqs-side-panel"
@@ -279,30 +291,73 @@ export default function FAQs() {
                 directly.
               </motion.p>
 
+
+              {/* FAQ IMAGE */}
+
+              <motion.div
+                className="faqs-side-image"
+                variants={reveal}
+              >
+
+                <img
+                  src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=90"
+                  alt="Physiotherapist helping a patient"
+                />
+
+                <div className="faqs-side-image-overlay" />
+
+                <div className="faqs-side-image-badge">
+                  <span />
+                  CLINICAL CARE
+                </div>
+
+                <div className="faqs-side-image-caption">
+                  <strong>Clear answers.</strong>
+                  <span>Confident next steps.</span>
+                </div>
+
+              </motion.div>
+
+
+              {/* SIDE NOTE */}
+
               <motion.div
                 className="faqs-side-note"
                 variants={reveal}
               >
+
                 <FiHelpCircle />
 
                 <div>
                   <strong>Not seeing your question?</strong>
-                  <span>Contact the clinic and ask us directly.</span>
+                  <span>
+                    Contact the clinic and ask us directly.
+                  </span>
                 </div>
+
               </motion.div>
+
+
+              {/* QUESTION COUNT */}
 
               <motion.div
                 className="faqs-side-number"
                 variants={reveal}
               >
+
                 <span>12</span>
+
                 <div>
                   <strong>Common questions</strong>
                   <small>Answered clearly</small>
                 </div>
+
               </motion.div>
 
             </motion.aside>
+
+
+            {/* FAQ ACCORDION */}
 
             <motion.div
               className="faqs-accordion"
@@ -316,6 +371,7 @@ export default function FAQs() {
             >
 
               {faqs.map(([question, answer], index) => {
+
                 const isActive = active === index;
 
                 return (
@@ -358,8 +414,11 @@ export default function FAQs() {
 
                     </button>
 
+
                     <AnimatePresence initial={false}>
+
                       {isActive && (
+
                         <motion.div
                           className="faqs-answer-wrap"
                           initial={{
@@ -379,19 +438,26 @@ export default function FAQs() {
                             ease: [0.22, 1, 0.36, 1],
                           }}
                         >
+
                           <div className="faqs-answer">
+
                             <span className="faqs-answer-line" />
 
                             <p>
                               {answer}
                             </p>
+
                           </div>
+
                         </motion.div>
+
                       )}
+
                     </AnimatePresence>
 
                   </motion.article>
                 );
+
               })}
 
             </motion.div>
@@ -399,7 +465,9 @@ export default function FAQs() {
           </div>
 
         </div>
+
       </section>
+
 
       {/* =========================================
           REASSURANCE
@@ -441,6 +509,7 @@ export default function FAQs() {
             </motion.p>
 
             <motion.div variants={reveal}>
+
               <Link
                 to="/contact"
                 className="faqs-white-btn"
@@ -448,9 +517,13 @@ export default function FAQs() {
                 Talk to the Clinic
                 <FiArrowUpRight />
               </Link>
+
             </motion.div>
 
           </motion.div>
+
+
+          {/* ANIMATED REASSURANCE GRAPHIC */}
 
           <motion.div
             className="faqs-reassurance-circle"
@@ -467,7 +540,9 @@ export default function FAQs() {
           </motion.div>
 
         </div>
+
       </section>
+
 
       {/* =========================================
           FINAL CTA
@@ -476,14 +551,18 @@ export default function FAQs() {
       <section className="faqs-final">
 
         <div className="faqs-final-image">
+
           <img
             src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1800&q=90"
             alt="Physiotherapy consultation"
           />
+
         </div>
 
         <div className="faqs-final-overlay" />
+
         <div className="faqs-final-pattern" />
+
 
         <motion.div
           className="faqs-final-circle"
@@ -496,6 +575,7 @@ export default function FAQs() {
             ease: "linear",
           }}
         />
+
 
         <div className="faqs-container">
 
@@ -528,6 +608,7 @@ export default function FAQs() {
             </motion.p>
 
             <motion.div variants={reveal}>
+
               <Link
                 to="/contact"
                 className="faqs-final-btn"
@@ -535,6 +616,7 @@ export default function FAQs() {
                 Book Your Assessment
                 <FiArrowUpRight />
               </Link>
+
             </motion.div>
 
           </motion.div>

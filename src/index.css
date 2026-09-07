@@ -1,33 +1,32 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap");
 
 :root {
-  /* =========================================
-     PHYSIOCARE DESIGN SYSTEM
-  ========================================= */
+  --black: #080808;
+  --black-soft: #111111;
+  --black-card: #171717;
 
-  --navy: #142a33;
-  --navy-deep: #0f2027;
+  --red: #e62b2b;
+  --red-bright: #ff3b30;
+  --red-dark: #b91f1f;
 
-  --sand: #f3ede2;
-  --paper: #fcfbf8;
-
-  --terracotta: #c96a4a;
-  --terracotta-light: #e09a83;
-
-  --slate: #53636a;
-  --muted: #6d777c;
-
-  --pale-blue: #dce7ea;
-  --soft-blue: #eaf1f3;
-
+  --off-white: #f5f3ee;
   --white: #ffffff;
 
-  --line: rgba(20, 42, 51, 0.12);
+  --text-dark: #111111;
+  --text-light: #f5f5f5;
+
+  --muted-dark: #686868;
+  --muted-light: #a5a5a5;
+
+  --line-light: rgba(17, 17, 17, 0.12);
   --line-dark: rgba(255, 255, 255, 0.12);
 
+  --shadow-dark: 0 20px 60px rgba(0, 0, 0, 0.25);
+  --shadow-red: 0 15px 40px rgba(230, 43, 43, 0.22);
+
   font-family: "DM Sans", sans-serif;
-  color: var(--navy);
-  background: var(--sand);
+  color: var(--text-dark);
+  background: var(--off-white);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -35,13 +34,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* =========================================
-   GLOBAL RESET
-========================================= */
-
-*,
-*::before,
-*::after {
+* {
   box-sizing: border-box;
 }
 
@@ -53,588 +46,455 @@ html {
 body {
   margin: 0;
   min-width: 320px;
-
-  background: var(--sand);
-  color: var(--navy);
-
+  background: var(--off-white);
+  color: var(--text-dark);
   font-family: "DM Sans", sans-serif;
-  font-size: 16px;
-  line-height: 1.5;
-
-  overflow-x: hidden;
-}
-
-body,
-button,
-input,
-textarea,
-select {
-  font-family: "DM Sans", sans-serif;
-}
-
-button,
-input,
-textarea,
-select {
-  font-size: inherit;
-}
-
-button {
-  border: 0;
 }
 
 a {
   color: inherit;
-  text-decoration: none;
 }
 
-img {
-  display: block;
-  max-width: 100%;
-}
-
-svg {
-  display: block;
-  flex-shrink: 0;
-}
-
-#root {
-  min-height: 100vh;
-}
-
-/* =========================================
-   TYPOGRAPHY
-========================================= */
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin-top: 0;
-
-  font-family: "Manrope", sans-serif;
-  font-weight: 800;
-  color: var(--navy);
-}
-
-p {
-  margin-top: 0;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  overflow-wrap: break-word;
-}
-
-/* =========================================
-   GLOBAL CONTAINER
-========================================= */
-
-.container {
-  width: min(1180px, calc(100% - 40px));
-  margin-inline: auto;
-}
-
-/* =========================================
-   GLOBAL SECTIONS
-========================================= */
-
-.section {
-  padding: 105px 0;
-}
-
-/* =========================================
-   GLOBAL TEXT HELPERS
-========================================= */
-
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-
-  margin: 0;
-
-  color: var(--navy);
-
-  font-size: 11px;
-  font-weight: 800;
-  line-height: 1.2;
-
-  letter-spacing: 0.17em;
-  text-transform: uppercase;
-}
-
-.eyebrow::before {
-  content: "";
-
-  width: 28px;
-  height: 2px;
-
-  flex: 0 0 auto;
-
-  border-radius: 999px;
-  background: var(--terracotta);
-}
-
-.eyebrow.light {
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.eyebrow.light::before {
-  background: var(--terracotta-light);
-}
-
-.display,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Manrope", sans-serif;
-}
-
-.display {
-  font-weight: 800;
-}
-
-.body-copy,
-.large-copy {
-  color: var(--muted);
-  line-height: 1.75;
-}
-
-.large-copy {
-  font-size: 17px;
-}
-
-/* =========================================
-   GLOBAL BUTTONS
-   Kept for existing components
-========================================= */
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-
-  min-height: 50px;
-  padding: 0 21px;
-
-  border-radius: 999px;
-
-  font-size: 14px;
-  font-weight: 800;
-  line-height: 1;
-
-  cursor: pointer;
-
-  transition:
-    transform 0.28s ease,
-    background 0.28s ease,
-    color 0.28s ease,
-    box-shadow 0.28s ease,
-    border-color 0.28s ease;
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-}
-
-.btn-primary {
-  background: var(--navy);
-  color: var(--white);
-
-  box-shadow: 0 14px 35px rgba(20, 42, 51, 0.16);
-}
-
-.btn-primary:hover {
-  background: var(--navy-deep);
-}
-
-.btn-light {
-  background: var(--white);
-  color: var(--navy);
-}
-
-.btn-light:hover {
-  background: var(--sand);
-}
-
-/* =========================================
-   GLOBAL TEXT LINK
-========================================= */
-
-.text-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-
-  color: var(--navy);
-
-  font-size: 14px;
-  font-weight: 800;
-
-  transition:
-    color 0.25s ease,
-    transform 0.25s ease;
-}
-
-.text-link svg {
-  transition: transform 0.25s ease;
-}
-
-.text-link:hover {
-  color: var(--terracotta);
-}
-
-.text-link:hover svg {
-  transform: translate(3px, -3px);
-}
-
-/* =========================================
-   GENERIC CARD
-========================================= */
-
-.card {
-  border: 1px solid var(--line);
-  border-radius: 22px;
-
-  background: var(--paper);
-}
-
-/* =========================================
-   EXISTING GENERIC UTILITY FALLBACKS
-   Only basic utilities. No component design.
-========================================= */
-
-.grid {
-  display: grid;
-}
-
-.flex {
-  display: flex;
-}
-
-.hidden {
-  display: none;
-}
-
-.block {
-  display: block;
-}
-
-.inline-flex {
-  display: inline-flex;
-}
-
-.items-center {
-  align-items: center;
-}
-
-.items-start {
-  align-items: flex-start;
-}
-
-.justify-center {
-  justify-content: center;
-}
-
-.justify-between {
-  justify-content: space-between;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.overflow-hidden {
-  overflow: hidden;
-}
-
-.rounded-full {
-  border-radius: 999px;
-}
-
-.gap-2 {
-  gap: 8px;
-}
-
-.gap-3 {
-  gap: 12px;
-}
-
-.gap-4 {
-  gap: 16px;
-}
-
-.gap-5 {
-  gap: 20px;
-}
-
-.gap-6 {
-  gap: 24px;
-}
-
-.gap-8 {
-  gap: 32px;
-}
-
-.gap-10 {
-  gap: 40px;
-}
-
-.text-sm {
-  font-size: 14px;
-}
-
-.text-base {
-  font-size: 16px;
-}
-
-.text-lg {
-  font-size: 18px;
-}
-
-.text-xl {
-  font-size: 20px;
-}
-
-.text-xs {
-  font-size: 12px;
-}
-
-.font-medium {
-  font-weight: 500;
-}
-
-.font-semibold {
-  font-weight: 600;
-}
-
-.font-bold {
-  font-weight: 700;
-}
-
-.font-extrabold {
-  font-weight: 800;
-}
-
-/* =========================================
-   FORM ELEMENTS
-========================================= */
-
+button,
 input,
 textarea,
 select {
-  width: 100%;
-
-  border: 1px solid var(--line);
-  border-radius: 14px;
-
-  background: var(--paper);
-  color: var(--navy);
-
-  outline: none;
-
-  transition:
-    border-color 0.25s ease,
-    box-shadow 0.25s ease;
+  font: inherit;
 }
 
-input:focus,
-textarea:focus,
-select:focus {
-  border-color: rgba(201, 106, 74, 0.65);
-
-  box-shadow: 0 0 0 4px rgba(201, 106, 74, 0.1);
+button {
+  cursor: pointer;
 }
 
-textarea {
-  resize: vertical;
+img {
+  max-width: 100%;
 }
-
-/* =========================================
-   SELECTION
-========================================= */
 
 ::selection {
-  background: var(--terracotta);
-  color: var(--white);
+  background: var(--red);
+  color: #fff;
+}
+/* =========================================================
+   PHYSIOCARE — GLOBAL PAGE THEME OVERRIDES
+   Premium black / red / off-white visual system
+========================================================= */
+
+:root {
+  --pc-black: #080808;
+  --pc-black-soft: #111111;
+  --pc-card: #171717;
+  --pc-red: #e62b2b;
+  --pc-red-bright: #ff3b30;
+  --pc-off: #f5f3ee;
+  --pc-white: #ffffff;
+  --pc-ink: #111111;
+  --pc-muted: #686868;
 }
 
-/* =========================================
-   SCROLLBAR
-========================================= */
-
-::-webkit-scrollbar {
-  width: 9px;
+.about-v7,
+.conditions-page,
+.contact-page,
+.faqs-page,
+.patient-stories-page,
+.services-page,
+.team-page {
+  --navy: var(--pc-black);
+  --navy-deep: var(--pc-black);
+  --sand: var(--pc-off);
+  --white: var(--pc-white);
+  --terracotta: var(--pc-red);
+  --terracotta-light: var(--pc-red-bright);
+  --slate: #686868;
+  --muted: #777;
+  --pale-blue: #e8e5df;
+  font-family: "DM Sans", sans-serif;
 }
 
-::-webkit-scrollbar-track {
-  background: var(--sand);
+.about-v7 h1,
+.about-v7 h2,
+.about-v7 h3,
+.conditions-page h1,
+.conditions-page h2,
+.conditions-page h3,
+.contact-page h1,
+.contact-page h2,
+.contact-page h3,
+.faqs-page h1,
+.faqs-page h2,
+.faqs-page h3,
+.patient-stories-page h1,
+.patient-stories-page h2,
+.patient-stories-page h3,
+.services-page h1,
+.services-page h2,
+.services-page h3,
+.team-page h1,
+.team-page h2,
+.team-page h3 {
+  font-family: "Manrope", sans-serif;
+  letter-spacing: -0.045em;
 }
 
-::-webkit-scrollbar-thumb {
-  border-radius: 999px;
-  background: rgba(20, 42, 51, 0.25);
+/* HEROES — all inner pages start in black */
+.about-v7-hero,
+.conditions-hero,
+.contact-hero,
+.faqs-hero,
+.patient-stories-hero,
+.services-hero,
+.team-hero {
+  background: var(--pc-black) !important;
+  color: var(--pc-white) !important;
+  position: relative;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(20, 42, 51, 0.4);
+.about-v7-hero h1,
+.conditions-hero h1,
+.contact-hero h1,
+.faqs-hero h1,
+.patient-stories-hero h1,
+.services-hero h1,
+.team-hero h1,
+.about-v7-hero p,
+.conditions-hero p,
+.contact-hero p,
+.faqs-hero p,
+.patient-stories-hero p,
+.services-hero p,
+.team-hero p {
+  color: inherit !important;
 }
 
-/* =========================================
-   PAGE HERO
-   Used by other pages
-========================================= */
-
-.page-hero {
-  padding: 75px 0 50px;
-  background: var(--sand);
+.about-v7-kicker,
+.conditions-tag,
+.contact-tag,
+.faqs-tag,
+.patient-stories-tag,
+.services-tag,
+.team-tag {
+  color: var(--pc-red) !important;
 }
 
-.page-hero-grid {
-  display: grid;
-  grid-template-columns: 1fr 0.8fr;
-  gap: 50px;
-  align-items: end;
+.about-v7-primary-btn,
+.conditions-primary-btn,
+.contact-primary-btn,
+.faqs-primary-btn,
+.patient-stories-primary-btn,
+.services-primary-btn,
+.team-primary-btn,
+.conditions-final-btn,
+.contact-submit-btn,
+.faqs-final-btn,
+.patient-stories-final-btn,
+.services-final-btn,
+.team-final-btn,
+.about-v7-final-btn {
+  background: var(--pc-red) !important;
+  color: #fff !important;
+  border-color: var(--pc-red) !important;
+  box-shadow: 0 16px 35px rgba(230,43,43,.2) !important;
 }
 
-.page-hero h1 {
-  max-width: 760px;
-  margin: 16px 0;
-
-  font-size: clamp(46px, 6vw, 82px);
-  line-height: 0.95;
-  letter-spacing: -0.055em;
+.about-v7-primary-btn:hover,
+.conditions-primary-btn:hover,
+.contact-primary-btn:hover,
+.faqs-primary-btn:hover,
+.patient-stories-primary-btn:hover,
+.services-primary-btn:hover,
+.team-primary-btn:hover,
+.conditions-final-btn:hover,
+.contact-submit-btn:hover,
+.faqs-final-btn:hover,
+.patient-stories-final-btn:hover,
+.services-final-btn:hover,
+.team-final-btn:hover,
+.about-v7-final-btn:hover {
+  background: var(--pc-red-bright) !important;
+  transform: translateY(-3px);
 }
 
-.page-hero h1 em {
-  color: var(--terracotta);
-  font-style: normal;
+.about-v7-link-btn,
+.conditions-text-btn,
+.contact-text-btn,
+.faqs-text-btn,
+.patient-stories-text-btn,
+.services-text-btn,
+.team-text-btn {
+  color: #fff !important;
 }
 
-.page-hero p {
-  max-width: 650px;
-  margin: 0;
-
-  color: var(--muted);
-
-  font-size: 17px;
-  line-height: 1.75;
+/* alternating light / dark sections */
+.about-v7-intro,
+.about-v7-story,
+.about-v7-process,
+.about-v7-mission,
+.about-v7-principles,
+.conditions-list-section,
+.conditions-guidance,
+.contact-details-section,
+.contact-visit-section,
+.faqs-list-section,
+.faqs-reassurance,
+.patient-stories-intro,
+.patient-stories-list,
+.patient-stories-journey,
+.services-list-section,
+.services-guidance,
+.services-approach,
+.team-intro-section,
+.team-members-section,
+.team-standards-section {
+  background: var(--pc-off) !important;
+  color: var(--pc-ink) !important;
 }
 
-/* =========================================
-   APP SHELL
-========================================= */
-
-.app-shell {
-  min-height: 100vh;
-  overflow: hidden;
+.about-v7-intro h2,
+.about-v7-intro h3,
+.about-v7-story h2,
+.about-v7-story h3,
+.about-v7-process h2,
+.about-v7-process h3,
+.about-v7-mission h2,
+.about-v7-mission h3,
+.about-v7-principles h2,
+.about-v7-principles h3,
+.conditions-list-section h2,
+.conditions-list-section h3,
+.conditions-guidance h2,
+.conditions-guidance h3,
+.contact-details-section h2,
+.contact-details-section h3,
+.contact-visit-section h2,
+.contact-visit-section h3,
+.faqs-list-section h2,
+.faqs-list-section h3,
+.faqs-reassurance h2,
+.faqs-reassurance h3,
+.patient-stories-intro h2,
+.patient-stories-intro h3,
+.patient-stories-list h2,
+.patient-stories-list h3,
+.patient-stories-journey h2,
+.patient-stories-journey h3,
+.services-list-section h2,
+.services-list-section h3,
+.services-guidance h2,
+.services-guidance h3,
+.services-approach h2,
+.services-approach h3,
+.team-intro-section h2,
+.team-intro-section h3,
+.team-members-section h2,
+.team-members-section h3,
+.team-standards-section h2,
+.team-standards-section h3 {
+  color: var(--pc-ink) !important;
 }
 
-/* =========================================
-   ACCESSIBILITY
-========================================= */
-
-:focus-visible {
-  outline: 3px solid rgba(201, 106, 74, 0.5);
-  outline-offset: 3px;
+/* cards */
+.conditions-card,
+.services-card,
+.team-member-card,
+.patient-story-card,
+.contact-info-card,
+.faqs-question,
+.about-v7-process-card,
+.about-v7-intro-card,
+.about-v7-highlight,
+.services-approach-card,
+.team-standards-card {
+  border-color: rgba(17,17,17,.12) !important;
 }
 
-/* =========================================
-   RESPONSIVE
-========================================= */
-
-@media (max-width: 900px) {
-  .container {
-    width: min(100% - 30px, 720px);
-  }
-
-  .section {
-    padding: 72px 0;
-  }
-
-  .page-hero {
-    padding: 55px 0 35px;
-  }
-
-  .page-hero-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-
-  .large-copy {
-    font-size: 16px;
-  }
+.conditions-card:hover,
+.services-card:hover,
+.team-member-card:hover,
+.patient-story-card:hover,
+.contact-info-card:hover,
+.about-v7-process-card:hover,
+.services-approach-card:hover {
+  border-color: rgba(230,43,43,.42) !important;
+  box-shadow: 0 20px 50px rgba(0,0,0,.12) !important;
 }
 
-@media (max-width: 600px) {
-  .container {
-    width: calc(100% - 24px);
+/* dark statement / philosophy bands */
+.about-v7-statement,
+.conditions-statement,
+.patient-stories-statement,
+.team-philosophy {
+  background: var(--pc-black) !important;
+  color: #fff !important;
+}
+
+.about-v7-statement h2,
+.conditions-statement h2,
+.patient-stories-statement h2,
+.team-philosophy h2,
+.about-v7-statement p,
+.conditions-statement p,
+.patient-stories-statement p,
+.team-philosophy p {
+  color: #fff !important;
+}
+
+.about-v7-light-tag,
+.conditions-light-tag,
+.patient-stories-light-tag,
+.services-light-tag,
+.team-light-tag,
+.faqs-light-tag {
+  color: var(--pc-red) !important;
+}
+
+/* final CTAs — black */
+.about-v7-final,
+.conditions-final,
+.contact-final,
+.faqs-final,
+.patient-stories-final,
+.services-final,
+.team-final {
+  background: var(--pc-black) !important;
+  color: #fff !important;
+}
+
+.about-v7-final h2,
+.conditions-final h2,
+.contact-final h2,
+.faqs-final h2,
+.patient-stories-final h2,
+.services-final h2,
+.team-final h2,
+.about-v7-final p,
+.conditions-final p,
+.contact-final p,
+.faqs-final p,
+.patient-stories-final p,
+.services-final p,
+.team-final p {
+  color: #fff !important;
+}
+
+/* decorative system */
+.about-v7-orbit,
+.conditions-hero-circle,
+.contact-hero-circle,
+.faqs-hero-circle,
+.patient-stories-hero-circle,
+.services-hero-circle,
+.team-hero-circle,
+.about-v7-story-circle,
+.conditions-final-circle,
+.contact-visit-circle,
+.faqs-final-circle,
+.patient-stories-final-circle,
+.services-final-circle,
+.team-final-circle {
+  border-color: rgba(230,43,43,.3) !important;
+}
+
+.about-v7-hero-grid-pattern,
+.conditions-hero-grid,
+.contact-hero-grid,
+.faqs-hero-grid,
+.patient-stories-hero-grid,
+.services-hero-grid,
+.team-hero-grid {
+  opacity: .45;
+}
+
+/* forms */
+.contact-form-wrap,
+.contact-form {
+  background: var(--pc-white) !important;
+  color: var(--pc-ink) !important;
+  border-color: rgba(17,17,17,.12) !important;
+}
+
+.contact-field input,
+.contact-field textarea,
+.contact-field select {
+  background: #faf9f6 !important;
+  color: var(--pc-ink) !important;
+  border-color: rgba(17,17,17,.14) !important;
+}
+
+.contact-field input:focus,
+.contact-field textarea:focus,
+.contact-field select:focus {
+  border-color: var(--pc-red) !important;
+  box-shadow: 0 0 0 3px rgba(230,43,43,.1) !important;
+}
+
+/* FAQ accordion */
+.faqs-question {
+  background: #fff !important;
+  color: var(--pc-ink) !important;
+}
+
+.faqs-question-text,
+.faqs-question-number {
+  color: var(--pc-ink) !important;
+}
+
+.faqs-question-icon {
+  color: var(--pc-red) !important;
+}
+
+/* imagery */
+.about-v7-hero-image,
+.conditions-hero-image,
+.contact-hero-image,
+.faqs-hero-card,
+.patient-stories-hero-image,
+.services-hero-image,
+.team-hero-image,
+.about-v7-story-main-image,
+.conditions-guidance-image,
+.contact-booking-image,
+.contact-visit-image,
+.patient-stories-journey-image,
+.services-guidance-image,
+.services-approach-image,
+.team-standards-image {
+  border-radius: 4px;
+}
+
+/* mobile polish */
+@media (max-width: 768px) {
+  .about-v7-hero,
+  .conditions-hero,
+  .contact-hero,
+  .faqs-hero,
+  .patient-stories-hero,
+  .services-hero,
+  .team-hero {
+    min-height: auto;
   }
 
-  .section {
-    padding: 68px 0;
-  }
-
-  body {
-    font-size: 15px;
-  }
-
-  .eyebrow {
-    font-size: 10px;
-    letter-spacing: 0.14em;
-  }
-
-  .large-copy {
-    font-size: 15px;
-    line-height: 1.75;
-  }
-
-  .page-hero {
-    padding: 45px 0 30px;
-  }
-
-  .page-hero h1 {
-    font-size: clamp(38px, 11vw, 54px);
-  }
-
-  .page-hero p {
-    font-size: 15px;
-  }
-
-  .btn {
-    min-height: 48px;
-    padding-inline: 19px;
-    font-size: 13px;
-  }
-
-  .text-link {
-    font-size: 13px;
+  .about-v7-primary-btn,
+  .conditions-primary-btn,
+  .contact-primary-btn,
+  .faqs-primary-btn,
+  .patient-stories-primary-btn,
+  .services-primary-btn,
+  .team-primary-btn {
+    width: 100%;
+    justify-content: center;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+  .about-v7 *, .conditions-page *, .contact-page *, .faqs-page *,
+  .patient-stories-page *, .services-page *, .team-page * {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
   }
 }
+
+/* FINAL VISUAL BALANCE */
+html{scroll-behavior:smooth}
+body{background:#f5f3ee;color:#111;overflow-x:hidden}
+img{image-rendering:auto}
+button,a{transition:transform .25s ease,background-color .25s ease,color .25s ease,border-color .25s ease,box-shadow .25s ease}
+@media(max-width:700px){body{font-size:15px}}

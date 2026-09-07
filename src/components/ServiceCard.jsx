@@ -11,7 +11,7 @@ export default function ServiceCard({ icon, title, text, number }) {
       className="card group relative overflow-hidden p-6"
     >
       <div className="flex items-start justify-between">
-        <span className="grid h-12 w-12 place-items-center rounded-2xl bg-[#dfe8df] text-xl text-[#214d3a]">
+        <span className="grid h-12 w-12 place-items-center rounded-2xl bg-[#e62b2b] text-xl text-white">
           <Icon />
         </span>
 
@@ -28,7 +28,7 @@ export default function ServiceCard({ icon, title, text, number }) {
         {text}
       </p>
 
-      <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-[#214d3a]">
+      <span className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-[#e62b2b]">
         Explore
         <FiArrowUpRight />
       </span>

@@ -12,19 +12,22 @@ import {
   FiZap,
 } from "react-icons/fi";
 import "./About.css";
-
+import about1 from '../assets/about1.jpg'
+import about2 from '../assets/about2.jpg'
+import about3 from '../assets/about3.jpg'
+import about4 from '../assets/about4.jpg'
 const images = {
   hero:
-    "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1800&q=90",
+   about1,
 
   movement:
-    "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1400&q=90",
+   about3,
 
   story:
-    "https://images.unsplash.com/photo-1571019613914-85f342c55b1f?auto=format&fit=crop&w=1400&q=90",
+    about2,
 
   clinic:
-    "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?auto=format&fit=crop&w=1600&q=90",
+   about4,
 };
 
 const process = [

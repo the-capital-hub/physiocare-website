@@ -12,30 +12,30 @@ import {
   FiPlus,
   FiCompass,
 } from "react-icons/fi";
-
 import "./Home.css";
-
+import home1 from '../assets/home1.jpg'
+import home2 from '../assets/home2.jpg'
+import home3 from '../assets/home3.jpg'
+import home4 from '../assets/home4.jpg'
+import home5 from '../assets/home5.jpg'
 const images = {
   hero:
-    "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1800&q=90",
+    home1,
 
   assessment:
-    "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?auto=format&fit=crop&w=1400&q=90",
+    home2,
 
   movement:
-    "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1400&q=90",
+    home4,
 
   sport:
-    "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=1400&q=90",
+    home3,
 
   recovery:
     "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1400&q=90",
 
   team:
-    "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=1200&q=90",
-
-  clinic:
-    "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?auto=format&fit=crop&w=1600&q=90",
+    home5,
 };
 
 const conditions = [
@@ -196,19 +196,14 @@ export default function Home() {
   return (
     <main className="home-page">
 
-      {/* =========================================
-          HERO
-      ========================================= */}
-
+      {/* HERO */}
       <section className="home-hero">
-
         <div className="home-hero-grid" />
 
-        <div className="home-hero-orbit home-hero-orbit-one" />
-        <div className="home-hero-orbit home-hero-orbit-two" />
+        <div className="home-hero-ring home-hero-ring-one" />
+        <div className="home-hero-ring home-hero-ring-two" />
 
         <div className="home-container">
-
           <div className="home-hero-layout">
 
             <motion.div
@@ -217,12 +212,8 @@ export default function Home() {
               animate="visible"
               variants={stagger}
             >
-
-              <motion.div
-                className="home-tag"
-                variants={reveal}
-              >
-                PHYSIOTHERAPY AND MOVEMENT CARE
+              <motion.div className="home-tag" variants={reveal}>
+                PHYSIOTHERAPY • REHABILITATION • MOVEMENT
               </motion.div>
 
               <motion.h1 variants={reveal}>
@@ -245,7 +236,9 @@ export default function Home() {
                   className="home-primary-btn"
                 >
                   Book an Assessment
-                  <FiArrowUpRight />
+                  <span>
+                    <FiArrowUpRight />
+                  </span>
                 </Link>
 
                 <Link
@@ -267,7 +260,6 @@ export default function Home() {
                 <i />
                 <span>Goal focused</span>
               </motion.div>
-
             </motion.div>
 
             <motion.div
@@ -287,17 +279,12 @@ export default function Home() {
                 ease: [0.22, 1, 0.36, 1],
               }}
             >
-
               <div className="home-hero-image">
                 <motion.img
                   src={images.hero}
                   alt="Physiotherapist working with a patient"
-                  initial={{
-                    scale: 1.08,
-                  }}
-                  animate={{
-                    scale: 1,
-                  }}
+                  initial={{ scale: 1.08 }}
+                  animate={{ scale: 1 }}
                   transition={{
                     duration: 1.2,
                     ease: [0.22, 1, 0.36, 1],
@@ -306,41 +293,65 @@ export default function Home() {
 
                 <div className="home-hero-image-overlay" />
 
-                <div className="home-hero-floating">
+                <div className="home-hero-clinical-tag">
+                  <span>CLINICAL CARE</span>
+                  <strong>IN MOTION</strong>
+                </div>
+              </div>
 
-                  <div className="home-hero-floating-icon">
-                    <FiActivity />
-                  </div>
+              <motion.div
+                className="home-motion-path"
+                animate={{
+                  rotate: [0, 2, -2, 0],
+                  scale: [1, 1.03, 1],
+                }}
+                transition={{
+                  duration: 7,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              >
+                <span className="home-motion-dot dot-one" />
+                <span className="home-motion-dot dot-two" />
+                <span className="home-motion-dot dot-three" />
+              </motion.div>
 
-                  <div>
-                    <strong>
-                      Care that starts with understanding
-                    </strong>
-
-                    <span>
-                      Assessment, treatment and progress
-                    </span>
-                  </div>
-
+              <motion.div
+                className="home-hero-floating"
+                animate={{
+                  y: [0, -6, 0],
+                }}
+                transition={{
+                  duration: 4.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              >
+                <div className="home-hero-floating-icon">
+                  <FiActivity />
                 </div>
 
-              </div>
+                <div>
+                  <strong>Understand your movement</strong>
+                  <span>
+                    Assessment, treatment and progress
+                  </span>
+                </div>
+              </motion.div>
 
               <div className="home-hero-side-note">
                 <strong>01</strong>
 
                 <span>
-                  Start with
+                  START WITH
                   <br />
-                  an assessment
+                  AN ASSESSMENT
                 </span>
               </div>
 
               <motion.div
                 className="home-hero-small-orbit"
-                animate={{
-                  rotate: 360,
-                }}
+                animate={{ rotate: 360 }}
                 transition={{
                   duration: 22,
                   repeat: Infinity,
@@ -349,38 +360,35 @@ export default function Home() {
               >
                 <span />
               </motion.div>
-
-              <div className="home-dot-pattern" />
-
             </motion.div>
 
           </div>
+        </div>
 
+        <div className="home-scroll-cue">
+          <span>SCROLL TO EXPLORE</span>
+          <i />
         </div>
       </section>
 
-      {/* =========================================
-          TRUST
-      ========================================= */}
-
+      {/* TRUST */}
       <section className="home-trust">
         <div className="home-container home-trust-row">
-          <span>Personalised care</span>
-          <span>Movement focused</span>
-          <span>Evidence informed</span>
-          <span>Progress measured</span>
-          <span>Long term confidence</span>
+          <span>PERSONALISED CARE</span>
+          <i />
+          <span>MOVEMENT FOCUSED</span>
+          <i />
+          <span>EVIDENCE INFORMED</span>
+          <i />
+          <span>PROGRESS MEASURED</span>
+          <i />
+          <span>LONG TERM CONFIDENCE</span>
         </div>
       </section>
 
-      {/* =========================================
-          CONDITIONS
-      ========================================= */}
-
+      {/* CONDITIONS */}
       <section className="home-section home-conditions">
-
         <div className="home-container">
-
           <div className="home-heading-row">
 
             <motion.div
@@ -392,7 +400,6 @@ export default function Home() {
               }}
               variants={stagger}
             >
-
               <motion.div
                 className="home-tag"
                 variants={reveal}
@@ -404,7 +411,6 @@ export default function Home() {
                 Start with the problem.
                 <span>We will find the path.</span>
               </motion.h2>
-
             </motion.div>
 
             <motion.p
@@ -421,7 +427,6 @@ export default function Home() {
               or you want to perform better, you do not need to diagnose
               yourself before you arrive.
             </motion.p>
-
           </div>
 
           <motion.div
@@ -434,23 +439,18 @@ export default function Home() {
             }}
             variants={stagger}
           >
-
             {conditions.map((item, index) => (
               <motion.div
                 key={item.number}
                 variants={reveal}
-                whileHover={{
-                  y: -8,
-                }}
+                whileHover={{ y: -8 }}
               >
-
                 <Link
                   to="/conditions"
                   className={`home-condition-card ${
                     index === 0 ? "home-condition-featured" : ""
                   }`}
                 >
-
                   <img
                     src={item.image}
                     alt={item.title}
@@ -458,42 +458,35 @@ export default function Home() {
 
                   <div className="home-condition-overlay" />
 
-                  <div className="home-condition-content">
-
-                    <span>
-                      {item.number}
-                    </span>
-
-                    <h3>
-                      {item.title}
-                    </h3>
-
-                    <p>
-                      {item.description}
-                    </p>
-
-                    <b>
-                      Explore
-                      <FiArrowUpRight />
-                    </b>
-
+                  <div className="home-condition-top">
+                    <span>{item.number}</span>
+                    <FiArrowUpRight />
                   </div>
 
-                </Link>
+                  <div className="home-condition-content">
+                    <span className="home-condition-label">
+                      MOVEMENT AREA
+                    </span>
 
+                    <h3>{item.title}</h3>
+
+                    <p>{item.description}</p>
+
+                    <b>
+                      Explore condition
+                      <FiArrowUpRight />
+                    </b>
+                  </div>
+                </Link>
               </motion.div>
             ))}
-
           </motion.div>
-
         </div>
       </section>
 
-      {/* =========================================
-          APPROACH
-      ========================================= */}
-
+      {/* APPROACH */}
       <section className="home-section home-approach">
+        <div className="home-approach-background-ring" />
 
         <div className="home-container home-approach-layout">
 
@@ -516,27 +509,26 @@ export default function Home() {
               ease: [0.22, 1, 0.36, 1],
             }}
           >
-
             <div className="home-approach-image">
               <img
                 src={images.assessment}
                 alt="Physiotherapy assessment"
               />
+              <div className="home-image-gradient" />
             </div>
 
-            <div className="home-media-tag">
-              UNDERSTAND BEFORE YOU TREAT
-            </div>
-
-            <div className="home-media-number">
-              02
+            <div className="home-approach-badge">
+              <span>02</span>
+              <strong>
+                UNDERSTAND
+                <br />
+                BEFORE YOU TREAT
+              </strong>
             </div>
 
             <motion.div
-              className="home-approach-orbit"
-              animate={{
-                rotate: 360,
-              }}
+              className="home-approach-circle"
+              animate={{ rotate: 360 }}
               transition={{
                 duration: 25,
                 repeat: Infinity,
@@ -545,7 +537,6 @@ export default function Home() {
             >
               <span />
             </motion.div>
-
           </motion.div>
 
           <motion.div
@@ -558,7 +549,6 @@ export default function Home() {
             }}
             variants={stagger}
           >
-
             <motion.div
               className="home-tag"
               variants={reveal}
@@ -581,43 +571,30 @@ export default function Home() {
             </motion.p>
 
             <div className="home-step-list">
-
               {steps.map((step) => (
                 <motion.div
                   key={step.number}
                   className="home-step"
                   variants={reveal}
                 >
-
-                  <span>
-                    {step.number}
-                  </span>
+                  <span>{step.number}</span>
 
                   <div>
                     <h3>{step.title}</h3>
                     <p>{step.text}</p>
                   </div>
-
                 </motion.div>
               ))}
-
             </div>
-
           </motion.div>
-
         </div>
       </section>
 
-      {/* =========================================
-          SERVICES
-      ========================================= */}
-
+      {/* SERVICES */}
       <section className="home-section home-services">
-
         <div className="home-container">
 
           <div className="home-heading-row">
-
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -627,7 +604,6 @@ export default function Home() {
               }}
               variants={stagger}
             >
-
               <motion.div
                 className="home-tag"
                 variants={reveal}
@@ -639,7 +615,6 @@ export default function Home() {
                 Care that changes
                 <span>as you progress.</span>
               </motion.h2>
-
             </motion.div>
 
             <Link
@@ -649,7 +624,6 @@ export default function Home() {
               View all services
               <FiArrowUpRight />
             </Link>
-
           </div>
 
           <motion.div
@@ -662,7 +636,6 @@ export default function Home() {
             }}
             variants={stagger}
           >
-
             {services.map((service) => {
               const Icon = service.icon;
 
@@ -671,11 +644,8 @@ export default function Home() {
                   className="home-service-row"
                   key={service.number}
                   variants={reveal}
-                  whileHover={{
-                    x: 8,
-                  }}
+                  whileHover={{ x: 8 }}
                 >
-
                   <span className="home-service-number">
                     {service.number}
                   </span>
@@ -689,22 +659,29 @@ export default function Home() {
                     <p>{service.text}</p>
                   </div>
 
-                  <FiArrowUpRight className="home-service-arrow" />
-
+                  <Link
+                    to="/services"
+                    className="home-service-arrow"
+                    aria-label={`View ${service.title}`}
+                  >
+                    <FiArrowUpRight />
+                  </Link>
                 </motion.div>
               );
             })}
-
           </motion.div>
 
+          <div className="home-services-progress">
+            <span />
+          </div>
         </div>
       </section>
 
-      {/* =========================================
-          WHO WE HELP
-      ========================================= */}
-
+      {/* WHO WE HELP */}
       <section className="home-section home-people">
+        <div className="home-people-large-plus">
+          +
+        </div>
 
         <div className="home-container">
 
@@ -718,7 +695,6 @@ export default function Home() {
             }}
             variants={stagger}
           >
-
             <motion.div
               className="home-tag home-tag-center"
               variants={reveal}
@@ -735,7 +711,6 @@ export default function Home() {
               From everyday movement to sports performance, care is built
               around the person in front of us.
             </motion.p>
-
           </motion.div>
 
           <motion.div
@@ -748,23 +723,22 @@ export default function Home() {
             }}
             variants={stagger}
           >
-
-            {people.map((person) => {
+            {people.map((person, index) => {
               const Icon = person.icon;
 
               return (
                 <motion.div
                   key={person.title}
                   variants={reveal}
-                  whileHover={{
-                    y: -7,
-                  }}
+                  whileHover={{ y: -7 }}
                 >
-
                   <Link
                     to="/conditions"
                     className="home-person-card"
                   >
+                    <span className="home-person-index">
+                      0{index + 1}
+                    </span>
 
                     <span className="home-person-icon">
                       <Icon />
@@ -776,31 +750,25 @@ export default function Home() {
                     </div>
 
                     <FiArrowUpRight className="home-person-arrow" />
-
                   </Link>
-
                 </motion.div>
               );
             })}
-
           </motion.div>
-
         </div>
       </section>
 
-      {/* =========================================
-          WHY CHOOSE US
-      ========================================= */}
-
+      {/* WHY CHOOSE US */}
       <section className="home-dark">
-
         <div className="home-dark-grid" />
+
+        <div className="home-dark-word">
+          MOVE
+        </div>
 
         <motion.div
           className="home-dark-orbit"
-          animate={{
-            rotate: 360,
-          }}
+          animate={{ rotate: 360 }}
           transition={{
             duration: 28,
             repeat: Infinity,
@@ -822,7 +790,6 @@ export default function Home() {
             }}
             variants={stagger}
           >
-
             <motion.div
               className="home-light-tag"
               variants={reveal}
@@ -848,11 +815,10 @@ export default function Home() {
                 to="/about"
                 className="home-light-button"
               >
-                Why our approach works
+                Discover our approach
                 <FiArrowUpRight />
               </Link>
             </motion.div>
-
           </motion.div>
 
           <motion.div
@@ -865,14 +831,12 @@ export default function Home() {
             }}
             variants={stagger}
           >
-
             {principles.map((item, index) => (
               <motion.div
                 className="home-principle"
                 key={item}
                 variants={reveal}
               >
-
                 <span>
                   0{index + 1}
                 </span>
@@ -880,19 +844,14 @@ export default function Home() {
                 <p>{item}</p>
 
                 <FiCheck />
-
               </motion.div>
             ))}
-
           </motion.div>
 
         </div>
       </section>
 
-      {/* =========================================
-          CLINIC
-      ========================================= */}
-
+      {/* CLINIC */}
       <section className="home-section home-clinic">
 
         <div className="home-container home-clinic-layout">
@@ -907,7 +866,6 @@ export default function Home() {
             }}
             variants={stagger}
           >
-
             <motion.div
               className="home-tag"
               variants={reveal}
@@ -924,7 +882,7 @@ export default function Home() {
               className="home-large-copy"
               variants={reveal}
             >
-              From assessment to exercise and hands on care, every part of
+              From assessment to exercise and hands-on care, every part of
               the experience should help you understand your body and feel
               more confident using it.
             </motion.p>
@@ -938,15 +896,12 @@ export default function Home() {
                 <FiArrowUpRight />
               </Link>
             </motion.div>
-
           </motion.div>
 
           <div className="home-clinic-collage">
 
-            <motion.img
-              className="home-collage-main"
-              src={images.movement}
-              alt="Movement rehabilitation"
+            <motion.div
+              className="home-collage-main-wrap"
               initial={{
                 opacity: 0,
                 y: 30,
@@ -962,7 +917,17 @@ export default function Home() {
               transition={{
                 duration: 0.75,
               }}
-            />
+            >
+              <img
+                className="home-collage-main"
+                src={images.movement}
+                alt="Movement rehabilitation"
+              />
+
+              <span className="home-collage-main-label">
+                MOVEMENT / REHABILITATION
+              </span>
+            </motion.div>
 
             <motion.img
               className="home-collage-small"
@@ -987,14 +952,12 @@ export default function Home() {
             />
 
             <span className="home-collage-label">
-              Move with purpose
+              MOVE WITH PURPOSE
             </span>
 
             <motion.div
               className="home-collage-orbit"
-              animate={{
-                rotate: 360,
-              }}
+              animate={{ rotate: 360 }}
               transition={{
                 duration: 23,
                 repeat: Infinity,
@@ -1005,15 +968,15 @@ export default function Home() {
             </motion.div>
 
           </div>
-
         </div>
       </section>
 
-      {/* =========================================
-          TEAM
-      ========================================= */}
-
+      {/* TEAM */}
       <section className="home-section home-team">
+
+        <div className="home-team-plus">
+          +
+        </div>
 
         <div className="home-container home-team-layout">
 
@@ -1035,18 +998,23 @@ export default function Home() {
               duration: 0.75,
             }}
           >
-
             <img
               src={images.team}
-              alt="Physiotherapist portrait"
+              alt="Physiotherapist"
             />
 
             <div className="home-team-photo-overlay" />
 
-            <span>
-              MEET YOUR THERAPIST
-            </span>
+            <div className="home-team-photo-meta">
+              <span>YOUR CARE TEAM</span>
+              <strong>
+                Expertise with genuine attention.
+              </strong>
+            </div>
 
+            <div className="home-team-photo-number">
+              07
+            </div>
           </motion.div>
 
           <motion.div
@@ -1059,12 +1027,11 @@ export default function Home() {
             }}
             variants={stagger}
           >
-
             <motion.div
               className="home-tag"
               variants={reveal}
             >
-              YOUR CARE TEAM
+              PEOPLE BEHIND THE CARE
             </motion.div>
 
             <motion.h2 variants={reveal}>
@@ -1087,19 +1054,17 @@ export default function Home() {
                 className="home-primary-btn"
               >
                 Meet the team
-                <FiArrowUpRight />
+                <span>
+                  <FiArrowUpRight />
+                </span>
               </Link>
             </motion.div>
-
           </motion.div>
 
         </div>
       </section>
 
-      {/* =========================================
-          FIRST VISIT
-      ========================================= */}
-
+      {/* FIRST VISIT */}
       <section className="home-section home-first-visit">
 
         <div className="home-container">
@@ -1114,7 +1079,6 @@ export default function Home() {
             }}
             variants={stagger}
           >
-
             <motion.div
               className="home-tag home-tag-center"
               variants={reveal}
@@ -1126,7 +1090,6 @@ export default function Home() {
               Know what happens
               <span>before you arrive.</span>
             </motion.h2>
-
           </motion.div>
 
           <motion.div
@@ -1139,54 +1102,42 @@ export default function Home() {
             }}
             variants={stagger}
           >
-
             {visits.map(([number, title, text]) => (
               <motion.div
                 className="home-visit-card"
                 key={number}
                 variants={reveal}
-                whileHover={{
-                  y: -7,
-                }}
+                whileHover={{ y: -7 }}
               >
-
-                <span>
+                <div className="home-visit-number">
                   {number}
-                </span>
+                </div>
 
                 <div className="home-visit-icon">
                   <FiPlus />
                 </div>
 
-                <h3>
-                  {title}
-                </h3>
+                <h3>{title}</h3>
 
-                <p>
-                  {text}
-                </p>
+                <p>{text}</p>
 
+                <span className="home-visit-arrow">
+                  <FiArrowUpRight />
+                </span>
               </motion.div>
             ))}
-
           </motion.div>
-
         </div>
       </section>
 
-      {/* =========================================
-          FINAL CTA
-      ========================================= */}
-
+      {/* FINAL CTA */}
       <section className="home-final">
 
         <div className="home-final-image">
-
           <img
             src={images.hero}
             alt="Physiotherapy consultation"
           />
-
         </div>
 
         <div className="home-final-overlay" />
@@ -1194,9 +1145,7 @@ export default function Home() {
 
         <motion.div
           className="home-final-orbit"
-          animate={{
-            rotate: 360,
-          }}
+          animate={{ rotate: 360 }}
           transition={{
             duration: 30,
             repeat: Infinity,
@@ -1220,7 +1169,6 @@ export default function Home() {
               }}
               variants={stagger}
             >
-
               <motion.div
                 className="home-light-tag"
                 variants={reveal}
@@ -1244,10 +1192,12 @@ export default function Home() {
                   className="home-final-btn"
                 >
                   Book an Assessment
-                  <FiArrowUpRight />
+
+                  <span>
+                    <FiArrowUpRight />
+                  </span>
                 </Link>
               </motion.div>
-
             </motion.div>
 
             <motion.div
@@ -1268,19 +1218,22 @@ export default function Home() {
                 duration: 0.75,
               }}
             >
-
               <span>THE IDEA</span>
 
               <strong>
                 Better movement creates more confidence.
               </strong>
 
-              <FiArrowUpRight />
+              <div className="home-final-side-line">
+                <span />
+                <span />
+                <span />
+              </div>
 
+              <FiArrowUpRight />
             </motion.div>
 
           </div>
-
         </div>
       </section>
 

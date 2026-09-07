@@ -6,7 +6,7 @@ export default function PageHero({ eyebrow, title, text }) {
       <div className="container page-hero-grid">
         <Reveal>
           <span className="eyebrow">{eyebrow}</span>
-          <h1 className="display font-extrabold text-[#17221d]">{title}</h1>
+          <h1 className="display font-extrabold text-white">{title}</h1>
         </Reveal>
         <Reveal delay={0.1}>
           <p className="body-copy">{text}</p>
