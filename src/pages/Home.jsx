@@ -882,7 +882,7 @@ export default function Home() {
               className="home-large-copy"
               variants={reveal}
             >
-              From assessment to exercise and hands-on care, every part of
+              From assessment to exercise and hands on care, every part of
               the experience should help you understand your body and feel
               more confident using it.
             </motion.p>
