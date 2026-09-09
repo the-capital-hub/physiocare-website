@@ -142,14 +142,14 @@ export default function About() {
                 className="about-v7-kicker"
                 variants={reveal}
               >
-                <span />
+                
                 ABOUT OUR CLINIC
               </motion.div>
 
-              <motion.h1 variants={reveal}>
+              <h1 style={{color:"red"}}>
                 Movement is
                 <span>more than motion.</span>
-              </motion.h1>
+              </h1>
 
               <motion.p variants={reveal}>
                 It is confidence, independence, energy and the freedom to

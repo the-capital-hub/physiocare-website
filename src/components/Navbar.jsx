@@ -18,6 +18,9 @@ const links = [
   ["FAQs", "/faqs"],
 ];
 
+const LOGO_URL =
+  "https://static.wixstatic.com/media/9c90f2_9440af6822a34176b24b34906c2a25bb~mv2.png";
+
 const mobileContainer = {
   hidden: {
     opacity: 0,
@@ -72,25 +75,24 @@ export default function Navbar() {
           to="/"
           className="brand"
           onClick={closeMenu}
-          aria-label="PhysioCare Home"
+          aria-label="Stairs Physiotherapy & Fitness Home"
         >
-          <motion.span
-            className="brand-mark"
+          <motion.div
+            className="brand-logo"
             whileHover={{
-              scale: 1.06,
-              rotate: -4,
+              scale: 1.04,
             }}
             transition={{
               duration: 0.25,
             }}
           >
-            P
-          </motion.span>
+            <img
+              src={LOGO_URL}
+              alt="Stairs Physiotherapy & Fitness Logo"
+            />
+          </motion.div>
 
-          <span className="brand-copy">
-            <strong>PHYSIOCARE</strong>
-            <small>Movement Clinic</small>
-          </span>
+          
         </Link>
 
         {/* Desktop Navigation */}
@@ -118,6 +120,7 @@ export default function Navbar() {
             <span className="nav-phone-icon">
               <FiPhone />
             </span>
+
             <span>Call Us</span>
           </a>
 
@@ -193,6 +196,7 @@ export default function Navbar() {
 
                   <div>
                     <small>Call Us</small>
+
                     <a href="tel:+910000000000">
                       [Phone Number]
                     </a>

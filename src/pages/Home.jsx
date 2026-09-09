@@ -339,15 +339,7 @@ export default function Home() {
                 </div>
               </motion.div>
 
-              <div className="home-hero-side-note">
-                <strong>01</strong>
-
-                <span>
-                  START WITH
-                  <br />
-                  AN ASSESSMENT
-                </span>
-              </div>
+              
 
               <motion.div
                 className="home-hero-small-orbit"
@@ -702,10 +694,10 @@ export default function Home() {
               WHO WE HELP
             </motion.div>
 
-            <motion.h2 variants={reveal}>
+            <h2 >
               Different goals.
-              <span>One place to start.</span>
-            </motion.h2>
+              <span> One place to start.</span>
+            </h2>
 
             <motion.p variants={reveal}>
               From everyday movement to sports performance, care is built
@@ -924,9 +916,7 @@ export default function Home() {
                 alt="Movement rehabilitation"
               />
 
-              <span className="home-collage-main-label">
-                MOVEMENT / REHABILITATION
-              </span>
+              
             </motion.div>
 
             <motion.img
@@ -1052,7 +1042,7 @@ export default function Home() {
               <Link
                 to="/team"
                 className="home-primary-btn"
-              >
+              style={{marginTop:"15px"}} >
                 Meet the team
                 <span>
                   <FiArrowUpRight />
@@ -1088,7 +1078,7 @@ export default function Home() {
 
             <motion.h2 variants={reveal}>
               Know what happens
-              <span>before you arrive.</span>
+              <span> before you arrive.</span>
             </motion.h2>
           </motion.div>
 

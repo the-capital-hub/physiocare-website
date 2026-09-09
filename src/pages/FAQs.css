@@ -62,16 +62,7 @@
   text-transform: uppercase;
 }
 
-.faqs-tag::before,
-.faqs-light-tag::before {
-  content: "";
 
-  width: 28px;
-  height: 2px;
-
-  border-radius: 999px;
-  background: currentColor;
-}
 
 /* =========================================================
    HERO
@@ -83,7 +74,7 @@
   display: flex;
   align-items: center;
 
-  padding: 72px 0 68px;
+  padding: 22px 0 18px;
 
   overflow: hidden;
 
@@ -306,7 +297,7 @@
   width: 74%;
   min-height: 405px;
 
-  padding: 31px;
+  padding: 11px;
 
   overflow: hidden;
 
@@ -324,34 +315,7 @@
   box-shadow: 0 30px 70px rgba(0, 0, 0, 0.4);
 }
 
-.faqs-hero-card::before {
-  content: "";
 
-  position: absolute;
-
-  top: 0;
-  left: 0;
-
-  width: 4px;
-  height: 105px;
-
-  background: var(--red);
-}
-
-.faqs-hero-card::after {
-  content: "";
-
-  position: absolute;
-
-  right: -100px;
-  bottom: -130px;
-
-  width: 330px;
-  height: 330px;
-
-  border: 1px solid rgba(230, 43, 43, 0.18);
-  border-radius: 50%;
-}
 
 .faqs-hero-card-icon {
   position: relative;
@@ -361,7 +325,7 @@
 
   width: 55px;
   height: 55px;
-
+  padding: 10px;
   place-items: center;
 
   margin-bottom: 42px;
@@ -600,8 +564,10 @@
 }
 
 .faqs-side-panel {
+  padding: 15px;
   position: sticky;
   top: 105px;
+  border-radius: 15px;
 
   max-width: 365px;
 }
@@ -944,7 +910,7 @@
 
   max-width: 720px;
 
-  padding: 68px 0;
+  padding: 18px 0;
 }
 
 .faqs-reassurance-content h2 {
@@ -1162,7 +1128,7 @@
 
   max-width: 720px;
 
-  padding: 72px 0;
+  padding: 20px 0;
 }
 
 .faqs-final-content h2 {
@@ -1281,7 +1247,7 @@
   .faqs-hero {
     min-height: auto;
 
-    padding: 58px 0 55px;
+    padding: 18px 0 20px;
   }
 
   .faqs-hero-layout {
@@ -1319,7 +1285,7 @@
   }
 
   .faqs-list-section {
-    padding: 65px 0;
+    padding: 15px 0;
   }
 
   .faqs-reassurance {
@@ -1327,7 +1293,7 @@
   }
 
   .faqs-reassurance-content {
-    padding: 58px 0;
+    padding: 18px 0;
   }
 }
 
@@ -1341,7 +1307,7 @@
   }
 
   .faqs-hero {
-    padding: 43px 0 45px;
+    padding: 13px 0 15px;
   }
 
   .faqs-tag,

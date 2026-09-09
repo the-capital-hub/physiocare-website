@@ -10,6 +10,8 @@ import {
   FiActivity,
 } from "react-icons/fi";
 import "./Footer.css";
+const LOGO_URL =
+  "https://static.wixstatic.com/media/9c90f2_9440af6822a34176b24b34906c2a25bb~mv2.png";
 import footer1 from '../assets/footer1.jpg'
 const exploreLinks = [
   { label: "About Us", path: "/about" },
@@ -64,7 +66,7 @@ export default function Footer() {
     <div className="footer-cta-inner">
       <div className="footer-cta-content">
         <div className="footer-eyebrow">
-          <span className="footer-eyebrow-line" />
+          
           <span>Your movement matters</span>
         </div>
 
@@ -123,54 +125,55 @@ export default function Footer() {
         <div className="footer-container">
           <div className="footer-grid">
             {/* BRAND */}
-            <div className="footer-brand">
-              <Link to="/" className="footer-logo">
-                <span className="footer-logo-mark">
-                  <FiActivity />
-                </span>
+            {/* BRAND */}
+<div className="footer-brand">
+  <Link to="/" className="footer-logo">
+    <span className="footer-logo-image">
+      <img
+        src={LOGO_URL}
+        alt="Stairs Physiotherapy & Fitness Logo"
+      />
+    </span>
 
-                <span className="footer-logo-text">
-                  <strong>PHYSIOCARE</strong>
-                  <small>Movement Clinic</small>
-                </span>
-              </Link>
+    
+  </Link>
 
-              <p className="footer-brand-description">
-                Personalised physiotherapy, rehabilitation and movement care
-                designed around your body, your goals and the way you want to
-                live.
-              </p>
+  <p className="footer-brand-description">
+    Personalised physiotherapy, rehabilitation and movement care
+    designed around your body, your goals and the way you want to
+    live.
+  </p>
 
-              <div className="footer-brand-meta">
-                <span>PHYSIOTHERAPY</span>
-                <i />
-                <span>REHABILITATION</span>
-                <i />
-                <span>PERFORMANCE</span>
-              </div>
+  <div className="footer-brand-meta">
+    <span>PHYSIOTHERAPY</span>
+    <i />
+    <span>REHABILITATION</span>
+    <i />
+    <span>PERFORMANCE</span>
+  </div>
 
-              <div className="footer-socials">
-                <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="Instagram"
-                  className="footer-social"
-                >
-                  <FiInstagram />
-                </a>
+  <div className="footer-socials">
+    <a
+      href="https://instagram.com"
+      target="_blank"
+      rel="noreferrer"
+      aria-label="Instagram"
+      className="footer-social"
+    >
+      <FiInstagram />
+    </a>
 
-                <a
-                  href="https://facebook.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="Facebook"
-                  className="footer-social"
-                >
-                  <FiFacebook />
-                </a>
-              </div>
-            </div>
+    <a
+      href="https://facebook.com"
+      target="_blank"
+      rel="noreferrer"
+      aria-label="Facebook"
+      className="footer-social"
+    >
+      <FiFacebook />
+    </a>
+  </div>
+</div>
 
             {/* EXPLORE */}
             <div className="footer-column">

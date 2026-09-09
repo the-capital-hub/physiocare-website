@@ -11,6 +11,49 @@
   font-family: "DM Sans", sans-serif;
 }
 
+.footer-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+}
+
+.footer-logo-image {
+  width: 90px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.footer-logo-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.footer-logo-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.footer-logo-text strong {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
+.footer-logo-text small {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  opacity: 0.7;
+}
+
 /* =========================================================
    CONTAINER
 ========================================================= */
@@ -450,7 +493,7 @@
     transform 0.3s ease;
 }
 
-.footer-links a svg {
+/* .footer-links a svg {
   color: #e62b2b;
   font-size: 12px;
 
@@ -460,7 +503,7 @@
   transition:
     opacity 0.3s ease,
     transform 0.3s ease;
-}
+} */
 
 .footer-links a:hover {
   color: #ffffff;
@@ -541,7 +584,7 @@
 .footer-contact-item small {
   color: #edecec;
 
-  font-size: 8px;
+  font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.15em;
 }
@@ -597,7 +640,7 @@
 .footer-statement > span {
   color: #e62b2b;
 
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.18em;
 }
@@ -646,7 +689,7 @@
 
   color: #d1cfcf;
 
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.5;
 }
 
@@ -674,7 +717,7 @@
 .footer-bottom-right strong {
   color: #d4d2d2;
 
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.04em;
 }

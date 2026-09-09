@@ -49,13 +49,7 @@
   line-height: 1.2;
 }
 
-.about-v7-section-tag::before {
-  content: "";
-  width: 27px;
-  height: 2px;
-  border-radius: 999px;
-  background: currentColor;
-}
+
 
 .about-v7-light-tag {
   color: var(--terracotta-light);
@@ -67,7 +61,7 @@
 
 .about-v7-hero {
   min-height: 700px;
-  padding: 58px 0 25px;
+  padding: 18px 0 25px;
   overflow: hidden;
   background:
     radial-gradient(
@@ -86,21 +80,10 @@
   height: 100%;
   opacity: 0.3;
   background-image:
-    linear-gradient(
-      rgba(20, 42, 51, 0.055) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      90deg,
-      rgba(20, 42, 51, 0.055) 1px,
-      transparent 1px
-    );
+    linear-gradient(rgba(20, 42, 51, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20, 42, 51, 0.055) 1px, transparent 1px);
   background-size: 34px 34px;
-  mask-image: linear-gradient(
-    90deg,
-    transparent,
-    #000
-  );
+  mask-image: linear-gradient(90deg, transparent, #000);
 }
 
 .about-v7-orbit {
@@ -317,13 +300,7 @@
   border-radius: 50%;
 }
 
-.about-v7-hero-ring::after {
-  content: "";
-  position: absolute;
-  inset: 29px;
-  border: 1px solid rgba(20, 42, 51, 0.12);
-  border-radius: 50%;
-}
+
 
 .about-v7-hero-ring span {
   position: absolute;
@@ -443,7 +420,7 @@
 
 .about-v7-intro {
   position: relative;
-  padding: 65px 0;
+  padding: 15px 0;
   overflow: hidden;
   background: var(--white);
 }
@@ -495,12 +472,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(
-      180deg,
-      transparent 47%,
-      rgba(15, 32, 39, 0.22)
-    );
+  background: linear-gradient(180deg, transparent 47%, rgba(15, 32, 39, 0.22));
 }
 
 .about-v7-intro-image img {
@@ -713,7 +685,7 @@
 ========================================= */
 
 .about-v7-story {
-  padding: 72px 0;
+  padding: 12px 0;
   overflow: hidden;
   background: var(--sand);
 }
@@ -926,15 +898,8 @@
   inset: 0;
   opacity: 0.15;
   background-image:
-    linear-gradient(
-      rgba(255, 255, 255, 0.06) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.06) 1px,
-      transparent 1px
-    );
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
   background-size: 42px 42px;
 }
 
@@ -1036,7 +1001,7 @@
 ========================================= */
 
 .about-v7-process {
-  padding: 75px 0;
+  padding: 25px 0;
   background: var(--white);
 }
 
@@ -1182,13 +1147,12 @@
 .about-v7-mission-overlay {
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(
-      90deg,
-      rgba(15, 32, 39, 0.95) 0%,
-      rgba(15, 32, 39, 0.83) 42%,
-      rgba(15, 32, 39, 0.43) 100%
-    );
+  background: linear-gradient(
+    90deg,
+    rgba(15, 32, 39, 0.95) 0%,
+    rgba(15, 32, 39, 0.83) 42%,
+    rgba(15, 32, 39, 0.43) 100%
+  );
 }
 
 .about-v7-mission-circle {
@@ -1214,7 +1178,7 @@
   position: relative;
   z-index: 3;
   max-width: 690px;
-  padding: 70px 0;
+  padding: 20px 0;
 }
 
 .about-v7-mission-content h2 {
@@ -1269,7 +1233,7 @@
 ========================================= */
 
 .about-v7-principles {
-  padding: 75px 0;
+  padding: 15px 0;
   background: var(--sand);
 }
 
@@ -1360,11 +1324,7 @@
   bottom: 17px;
   left: 18px;
   height: 2px;
-  background: linear-gradient(
-    90deg,
-    var(--terracotta),
-    transparent
-  );
+  background: linear-gradient(90deg, var(--terracotta), transparent);
 }
 
 /* =========================================
@@ -1397,14 +1357,13 @@
   position: absolute;
   inset: 0;
   z-index: 1;
-  background:
-    linear-gradient(
-      90deg,
-      rgba(15, 32, 39, 0.96) 0%,
-      rgba(15, 32, 39, 0.86) 40%,
-      rgba(15, 32, 39, 0.57) 75%,
-      rgba(15, 32, 39, 0.4) 100%
-    );
+  background: linear-gradient(
+    90deg,
+    rgba(15, 32, 39, 0.96) 0%,
+    rgba(15, 32, 39, 0.86) 40%,
+    rgba(15, 32, 39, 0.57) 75%,
+    rgba(15, 32, 39, 0.4) 100%
+  );
 }
 
 .about-v7-final-pattern {
@@ -1413,21 +1372,10 @@
   z-index: 2;
   opacity: 0.13;
   background-image:
-    linear-gradient(
-      rgba(255, 255, 255, 0.08) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.08) 1px,
-      transparent 1px
-    );
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
   background-size: 36px 36px;
-  mask-image: linear-gradient(
-    90deg,
-    #000,
-    transparent 82%
-  );
+  mask-image: linear-gradient(90deg, #000, transparent 82%);
 }
 
 .about-v7-final-shape {
@@ -1456,7 +1404,7 @@
   position: relative;
   z-index: 5;
   max-width: 700px;
-  padding: 65px 0;
+  padding: 25px 0;
 }
 
 .about-v7-final-content h2 {
@@ -1579,7 +1527,7 @@
 
   .about-v7-hero {
     min-height: 0;
-    padding: 44px 0 25px;
+    padding: 14px 0 25px;
   }
 
   .about-v7-hero-grid {
@@ -1626,7 +1574,7 @@
   }
 
   .about-v7-intro {
-    padding: 58px 0;
+    padding: 18px 0;
   }
 
   .about-v7-intro-layout {
@@ -1639,7 +1587,7 @@
   }
 
   .about-v7-story {
-    padding: 63px 0;
+    padding: 20px 0;
   }
 
   .about-v7-story-grid {
@@ -1673,7 +1621,7 @@
   }
 
   .about-v7-process {
-    padding: 63px 0;
+    padding: 13px 0;
   }
 
   .about-v7-process-track {
@@ -1685,11 +1633,11 @@
   }
 
   .about-v7-mission-content {
-    padding: 65px 0;
+    padding: 15px 0;
   }
 
   .about-v7-principles {
-    padding: 63px 0;
+    padding: 13px 0;
   }
 
   .about-v7-final {
@@ -1788,7 +1736,7 @@
   }
 
   .about-v7-intro {
-    padding: 50px 0;
+    padding: 20px 0;
   }
 
   .about-v7-intro-layout {
@@ -1862,7 +1810,7 @@
   }
 
   .about-v7-story {
-    padding: 53px 0;
+    padding: 13px 0;
   }
 
   .about-v7-story-visual {
@@ -1954,12 +1902,11 @@
   }
 
   .about-v7-mission-overlay {
-    background:
-      linear-gradient(
-        90deg,
-        rgba(15, 32, 39, 0.94),
-        rgba(15, 32, 39, 0.73)
-      );
+    background: linear-gradient(
+      90deg,
+      rgba(15, 32, 39, 0.94),
+      rgba(15, 32, 39, 0.73)
+    );
   }
 
   .about-v7-mission-content {
@@ -1996,12 +1943,11 @@
   }
 
   .about-v7-final-overlay {
-    background:
-      linear-gradient(
-        90deg,
-        rgba(15, 32, 39, 0.95),
-        rgba(15, 32, 39, 0.75)
-      );
+    background: linear-gradient(
+      90deg,
+      rgba(15, 32, 39, 0.95),
+      rgba(15, 32, 39, 0.75)
+    );
   }
 
   .about-v7-final-content {
@@ -2046,7 +1992,7 @@
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-}/* =========================================================
+} /* =========================================================
    PHYSIOCARE — GLOBAL PAGE THEME OVERRIDES
    Premium black / red / off-white visual system
 ========================================================= */
@@ -2164,7 +2110,7 @@
   background: var(--pc-red) !important;
   color: #fff !important;
   border-color: var(--pc-red) !important;
-  box-shadow: 0 16px 35px rgba(230,43,43,.2) !important;
+  box-shadow: 0 16px 35px rgba(230, 43, 43, 0.2) !important;
 }
 
 .about-v7-primary-btn:hover,
@@ -2275,7 +2221,7 @@
 .about-v7-highlight,
 .services-approach-card,
 .team-standards-card {
-  border-color: rgba(17,17,17,.12) !important;
+  border-color: rgba(17, 17, 17, 0.12) !important;
 }
 
 .conditions-card:hover,
@@ -2285,8 +2231,8 @@
 .contact-info-card:hover,
 .about-v7-process-card:hover,
 .services-approach-card:hover {
-  border-color: rgba(230,43,43,.42) !important;
-  box-shadow: 0 20px 50px rgba(0,0,0,.12) !important;
+  border-color: rgba(230, 43, 43, 0.42) !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12) !important;
 }
 
 /* dark statement / philosophy bands */
@@ -2362,7 +2308,7 @@
 .patient-stories-final-circle,
 .services-final-circle,
 .team-final-circle {
-  border-color: rgba(230,43,43,.3) !important;
+  border-color: rgba(230, 43, 43, 0.3) !important;
 }
 
 .about-v7-hero-grid-pattern,
@@ -2372,7 +2318,7 @@
 .patient-stories-hero-grid,
 .services-hero-grid,
 .team-hero-grid {
-  opacity: .45;
+  opacity: 0.45;
 }
 
 /* forms */
@@ -2380,7 +2326,7 @@
 .contact-form {
   background: var(--pc-white) !important;
   color: var(--pc-ink) !important;
-  border-color: rgba(17,17,17,.12) !important;
+  border-color: rgba(17, 17, 17, 0.12) !important;
 }
 
 .contact-field input,
@@ -2388,14 +2334,14 @@
 .contact-field select {
   background: #faf9f6 !important;
   color: var(--pc-ink) !important;
-  border-color: rgba(17,17,17,.14) !important;
+  border-color: rgba(17, 17, 17, 0.14) !important;
 }
 
 .contact-field input:focus,
 .contact-field textarea:focus,
 .contact-field select:focus {
   border-color: var(--pc-red) !important;
-  box-shadow: 0 0 0 3px rgba(230,43,43,.1) !important;
+  box-shadow: 0 0 0 3px rgba(230, 43, 43, 0.1) !important;
 }
 
 /* FAQ accordion */
@@ -2457,84 +2403,372 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .about-v7 *, .conditions-page *, .contact-page *, .faqs-page *,
-  .patient-stories-page *, .services-page *, .team-page * {
-    animation-duration: .01ms !important;
-    transition-duration: .01ms !important;
+  .about-v7 *,
+  .conditions-page *,
+  .contact-page *,
+  .faqs-page *,
+  .patient-stories-page *,
+  .services-page *,
+  .team-page * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }
 /* PHYSIOCARE — BLACK + RED VISUAL REFINEMENT */
-:root{
-  --pc-black:#090909;
-  --pc-black-2:#121212;
-  --pc-red:#e62b2b;
-  --pc-red-bright:#ff3b30;
-  --pc-white:#ffffff;
-  --pc-cream:#f5f3ee;
-  --pc-muted:#686868;
+:root {
+  --pc-black: #090909;
+  --pc-black-2: #121212;
+  --pc-red: #e62b2b;
+  --pc-red-bright: #ff3b30;
+  --pc-white: #ffffff;
+  --pc-cream: #f5f3ee;
+  --pc-muted: #686868;
 }
 
 /* Keep sections visually dense and image-led — avoid oversized empty space. */
-.about-v7,.conditions-page,.contact-page,.faqs-page,.patient-stories-page,.services-page,.team-page{background:var(--pc-cream)!important;color:#ededed!important}
-.about-v7 section,.conditions-page section,.contact-page section,.faqs-page section,.patient-stories-page section,.services-page section,.team-page section{padding-top:82px!important;padding-bottom:82px!important}
-.about-v7-container,.conditions-container,.contact-container,.faqs-container,.patient-stories-container,.services-container,.team-container{width:min(1240px,calc(100% - 48px))!important}
+.about-v7,
+.conditions-page,
+.contact-page,
+.faqs-page,
+.patient-stories-page,
+.services-page,
+.team-page {
+  background: var(--pc-cream) !important;
+  color: #ededed !important;
+}
+
+.about-v7-container,
+.conditions-container,
+.contact-container,
+.faqs-container,
+.patient-stories-container,
+.services-container,
+.team-container {
+  width: min(1240px, calc(100% - 48px)) !important;
+}
 
 /* Every inner page starts dark, then alternates light/dark for rhythm. */
-.about-v7-hero,.conditions-hero,.contact-hero,.faqs-hero,.patient-stories-hero,.services-hero,.team-hero{background:var(--pc-black)!important;color:var(--pc-white)!important;padding-top:88px!important;padding-bottom:88px!important}
-.about-v7-hero h1,.conditions-hero h1,.contact-hero h1,.faqs-hero h1,.patient-stories-hero h1,.services-hero h1,.team-hero h1{color:#fff!important}
-.about-v7-intro,.about-v7-story,.conditions-list-section,.contact-visit-section,.faqs-list-section,.patient-stories-intro,.patient-stories-list,.services-list-section,.team-intro-section,.team-members-section{background:var(--pc-cream)!important;color:#151515!important}
-.about-v7-statement,.about-v7-process,.conditions-guidance,.faqs-reassurance,.patient-stories-journey,.services-guidance,.services-approach,.team-standards-section{background:var(--pc-black)!important;color:#fff!important}
-.about-v7-mission,.about-v7-principles,.conditions-statement,.patient-stories-statement,.team-philosophy{background:#fff!important;color:#eae6e6!important}
-.about-v7-final,.conditions-final,.contact-final,.faqs-final,.patient-stories-final,.services-final,.team-final{background:var(--pc-black)!important;color:#fff!important;padding-top:86px!important;padding-bottom:86px!important}
+
+.about-v7-hero h1,
+.conditions-hero h1,
+.contact-hero h1,
+.faqs-hero h1,
+.patient-stories-hero h1,
+.services-hero h1,
+.team-hero h1 {
+  color: #fff !important;
+}
+.about-v7-intro,
+.about-v7-story,
+.conditions-list-section,
+.contact-visit-section,
+.faqs-list-section,
+.patient-stories-intro,
+.patient-stories-list,
+.services-list-section,
+.team-intro-section,
+.team-members-section {
+  background: var(--pc-cream) !important;
+  color: #151515 !important;
+}
+.about-v7-statement,
+.about-v7-process,
+.conditions-guidance,
+.faqs-reassurance,
+.patient-stories-journey,
+.services-guidance,
+.services-approach,
+.team-standards-section {
+  background: var(--pc-black) !important;
+  color: #fff !important;
+}
+.about-v7-mission,
+.about-v7-principles,
+.conditions-statement,
+.patient-stories-statement,
+.team-philosophy {
+  background: #fff !important;
+  color: #eae6e6 !important;
+}
+
 
 /* Headings — strong but not oversized. */
-.about-v7 h1,.conditions-page h1,.contact-page h1,.faqs-page h1,.patient-stories-page h1,.services-page h1,.team-page h1{font-size:clamp(48px,6vw,78px)!important;line-height:.96!important;letter-spacing:-.055em!important}
-.about-v7 h2,.conditions-page h2,.contact-page h2,.faqs-page h2,.patient-stories-page h2,.services-page h2,.team-page h2{font-size:clamp(34px,4.2vw,58px)!important;line-height:1.02!important;letter-spacing:-.045em!important}
-.about-v7 h3,.conditions-page h3,.contact-page h3,.faqs-page h3,.patient-stories-page h3,.services-page h3,.team-page h3{letter-spacing:-.025em!important}
-.about-v7 p,.conditions-page p,.contact-page p,.faqs-page p,.patient-stories-page p,.services-page p,.team-page p{font-size:15.5px;line-height:1.7}
+.about-v7 h1,
+.conditions-page h1,
+.contact-page h1,
+.faqs-page h1,
+.patient-stories-page h1,
+.services-page h1,
+.team-page h1 {
+  font-size: clamp(48px, 6vw, 78px) !important;
+  line-height: 0.96 !important;
+  letter-spacing: -0.055em !important;
+}
+.about-v7 h2,
+.conditions-page h2,
+.contact-page h2,
+.faqs-page h2,
+.patient-stories-page h2,
+.services-page h2,
+.team-page h2 {
+  font-size: clamp(34px, 4.2vw, 58px) !important;
+  line-height: 1.02 !important;
+  letter-spacing: -0.045em !important;
+}
+.about-v7 h3,
+.conditions-page h3,
+.contact-page h3,
+.faqs-page h3,
+.patient-stories-page h3,
+.services-page h3,
+.team-page h3 {
+  letter-spacing: -0.025em !important;
+}
+.about-v7 p,
+.conditions-page p,
+.contact-page p,
+.faqs-page p,
+.patient-stories-page p,
+.services-page p,
+.team-page p {
+  font-size: 15.5px;
+  line-height: 1.7;
+}
 
 /* Hero image treatment — large, crisp, cinematic, never a tiny thumbnail. */
-.about-v7-hero-image,.conditions-hero-image,.contact-hero-image,.patient-stories-hero-image,.services-hero-image,.team-hero-image{height:clamp(420px,54vw,650px)!important;border-radius:26px!important;overflow:hidden!important;box-shadow:0 30px 80px rgba(0,0,0,.38)!important}
-.about-v7-hero-image img,.conditions-hero-image img,.contact-hero-image img,.patient-stories-hero-image img,.services-hero-image img,.team-hero-image img{width:100%!important;height:100%!important;object-fit:cover!important;display:block!important;filter:saturate(.92) contrast(1.06)!important}
-.about-v7-hero-image::after,.conditions-hero-image::after,.contact-hero-image::after,.patient-stories-hero-image::after,.services-hero-image::after,.team-hero-image::after{content:"";position:absolute;inset:auto 0 0;height:42%;background:linear-gradient(transparent,rgba(0,0,0,.62));pointer-events:none}
+.about-v7-hero-image,
+.conditions-hero-image,
+.contact-hero-image,
+.patient-stories-hero-image,
+.services-hero-image,
+.team-hero-image {
+  height: clamp(420px, 54vw, 650px) !important;
+  border-radius: 26px !important;
+  overflow: hidden !important;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.38) !important;
+}
+.about-v7-hero-image img,
+.conditions-hero-image img,
+.contact-hero-image img,
+.patient-stories-hero-image img,
+.services-hero-image img,
+.team-hero-image img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+  filter: saturate(0.92) contrast(1.06) !important;
+}
+.about-v7-hero-image::after,
+.conditions-hero-image::after,
+.contact-hero-image::after,
+.patient-stories-hero-image::after,
+.services-hero-image::after,
+.team-hero-image::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 42%;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.62));
+  pointer-events: none;
+}
 
 /* Red accents and CTA consistency. */
-.about-v7 .about-v7-primary-btn,.conditions-page .conditions-primary-btn,.contact-page .contact-primary-btn,.faqs-page .faqs-primary-btn,.patient-stories-page .patient-stories-primary-btn,.services-page .services-primary-btn,.team-page .team-primary-btn,
-.about-v7 .about-v7-final-btn,.conditions-page .conditions-final-btn,.contact-page .contact-final-btn,.faqs-page .faqs-final-btn,.patient-stories-page .patient-stories-final-btn,.services-page .services-final-btn,.team-page .team-final-btn{background:var(--pc-red)!important;color:#fff!important;border:1px solid var(--pc-red)!important;box-shadow:0 16px 38px rgba(230,43,43,.22)!important}
-.about-v7 .about-v7-primary-btn:hover,.conditions-page .conditions-primary-btn:hover,.contact-page .contact-primary-btn:hover,.faqs-page .faqs-primary-btn:hover,.patient-stories-page .patient-stories-primary-btn:hover,.services-page .services-primary-btn:hover,.team-page .team-primary-btn:hover{background:var(--pc-red-bright)!important;transform:translateY(-2px)}
-.about-v7 .about-v7-section-tag,.conditions-page .conditions-tag,.contact-page .contact-tag,.faqs-page .faqs-tag,.patient-stories-page .patient-stories-tag,.services-page .services-tag,.team-page .team-tag{color:var(--pc-red)!important}
+.about-v7 .about-v7-primary-btn,
+.conditions-page .conditions-primary-btn,
+.contact-page .contact-primary-btn,
+.faqs-page .faqs-primary-btn,
+.patient-stories-page .patient-stories-primary-btn,
+.services-page .services-primary-btn,
+.team-page .team-primary-btn,
+.about-v7 .about-v7-final-btn,
+.conditions-page .conditions-final-btn,
+.contact-page .contact-final-btn,
+.faqs-page .faqs-final-btn,
+.patient-stories-page .patient-stories-final-btn,
+.services-page .services-final-btn,
+.team-page .team-final-btn {
+  background: var(--pc-red) !important;
+  color: #fff !important;
+  border: 1px solid var(--pc-red) !important;
+  box-shadow: 0 16px 38px rgba(230, 43, 43, 0.22) !important;
+}
+.about-v7 .about-v7-primary-btn:hover,
+.conditions-page .conditions-primary-btn:hover,
+.contact-page .contact-primary-btn:hover,
+.faqs-page .faqs-primary-btn:hover,
+.patient-stories-page .patient-stories-primary-btn:hover,
+.services-page .services-primary-btn:hover,
+.team-page .team-primary-btn:hover {
+  background: var(--pc-red-bright) !important;
+  transform: translateY(-2px);
+}
+.about-v7 .about-v7-section-tag,
+.conditions-page .conditions-tag,
+.contact-page .contact-tag,
+.faqs-page .faqs-tag,
+.patient-stories-page .patient-stories-tag,
+.services-page .services-tag,
+.team-page .team-tag {
+  color: var(--pc-red) !important;
+}
 
 /* Cards: compact, premium, image-first. */
-.about-v7-principle-card,.about-v7-process-card,.conditions-card-intro,.conditions-card-content,.services-card-content,.services-approach-card,.team-standards-card,.team-member-content,.patient-story-content,.contact-info-card,.faqs-side-panel{border-color:rgba(230,43,43,.16)!important;box-shadow:0 18px 45px rgba(0,0,0,.08)!important}
-.about-v7-principle-card:hover,.about-v7-process-card:hover,.conditions-card-content:hover,.services-card-content:hover,.services-approach-card:hover,.team-member-content:hover,.patient-story-content:hover,.contact-info-card:hover{border-color:rgba(230,43,43,.42)!important;transform:translateY(-4px)}
+.about-v7-principle-card,
+.about-v7-process-card,
+.conditions-card-intro,
+.conditions-card-content,
+.services-card-content,
+.services-approach-card,
+.team-standards-card,
+.team-member-content,
+.patient-story-content,
+.contact-info-card,
+.faqs-side-panel {
+  border-color: rgba(230, 43, 43, 0.16) !important;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08) !important;
+}
+.about-v7-principle-card:hover,
+.about-v7-process-card:hover,
+.conditions-card-content:hover,
+.services-card-content:hover,
+.services-approach-card:hover,
+.team-member-content:hover,
+.patient-story-content:hover,
+.contact-info-card:hover {
+  border-color: rgba(230, 43, 43, 0.42) !important;
+  transform: translateY(-4px);
+}
 
 /* Section imagery on light sections. */
-.about-v7-intro-image,.about-v7-story-main-image,.about-v7-mission-image,.conditions-guidance-image,.patient-stories-journey-image,.services-guidance-image,.services-approach-image,.team-standards-image,.contact-visit-image{border-radius:24px!important;overflow:hidden!important;box-shadow:0 24px 60px rgba(0,0,0,.15)!important}
-.about-v7-intro-image img,.about-v7-story-main-image img,.about-v7-mission-image img,.conditions-guidance-image img,.patient-stories-journey-image img,.services-guidance-image img,.services-approach-image img,.team-standards-image img,.contact-visit-image img{width:100%!important;height:100%!important;object-fit:cover!important;display:block!important}
+.about-v7-intro-image,
+.about-v7-story-main-image,
+.about-v7-mission-image,
+.conditions-guidance-image,
+.patient-stories-journey-image,
+.services-guidance-image,
+.services-approach-image,
+.team-standards-image,
+.contact-visit-image {
+  border-radius: 24px !important;
+  overflow: hidden !important;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.15) !important;
+}
+.about-v7-intro-image img,
+.about-v7-story-main-image img,
+.about-v7-mission-image img,
+.conditions-guidance-image img,
+.patient-stories-journey-image img,
+.services-guidance-image img,
+.services-approach-image img,
+.team-standards-image img,
+.contact-visit-image img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+}
 
 /* Final CTA images should be visible, not buried under huge black areas. */
-.about-v7-final-image,.conditions-final-image,.contact-final-image,.faqs-final-image,.patient-stories-final-image,.services-final-image,.team-final-image{min-height:420px!important;border-radius:26px!important;overflow:hidden!important}
-.about-v7-final-image img,.conditions-final-image img,.contact-final-image img,.faqs-final-image img,.patient-stories-final-image img,.services-final-image img,.team-final-image img{width:100%!important;height:100%!important;min-height:420px!important;object-fit:cover!important}
+.about-v7-final-image,
+.conditions-final-image,
+.contact-final-image,
+.faqs-final-image,
+.patient-stories-final-image,
+.services-final-image,
+.team-final-image {
+  min-height: 420px !important;
+  border-radius: 26px !important;
+  overflow: hidden !important;
+}
+.about-v7-final-image img,
+.conditions-final-image img,
+.contact-final-image img,
+.faqs-final-image img,
+.patient-stories-final-image img,
+.services-final-image img,
+.team-final-image img {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 420px !important;
+  object-fit: cover !important;
+}
 
 /* FAQ / list density. */
-.faqs-question{padding:20px 0!important}
-.faqs-answer{max-width:760px!important}
+.faqs-question {
+  padding: 20px 0 ;
+}
+.faqs-answer {
+  max-width: 760px !important;
+}
 
 /* Footer */
-.physio-footer{background:var(--pc-black)!important;color:#fff!important}
-.footer-cta{background:var(--pc-red)!important;color:#fff!important}
-.footer-cta-button{background:#fff!important;color:#111!important}
-.footer-logo-mark{background:var(--pc-red)!important;color:#fff!important}
-.footer-brand,.footer-column h4{color:#fff!important}
-.footer-column a,.footer-contact,.footer-bottom{color:rgba(255,255,255,.68)!important}
-.footer-column a:hover{color:var(--pc-red-bright)!important}
+.physio-footer {
+  background: var(--pc-black) !important;
+  color: #fff !important;
+}
+.footer-cta {
+  background: var(--pc-red) !important;
+  color: #fff !important;
+}
+.footer-cta-button {
+  background: #fff !important;
+  color: #111 !important;
+}
+.footer-logo-mark {
+  background: var(--pc-red) !important;
+  color: #fff !important;
+}
+.footer-brand,
+.footer-column h4 {
+  color: #fff !important;
+}
+.footer-column a,
+.footer-contact,
+.footer-bottom {
+  color: rgba(255, 255, 255, 0.68) !important;
+}
+.footer-column a:hover {
+  color: var(--pc-red-bright) !important;
+}
 
 /* Mobile: reduce padding and keep images prominent. */
-@media(max-width:700px){
-  .about-v7 section,.conditions-page section,.contact-page section,.faqs-page section,.patient-stories-page section,.services-page section,.team-page section{padding-top:58px!important;padding-bottom:58px!important}
-  .about-v7-hero,.conditions-hero,.contact-hero,.faqs-hero,.patient-stories-hero,.services-hero,.team-hero{padding-top:64px!important;padding-bottom:64px!important}
-  .about-v7-hero-image,.conditions-hero-image,.contact-hero-image,.patient-stories-hero-image,.services-hero-image,.team-hero-image{height:390px!important}
-  .about-v7-final-image,.conditions-final-image,.contact-final-image,.faqs-final-image,.patient-stories-final-image,.services-final-image,.team-final-image{min-height:300px!important}
-  .about-v7-final-image img,.conditions-final-image img,.contact-final-image img,.faqs-final-image img,.patient-stories-final-image img,.services-final-image img,.team-final-image img{min-height:300px!important}
-  .about-v7-container,.conditions-container,.contact-container,.faqs-container,.patient-stories-container,.services-container,.team-container{width:calc(100% - 28px)!important}
+@media (max-width: 700px) {
+  
+  
+  .about-v7-hero-image,
+  .conditions-hero-image,
+  .contact-hero-image,
+  .patient-stories-hero-image,
+  .services-hero-image,
+  .team-hero-image {
+    height: 390px !important;
+  }
+  .about-v7-final-image,
+  .conditions-final-image,
+  .contact-final-image,
+  .faqs-final-image,
+  .patient-stories-final-image,
+  .services-final-image,
+  .team-final-image {
+    min-height: 300px !important;
+  }
+  .about-v7-final-image img,
+  .conditions-final-image img,
+  .contact-final-image img,
+  .faqs-final-image img,
+  .patient-stories-final-image img,
+  .services-final-image img,
+  .team-final-image img {
+    min-height: 300px !important;
+  }
+  .about-v7-container,
+  .conditions-container,
+  .contact-container,
+  .faqs-container,
+  .patient-stories-container,
+  .services-container,
+  .team-container {
+    width: calc(100% - 28px) !important;
+  }
 }

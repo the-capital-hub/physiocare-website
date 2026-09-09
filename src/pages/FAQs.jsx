@@ -206,40 +206,9 @@ export default function FAQs() {
 
               </div>
 
-              <motion.div
-                className="faqs-hero-orbit"
-                animate={{
-                  rotate: 360,
-                }}
-                transition={{
-                  duration: 23,
-                  repeat: Infinity,
-                  ease: "linear",
-                }}
-              >
-                <span />
-              </motion.div>
+              
 
-              <motion.div
-                className="faqs-floating-card"
-                animate={{
-                  y: [0, -7, 0],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              >
-
-                <FiMessageCircle />
-
-                <div>
-                  <strong>Still unsure?</strong>
-                  <span>We can guide you</span>
-                </div>
-
-              </motion.div>
+              
 
             </motion.div>
 
