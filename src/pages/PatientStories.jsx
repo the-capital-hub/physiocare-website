@@ -13,6 +13,7 @@ import "./PatientStories.css";
 import story1 from '../assets/story1.jpg'
 import story2 from '../assets/story2.jpg'
 import story3 from '../assets/story3.jpg'
+import Testimonail from "../components/Testimonail";
 const stories = [
   {
     number: "01",
@@ -538,56 +539,7 @@ export default function PatientStories() {
           STATEMENT
       ========================================= */}
 
-      <section className="patient-stories-statement">
-
-        <div className="patient-stories-statement-grid" />
-
-        <motion.div
-          className="patient-stories-statement-circle"
-          animate={{
-            rotate: 360,
-          }}
-          transition={{
-            duration: 29,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-        />
-
-        <div className="patient-stories-container">
-
-          <motion.div
-            className="patient-stories-statement-content"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{
-              once: true,
-              amount: 0.2,
-            }}
-            variants={stagger}
-          >
-
-            <motion.div
-              className="patient-stories-light-tag"
-              variants={reveal}
-            >
-              
-            </motion.div>
-
-            <motion.h2 variants={reveal}>
-              Progress is measured
-              <span>in real life.</span>
-            </motion.h2>
-
-            <motion.p variants={reveal}>
-              More confidence. More strength. More freedom. More of the things
-              that make your everyday life feel like yours again.
-            </motion.p>
-
-          </motion.div>
-
-        </div>
-      </section>
+      <Testimonail/>
 
       {/* =========================================
           FINAL CTA

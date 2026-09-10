@@ -14,7 +14,7 @@ import {
 } from "react-icons/fi";
 
 import "./FitToRun.css";
-
+import fit from '../assets/fit.jpg'
 const images = {
   hero:
     "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=1800&q=90",
@@ -210,15 +210,15 @@ export default function FitToRun() {
               RUNNING PHYSIOTHERAPY PROGRAM
             </motion.div>
 
-            <motion.h1
+            <h1
               initial="hidden"
               animate="visible"
               transition={{ delay: 0.08 }}
               variants={reveal}
             >
-              Fit to
-              <span>Run.</span>
-            </motion.h1>
+              Fit to Run.
+              
+            </h1>
 
             <motion.p
               initial="hidden"
@@ -955,43 +955,142 @@ export default function FitToRun() {
 
           </div>
 
-          <div className="fit-faq-grid">
+        <div className="fit-faq-layout">
 
-            {faqs.map(([question, answer], index) => (
-              <motion.details
-                key={question}
-                className="fit-faq-item"
-                initial={{
-                  opacity: 0,
-                  y: 20,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: 0.55,
-                  delay: index * 0.04,
-                }}
-              >
+  {/* =========================
+      LEFT — FAQ
+  ========================= */}
 
-                <summary>
-                  <span>
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
+  <motion.div
+    className="fit-faq-grid"
+    initial="hidden"
+    whileInView="visible"
+    viewport={{
+      once: true,
+      amount: 0.08,
+    }}
+    variants={stagger}
+  >
+    {faqs.map(([question, answer], index) => (
+      <motion.details
+        key={question}
+        className="fit-faq-item"
+        variants={reveal}
+      >
 
-                  <strong>{question}</strong>
+        <summary>
 
-                  <FiArrowUpRight />
-                </summary>
+          <span className="fit-faq-number">
+            {String(index + 1).padStart(2, "0")}
+          </span>
 
-                <p>{answer}</p>
+          <div className="fit-faq-question">
 
-              </motion.details>
-            ))}
+            <small>
+              FIT TO RUN
+            </small>
+
+            <strong>
+              {question}
+            </strong>
 
           </div>
+
+          <span className="fit-faq-icon">
+            <FiArrowUpRight />
+          </span>
+
+        </summary>
+
+        <div className="fit-faq-answer">
+
+          <span className="fit-faq-answer-line" />
+
+          <p>
+            {answer}
+          </p>
+
+        </div>
+
+      </motion.details>
+    ))}
+  </motion.div>
+
+
+  {/* =========================
+      RIGHT — IMAGE
+  ========================= */}
+
+  <motion.div
+    className="fit-faq-visual"
+    initial={{
+      opacity: 0,
+      x: 35,
+    }}
+    whileInView={{
+      opacity: 1,
+      x: 0,
+    }}
+    viewport={{
+      once: true,
+      amount: 0.15,
+    }}
+    transition={{
+      duration: 0.8,
+      ease: [0.22, 1, 0.36, 1],
+    }}
+  >
+
+    <div className="fit-faq-image">
+
+      <img
+        src={fit}
+        alt="Physiotherapy consultation"
+      />
+
+      <div className="fit-faq-image-overlay" />
+
+      <div className="fit-faq-image-badge">
+
+        <span>FIT TO RUN</span>
+
+        <strong>
+          QUESTIONS?
+        </strong>
+
+      </div>
+
+      <div className="fit-faq-image-content">
+
+        <small>
+          KNOW BEFORE YOU START
+        </small>
+
+        <h3>
+          Your questions.
+          <span>Our guidance.</span>
+        </h3>
+
+        <p>
+          Every runner starts from a different place. Understanding
+          the process is the first step towards better movement.
+        </p>
+
+        <Link
+          to="/contact"
+          className="fit-faq-image-btn"
+        >
+          Talk To Our Team
+          <FiArrowUpRight />
+        </Link>
+
+      </div>
+
+    </div>
+
+  </motion.div>
+
+</div>
         </div>
       </section>
 

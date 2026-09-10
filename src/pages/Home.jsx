@@ -18,6 +18,7 @@ import home2 from '../assets/home2.jpg'
 import home3 from '../assets/home3.jpg'
 import home4 from '../assets/home4.jpg'
 import home5 from '../assets/home5.jpg'
+import home7 from '../assets/home7.jpg'
 const images = {
   hero:
     home1,
@@ -264,11 +265,11 @@ export default function Home() {
                 <span>Live stronger.</span>
               </motion.h1>
 
-              <motion.p variants={reveal}>
+              <p style={{width:"500px"}}>
                 Personalised physiotherapy, rehabilitation and movement care
                 designed around your body, your goals and the life you want to
                 return to.
-              </motion.p>
+              </p>
 
               <motion.div
                 className="home-hero-actions"
@@ -661,50 +662,120 @@ export default function Home() {
             </Link>
           </div>
 
-          <motion.div
-            className="home-services-list"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{
-              once: true,
-              amount: 0.08,
-            }}
-            variants={stagger}
+          <div className="home-services-layout">
+
+  {/* LEFT — SERVICES LIST */}
+
+  <motion.div
+    className="home-services-list"
+    initial="hidden"
+    whileInView="visible"
+    viewport={{
+      once: true,
+      amount: 0.08,
+    }}
+    variants={stagger}
+  >
+    {services.map((service) => {
+      const Icon = service.icon;
+
+      return (
+        <motion.div
+          className="home-service-row"
+          key={service.number}
+          variants={reveal}
+          whileHover={{
+            x: 8,
+          }}
+        >
+          <span className="home-service-number">
+            {service.number}
+          </span>
+
+          <div className="home-service-icon">
+            <Icon />
+          </div>
+
+          <div className="home-service-main">
+            <h3>{service.title}</h3>
+
+            <p>{service.text}</p>
+          </div>
+
+          <Link
+            to="/services"
+            className="home-service-arrow"
+            aria-label={`View ${service.title}`}
           >
-            {services.map((service) => {
-              const Icon = service.icon;
+            <FiArrowUpRight />
+          </Link>
+        </motion.div>
+      );
+    })}
+  </motion.div>
 
-              return (
-                <motion.div
-                  className="home-service-row"
-                  key={service.number}
-                  variants={reveal}
-                  whileHover={{ x: 8 }}
-                >
-                  <span className="home-service-number">
-                    {service.number}
-                  </span>
 
-                  <div className="home-service-icon">
-                    <Icon />
-                  </div>
+  {/* RIGHT — IMAGE */}
 
-                  <div className="home-service-main">
-                    <h3>{service.title}</h3>
-                    <p>{service.text}</p>
-                  </div>
+  <motion.div
+    className="home-services-visual"
+    initial={{
+      opacity: 0,
+      x: 35,
+    }}
+    whileInView={{
+      opacity: 1,
+      x: 0,
+    }}
+    viewport={{
+      once: true,
+      amount: 0.15,
+    }}
+    transition={{
+      duration: 0.8,
+      ease: [0.22, 1, 0.36, 1],
+    }}
+  >
 
-                  <Link
-                    to="/services"
-                    className="home-service-arrow"
-                    aria-label={`View ${service.title}`}
-                  >
-                    <FiArrowUpRight />
-                  </Link>
-                </motion.div>
-              );
-            })}
-          </motion.div>
+    <div className="home-services-image">
+
+      <img
+        src={home7}
+        alt="Physiotherapy treatment"
+      />
+
+      <div className="home-services-image-overlay" />
+
+      <div className="home-services-image-content">
+
+        <span>PHYSIOCARE</span>
+
+        <h3>
+          Movement is
+          <strong>progress.</strong>
+        </h3>
+
+        <p>
+          Personalised care designed around your body,
+          your goals and the way you want to move.
+        </p>
+
+      </div>
+
+      <div className="home-services-image-badge">
+        <FiActivity />
+
+        <div>
+          <small>CARE</small>
+          <strong>WITH PURPOSE</strong>
+        </div>
+      </div>
+
+    </div>
+
+  </motion.div>
+
+</div>
 
           <div className="home-services-progress">
             <span />

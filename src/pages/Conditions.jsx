@@ -516,56 +516,7 @@ export default function Conditions() {
           STATEMENT
       ========================================= */}
 
-      <section className="conditions-statement">
-
-        <div className="conditions-statement-grid" />
-
-        <motion.div
-          className="conditions-statement-circle"
-          animate={{
-            rotate: 360,
-          }}
-          transition={{
-            duration: 28,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-        />
-
-        <div className="conditions-container">
-
-          <motion.div
-            className="conditions-statement-content"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{
-              once: true,
-              amount: 0.2,
-            }}
-            variants={stagger}
-          >
-
-            <motion.div
-              className="conditions-light-tag"
-              variants={reveal}
-            >
-              THE IMPORTANT PART
-            </motion.div>
-
-            <motion.h2 variants={reveal}>
-              The diagnosis is not
-              <span>the whole story.</span>
-            </motion.h2>
-
-            <motion.p variants={reveal}>
-              What matters is how the problem affects your movement, your
-              routine and the things you want to do.
-            </motion.p>
-
-          </motion.div>
-
-        </div>
-      </section>
+     
 
       {/* =========================================
           FINAL CTA

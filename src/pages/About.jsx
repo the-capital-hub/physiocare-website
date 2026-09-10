@@ -780,10 +780,10 @@ export default function About() {
               OUR MISSION
             </motion.div>
 
-            <motion.h2 variants={reveal}>
-              Make physiotherapy feel
+            <h2 >
+             <span style={{color:"white"}}>Make physiotherapy feel </span>
               <span>more human.</span>
-            </motion.h2>
+            </h2>
 
             <motion.p variants={reveal}>
               We want every person who walks through our doors to feel heard,
