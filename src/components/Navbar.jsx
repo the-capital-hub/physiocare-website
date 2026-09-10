@@ -10,6 +10,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import "./Navbar.css";
 
 const links = [
+  ["Fit to Run", "/fit-to-run"],
   ["About", "/about"],
   ["Services", "/services"],
   ["Conditions", "/conditions"],
@@ -26,6 +27,7 @@ const mobileContainer = {
     opacity: 0,
     y: -15,
   },
+
   visible: {
     opacity: 1,
     y: 0,
@@ -34,6 +36,7 @@ const mobileContainer = {
       ease: [0.22, 1, 0.36, 1],
     },
   },
+
   exit: {
     opacity: 0,
     y: -15,
@@ -48,9 +51,11 @@ const mobileItem = {
     opacity: 0,
     x: -12,
   },
+
   visible: (index) => ({
     opacity: 1,
     x: 0,
+
     transition: {
       delay: index * 0.06,
       duration: 0.3,
@@ -70,7 +75,10 @@ export default function Navbar() {
     <header className={`site-header ${open ? "is-open" : ""}`}>
       <div className="nav-container">
 
-        {/* Brand */}
+        {/* =========================
+            BRAND
+        ========================= */}
+
         <Link
           to="/"
           className="brand"
@@ -91,12 +99,16 @@ export default function Navbar() {
               alt="Stairs Physiotherapy & Fitness Logo"
             />
           </motion.div>
-
-          
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="desktop-nav" aria-label="Main Navigation">
+        {/* =========================
+            DESKTOP NAVIGATION
+        ========================= */}
+
+        <nav
+          className="desktop-nav"
+          aria-label="Main Navigation"
+        >
           {links.map(([label, to]) => (
             <NavLink
               key={to}
@@ -110,7 +122,10 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Desktop Actions */}
+        {/* =========================
+            DESKTOP ACTIONS
+        ========================= */}
+
         <div className="nav-actions">
 
           <a
@@ -137,20 +152,37 @@ export default function Navbar() {
 
         </div>
 
-        {/* Mobile Button */}
+        {/* =========================
+            MOBILE BUTTON
+        ========================= */}
+
         <motion.button
           type="button"
           className="mobile-menu-btn"
           onClick={() => setOpen((value) => !value)}
-          whileTap={{ scale: 0.92 }}
-          aria-label={open ? "Close menu" : "Open menu"}
+          whileTap={{
+            scale: 0.92,
+          }}
+          aria-label={
+            open
+              ? "Close menu"
+              : "Open menu"
+          }
           aria-expanded={open}
         >
-          {open ? <FiX /> : <FiMenu />}
+          {open ? (
+            <FiX />
+          ) : (
+            <FiMenu />
+          )}
         </motion.button>
+
       </div>
 
-      {/* Mobile Menu */}
+      {/* =========================
+          MOBILE MENU
+      ========================= */}
+
       <AnimatePresence>
         {open && (
           <motion.div
@@ -160,47 +192,67 @@ export default function Navbar() {
             animate="visible"
             exit="exit"
           >
+
             <div className="mobile-panel-inner">
 
               <nav className="mobile-nav">
-                {links.map(([label, to], index) => (
-                  <motion.div
-                    key={to}
-                    custom={index}
-                    variants={mobileItem}
-                    initial="hidden"
-                    animate="visible"
-                  >
-                    <NavLink
-                      to={to}
-                      onClick={closeMenu}
-                      className={({ isActive }) =>
-                        `mobile-nav-link ${
-                          isActive ? "active" : ""
-                        }`
-                      }
+
+                {links.map(
+                  ([label, to], index) => (
+                    <motion.div
+                      key={to}
+                      custom={index}
+                      variants={mobileItem}
+                      initial="hidden"
+                      animate="visible"
                     >
-                      <span>{label}</span>
-                      <FiArrowUpRight />
-                    </NavLink>
-                  </motion.div>
-                ))}
+
+                      <NavLink
+                        to={to}
+                        onClick={closeMenu}
+                        className={({ isActive }) =>
+                          `mobile-nav-link ${
+                            isActive
+                              ? "active"
+                              : ""
+                          }`
+                        }
+                      >
+
+                        <span>{label}</span>
+
+                        <FiArrowUpRight />
+
+                      </NavLink>
+
+                    </motion.div>
+                  )
+                )}
+
               </nav>
 
               <div className="mobile-menu-contact">
 
                 <div className="mobile-contact-info">
+
                   <span className="mobile-contact-icon">
                     <FiPhone />
                   </span>
 
                   <div>
-                    <small>Call Us</small>
 
-                    <a href="tel:+910000000000">
+                    <small>
+                      Call Us
+                    </small>
+
+                    <a
+                      href="tel:+910000000000"
+                    >
                       [Phone Number]
                     </a>
+
                   </div>
+
                 </div>
 
                 <Link
@@ -208,15 +260,21 @@ export default function Navbar() {
                   className="mobile-book-btn"
                   onClick={closeMenu}
                 >
-                  <span>Book an Assessment</span>
+                  <span>
+                    Book an Assessment
+                  </span>
+
                   <FiArrowUpRight />
                 </Link>
 
               </div>
+
             </div>
+
           </motion.div>
         )}
       </AnimatePresence>
+
     </header>
   );
 }

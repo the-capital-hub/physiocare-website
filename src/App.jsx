@@ -10,6 +10,7 @@ import Team from "./pages/Team";
 import PatientStories from "./pages/PatientStories";
 import FAQs from "./pages/FAQs";
 import Contact from "./pages/Contact";
+import FitToRun from "./pages/FitToRun";
 
 function Layout({ children }) {
   return (
@@ -27,6 +28,7 @@ export default function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/fit-to-run" element={<FitToRun />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/conditions" element={<Conditions />} />
