@@ -285,7 +285,7 @@ export default function About() {
         </div>
 
         <div className="about-v7-scroll-line">
-          <span>SCROLL TO EXPLORE</span>
+        
           <div />
         </div>
       </section>
@@ -662,9 +662,7 @@ export default function About() {
             }}
           >
 
-            <span className="about-v7-section-tag about-v7-light-tag">
-              THE IDEA
-            </span>
+            
 
             <h2>
               Move without
@@ -673,14 +671,7 @@ export default function About() {
 
             <div className="about-v7-statement-bottom">
 
-              <div className="about-v7-wave">
-                <span />
-                <span />
-                <span />
-                <span />
-                <span />
-                <span />
-              </div>
+              
 
               <p>
                 We are here to replace uncertainty with understanding,
@@ -725,10 +716,10 @@ export default function About() {
               <span>One clear direction.</span>
             </motion.h2>
 
-            <motion.p variants={reveal}>
+            <p>
               Every part of your care connects to the next, so you always
               know where you are going.
-            </motion.p>
+            </p>
 
           </motion.div>
 
@@ -1032,10 +1023,10 @@ export default function About() {
               <span>differently?</span>
             </motion.h2>
 
-            <motion.p variants={reveal}>
+            <p>
               Start with a conversation, a thoughtful assessment and a plan
               built around your goals.
-            </motion.p>
+            </p>
 
             <motion.div variants={reveal}>
               <Link

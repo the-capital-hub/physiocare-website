@@ -289,9 +289,7 @@ export default function Team() {
             {team.map((member, index) => (
               <motion.article
                 key={member.number}
-                className={`team-member-card ${
-                  index === 0 ? "team-member-featured" : ""
-                }`}
+                className="team-member-card" 
                 variants={reveal}
                 whileHover={{
                   y: -9,
@@ -622,10 +620,10 @@ export default function Team() {
               YOUR NEXT STEP
             </motion.div>
 
-            <motion.h2 variants={reveal}>
+            <h2 >
               The right care starts
               <span>with the right conversation.</span>
-            </motion.h2>
+            </h2>
 
             <motion.p variants={reveal}>
               Meet the team through an assessment and start with a plan built

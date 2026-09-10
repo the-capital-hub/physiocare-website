@@ -71,7 +71,7 @@ export default function Footer() {
         </div>
 
         <div className="footer-cta-heading-wrap">
-          <span className="footer-cta-index">01</span>
+          
 
           <h2>
             Move better.

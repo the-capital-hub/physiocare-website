@@ -125,8 +125,10 @@
 }
 
 .team-hero-copy h1 span {
+  margin-top: 10px;
   display: block;
   color: var(--terracotta);
+  line-height: 0.98;
 }
 
 .team-hero-copy > p {
@@ -837,7 +839,7 @@
 .team-philosophy-content {
   position: relative;
   z-index: 3;
-  max-width: 780px;
+  max-width: 1080px;
   padding: 64px 0;
 }
 
@@ -860,7 +862,7 @@
 }
 
 .team-philosophy-content > p {
-  max-width: 590px;
+  max-width: 890px;
   margin: 0;
   color: rgba(255, 255, 255, 0.68);
   font-size: 14px;
@@ -935,7 +937,7 @@
 .team-final-content {
   position: relative;
   z-index: 5;
-  max-width: 720px;
+  max-width: 1020px;
   padding: 67px 0;
 }
 
@@ -945,7 +947,7 @@
   font-size: clamp(48px, 5.5vw, 74px);
   font-weight: 800;
   letter-spacing: -0.065em;
-  line-height: 0.95;
+  line-height: 0.98;
 }
 
 .team-final-content h2 span {
@@ -954,7 +956,7 @@
 }
 
 .team-final-content > p {
-  max-width: 550px;
+  max-width: 850px;
   margin: 0;
   color: rgba(255, 255, 255, 0.7);
   font-size: 14px;
@@ -1829,7 +1831,7 @@
 .services-page h1,
 .team-page h1 {
   font-size: clamp(48px, 6vw, 78px) !important;
-  line-height: 0.96 !important;
+  line-height: 0.98;
   letter-spacing: -0.055em !important;
 }
 .about-v7 h2,
@@ -1840,7 +1842,7 @@
 .services-page h2,
 .team-page h2 {
   font-size: clamp(34px, 4.2vw, 58px) !important;
-  line-height: 1.02 !important;
+  line-height: 1.02;
   letter-spacing: -0.045em !important;
 }
 .about-v7 h3,
@@ -1954,7 +1956,7 @@
 .contact-info-card,
 .faqs-side-panel {
   border-color: rgba(230, 43, 43, 0.16) !important;
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08) !important;
+  
 }
 .about-v7-principle-card:hover,
 .about-v7-process-card:hover,

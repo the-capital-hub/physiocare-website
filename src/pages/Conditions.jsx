@@ -299,9 +299,8 @@ export default function Conditions() {
               return (
                 <motion.article
                   key={group.number}
-                  className={`conditions-card ${
-                    index === 0 ? "conditions-card-featured" : ""
-                  }`}
+                  className="conditions-card"
+                    
                   variants={reveal}
                   whileHover={{
                     y: -9,

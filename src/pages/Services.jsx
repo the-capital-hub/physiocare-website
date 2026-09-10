@@ -251,9 +251,8 @@ export default function Services() {
               return (
                 <motion.article
                   key={service.number || index}
-                  className={`services-card ${
-                    index === 0 ? "services-card-featured" : ""
-                  }`}
+                  className="services-card"
+                  
                   variants={reveal}
                   whileHover={{
                     y: -8,

@@ -308,9 +308,7 @@ export default function PatientStories() {
               return (
                 <motion.article
                   key={story.number}
-                  className={`patient-story-card ${
-                    index === 0 ? "patient-story-featured" : ""
-                  }`}
+                  className="patient-story-card"
                   variants={reveal}
                   whileHover={{
                     y: -9,
@@ -342,7 +340,7 @@ export default function PatientStories() {
                       PATIENT JOURNEY
                     </div>
 
-                    <h3>{story.title}</h3>
+                    <h3 style={{color:"red"}}>{story.title}</h3>
 
                     <p className="patient-story-goal">
                       {story.goal}
@@ -573,7 +571,7 @@ export default function PatientStories() {
               className="patient-stories-light-tag"
               variants={reveal}
             >
-              THE BIGGER PICTURE
+              
             </motion.div>
 
             <motion.h2 variants={reveal}>

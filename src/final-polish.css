@@ -97,17 +97,7 @@ section {
   letter-spacing: -0.055em;
 }
 
-.about-v7-hero-copy > p,
-.conditions-hero-copy > p,
-.contact-hero-copy > p,
-.faqs-hero-copy > p,
-.patient-stories-hero-copy > p,
-.services-hero-copy > p,
-.team-hero-copy > p {
-  max-width: 590px;
-  font-size: clamp(16px, 1.35vw, 18px);
-  line-height: 1.75;
-}
+
 
 /* Strong red emphasis without making every heading shout. */
 .about-v7-hero-copy h1 span,

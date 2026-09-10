@@ -276,7 +276,7 @@ export default function FAQs() {
                 <div className="faqs-side-image-overlay" />
 
                 <div className="faqs-side-image-badge">
-                  <span />
+                  <span style={{paddingTop:"5px"}} />
                   CLINICAL CARE
                 </div>
 
@@ -442,75 +442,7 @@ export default function FAQs() {
           REASSURANCE
       ========================================= */}
 
-      <section className="faqs-reassurance">
-
-        <div className="faqs-reassurance-grid" />
-
-        <div className="faqs-container">
-
-          <motion.div
-            className="faqs-reassurance-content"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{
-              once: true,
-              amount: 0.22,
-            }}
-            variants={stagger}
-          >
-
-            <motion.div
-              className="faqs-light-tag"
-              variants={reveal}
-            >
-              STILL HAVE QUESTIONS
-            </motion.div>
-
-            <motion.h2 variants={reveal}>
-              You can ask.
-              <span>We will listen.</span>
-            </motion.h2>
-
-            <motion.p variants={reveal}>
-              Not every question fits into a list. Tell us what you are
-              unsure about and we can help you decide what the next step
-              should be.
-            </motion.p>
-
-            <motion.div variants={reveal}>
-
-              <Link
-                to="/contact"
-                className="faqs-white-btn"
-              >
-                Talk to the Clinic
-                <FiArrowUpRight />
-              </Link>
-
-            </motion.div>
-
-          </motion.div>
-
-
-          {/* ANIMATED REASSURANCE GRAPHIC */}
-
-          <motion.div
-            className="faqs-reassurance-circle"
-            animate={{
-              rotate: 360,
-            }}
-            transition={{
-              duration: 27,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-          >
-            <span />
-          </motion.div>
-
-        </div>
-
-      </section>
+    
 
 
       {/* =========================================

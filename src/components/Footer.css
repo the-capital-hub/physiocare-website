@@ -110,7 +110,7 @@
 }
 
 .footer-cta-content {
-  max-width: 720px;
+  max-width: 920px;
 }
 
 .footer-eyebrow {
@@ -134,7 +134,7 @@
 }
 
 .footer-cta-content h2 {
-  max-width: 690px;
+  /* max-width: 990px; */
   margin: 0;
 
   font-family: "Manrope", sans-serif;
@@ -150,7 +150,7 @@
 }
 
 .footer-cta-content p {
-  max-width: 600px;
+  max-width: 900px;
   margin: 24px 0 0;
 
   color: #e8e4e4;

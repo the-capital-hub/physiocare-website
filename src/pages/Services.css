@@ -130,7 +130,7 @@
 }
 
 .services-hero-copy > p {
-  max-width: 535px;
+  max-width: 835px;
   margin: 0;
   color: var(--slate);
   font-size: 16px;
@@ -199,7 +199,7 @@
   display: flex;
   align-items: center;
   gap: 11px;
-  max-width: 475px;
+  max-width: 675px;
   margin-top: 42px;
   padding-top: 16px;
   border-top: 1px solid rgba(20, 42, 51, 0.14);
@@ -380,7 +380,7 @@
 }
 
 .services-section-intro {
-  max-width: 760px;
+  max-width: 1260px;
 }
 
 .services-section-intro h2 {
@@ -398,7 +398,7 @@
 }
 
 .services-section-intro > p {
-  max-width: 610px;
+  max-width: 1100px;
   margin: 0;
   color: var(--slate);
   font-size: 14px;
@@ -676,7 +676,7 @@
 }
 
 .services-guidance-copy > p {
-  max-width: 570px;
+  max-width: 870px;
   margin: 0;
   color: var(--slate);
   font-size: 14px;
@@ -770,7 +770,7 @@
 }
 
 .services-approach-copy > p {
-  max-width: 560px;
+  max-width: 860px;
   margin: 0;
   color: var(--slate);
   font-size: 14px;
@@ -951,7 +951,7 @@
 .services-final-content {
   position: relative;
   z-index: 4;
-  max-width: 700px;
+  max-width: 900px;
   padding: 20px 0;
 }
 
@@ -982,7 +982,7 @@
 }
 
 .services-final-content > p {
-  max-width: 555px;
+  max-width: 855px;
   margin: 0;
   color: rgba(255, 255, 255, 0.71);
   font-size: 14px;
@@ -1977,7 +1977,7 @@
 .contact-info-card,
 .faqs-side-panel {
   border-color: rgba(230, 43, 43, 0.16) !important;
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08) !important;
+  
 }
 .about-v7-principle-card:hover,
 .about-v7-process-card:hover,

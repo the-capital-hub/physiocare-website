@@ -70,7 +70,8 @@
 
 .faqs-hero {
   min-height: 620px;
-
+  margin-bottom: 40px;
+  padding-bottom: 20px;
   display: flex;
   align-items: center;
 
@@ -548,7 +549,7 @@
 ========================================================= */
 
 .faqs-list-section {
-  padding: 82px 0;
+  padding: 22px 0;
 
   background: var(--off-white);
 }
@@ -1073,6 +1074,7 @@
 }
 
 .faqs-final-pattern {
+  padding-bottom: 20px;
   position: absolute;
   inset: 0;
 
@@ -1126,7 +1128,7 @@
   position: relative;
   z-index: 4;
 
-  max-width: 720px;
+  max-width: 920px;
 
   padding: 20px 0;
 }
@@ -1150,7 +1152,7 @@
 }
 
 .faqs-final-content > p {
-  max-width: 550px;
+  max-width: 950px;
 
   margin: 0;
 
@@ -1661,7 +1663,7 @@
    ========================================================= */
 
 .faqs-list-section {
-  padding: 92px 0 !important;
+  padding: 22px 0;
   background: var(--off-white) !important;
 }
 
@@ -1784,7 +1786,9 @@
   display: grid;
   gap: 11px;
 }
-
+.faqs-side-image-badge{
+  margin-top: 10px;
+}
 .faqs-item {
   overflow: hidden;
 
@@ -1874,7 +1878,7 @@
 .faqs-question-icon {
   width: 40px;
   height: 40px;
-
+  padding-right: 10px;
   display: grid;
   place-items: center;
 
