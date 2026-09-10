@@ -277,7 +277,7 @@ export default function FitToRun() {
 
         <div className="fit-container">
 
-          <div className="fit-section-heading">
+          {/* <div className="fit-section-heading">
 
             <motion.div
               initial="hidden"
@@ -312,7 +312,7 @@ export default function FitToRun() {
               capacity and return to the road with greater confidence.
             </motion.p>
 
-          </div>
+          </div> */}
 
           <div className="fit-intro-grid">
 

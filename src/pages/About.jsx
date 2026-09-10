@@ -622,68 +622,7 @@ export default function About() {
           STATEMENT
       ========================================= */}
 
-      <section className="about-v7-statement">
-
-        <div className="about-v7-statement-grid" />
-
-        <motion.div
-          className="about-v7-statement-circle about-v7-statement-circle-one"
-          animate={{
-            rotate: 360,
-          }}
-          transition={{
-            duration: 28,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-        />
-
-        <div className="about-v7-statement-circle about-v7-statement-circle-two" />
-
-        <div className="about-v7-container">
-
-          <motion.div
-            className="about-v7-statement-content"
-            initial={{
-              opacity: 0,
-              y: 30,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{
-              once: true,
-              amount: 0.25,
-            }}
-            transition={{
-              duration: 0.8,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-          >
-
-            
-
-            <h2>
-              Move without
-              <span>second guessing.</span>
-            </h2>
-
-            <div className="about-v7-statement-bottom">
-
-              
-
-              <p>
-                We are here to replace uncertainty with understanding,
-                supported movement and a plan you can trust.
-              </p>
-
-            </div>
-
-          </motion.div>
-
-        </div>
-      </section>
+      
 
       {/* =========================================
           PROCESS

@@ -1233,33 +1233,7 @@ export default function Home() {
 
     {/* bottom statement */}
 
-    <motion.div
-      className="home-testimonials-bottom"
-      initial={{
-        opacity: 0,
-        y: 20,
-      }}
-      whileInView={{
-        opacity: 1,
-        y: 0,
-      }}
-      viewport={{
-        once: true,
-      }}
-      transition={{
-        duration: 0.6,
-      }}
-    >
-
-      <div className="home-testimonials-bottom-line" />
-
-      <span>
-        TRUST IS BUILT ONE EXPERIENCE AT A TIME.
-      </span>
-
-      <FiArrowUpRight />
-
-    </motion.div>
+    
 
   </div>
 
