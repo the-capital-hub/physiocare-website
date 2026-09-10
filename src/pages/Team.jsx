@@ -1,59 +1,374 @@
-import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import {
   FiArrowUpRight,
-  FiAward,
   FiCheck,
-  FiHeart,
-  FiUser,
-  FiUsers,
+  FiMapPin,
 } from "react-icons/fi";
-import doctor1 from '../assets/doctor1.jpg'
-import doctor2 from '../assets/doctor2.jpg'
-import doctor4 from '../assets/doctor4.jpg'
-import doctor5 from '../assets/doctor5.jpg'
+
+import doctor1 from "../assets/doctor1.jpg";
+import doctor2 from "../assets/doctor2.jpg";
+import doctor4 from "../assets/doctor4.jpg";
+import doctor5 from "../assets/doctor5.jpg";
+
 import "./Team.css";
 
-const team = [
+/* =========================================================
+   LOCATION CARDS
+========================================================= */
+
+const locations = [
   {
-    number: "01",
-    role: "Founder and Senior Physiotherapist",
-    name: "[Doctor Name]",
-    qualification: "BPT | MPT | Verified Certifications",
-    focus: "[Specialization]",
-    image:
-      "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=1200&q=90",
+    title: "Team Ulsoor",
+    image: doctor5,
+    target: "ulsoor",
   },
   {
-    number: "02",
-    role: "Physiotherapist",
-    name: "[Physiotherapist Name]",
-    qualification: "[Qualification]",
-    focus: "[Area of Focus]",
-    image:
-      doctor1,
+    title: "Team Koramangala",
+    image: doctor4,
+    target: "koramangala",
   },
   {
-    number: "03",
-    role: "Physiotherapist",
-    name: "[Physiotherapist Name]",
-    qualification: "[Qualification]",
-    focus: "[Area of Focus]",
-    image:
-      doctor2,
+    title: "Team Indiranagar",
+    image: doctor1,
+    target: "indiranagar",
+  },
+  {
+    title: "Team Whitefield",
+    image: doctor2,
+    target: "whitefield",
+  },
+  {
+    title: "Team Admin",
+    image: doctor4,
+    target: "admin",
+  },
+  {
+    title: "Meet our Founders",
+    image: doctor5,
+    target: "founders",
   },
 ];
+
+/* =========================================================
+   ULSOOR
+========================================================= */
+
+const ulsoorTeam = [
+  {
+    name: "Akshata Koli",
+    role: "Sports Physiotherapist",
+    image: doctor1,
+  },
+  {
+    name: "Aadhav Panchu Thomas",
+    role: "Physiotherapist",
+    image: doctor2,
+  },
+  {
+    name: "Srijanya Rajesh",
+    role: "Physiotherapist",
+    image: doctor4,
+  },
+  {
+    name: "Rohan Charles",
+    role: "Strength & Conditioning Coach",
+    image: doctor5,
+  },
+  {
+    name: "Chaitra",
+    role: "Sports Scientist",
+    image: doctor1,
+  },
+  {
+    name: "Swathi M V",
+    role: "Physiotherapist",
+    image: doctor2,
+  },
+  {
+    name: "Riti Shetty",
+    role: "Sports Physiotherapist",
+    image: doctor4,
+  },
+  {
+    name: "Gautam Satish",
+    role: "Physiotherapist",
+    image: doctor5,
+  },
+  {
+    name: "Vedith",
+    role: "Sports Scientist",
+    image: doctor1,
+  },
+  {
+    name: "Soumya Gowda",
+    role: "Strength & Conditioning Coach",
+    image: doctor2,
+  },
+  {
+    name: "Soumya SK",
+    role: "Physiotherapist",
+    image: doctor4,
+  },
+];
+
+/* =========================================================
+   KORAMANGALA
+========================================================= */
+
+const koramangalaTeam = [
+  {
+    name: "Gagan Gowda",
+    role: "Strength and Conditioning Coach",
+    image: doctor1,
+  },
+  {
+    name: "Sairam M",
+    role: "Sports Physiotherapist",
+    image: doctor2,
+  },
+  {
+    name: "Bijoy Joseph Bastian",
+    role: "Strength and Conditioning Coach",
+    image: doctor4,
+  },
+  {
+    name: "Naveenraj A",
+    role: "Sports Physiotherapist",
+    image: doctor5,
+  },
+  {
+    name: "Shaik Sufiya",
+    role: "Physiotherapist",
+    image: doctor1,
+  },
+  {
+    name: "Martin Thomas",
+    role: "Strength and Conditioning Coach",
+    image: doctor2,
+  },
+  {
+    name: "Aadhithya N R",
+    role: "Strength and Conditioning Coach",
+    image: doctor4,
+  },
+  {
+    name: "Kiran Prakash Dsouza",
+    role: "Sports Physiotherapist",
+    image: doctor5,
+  },
+  {
+    name: "Niharika J Somayaji",
+    role: "Sports Physiotherapist",
+    image: doctor1,
+  },
+  {
+    name: "Vasudha Siddappa",
+    role: "Physiotherapist",
+    image: doctor2,
+  },
+  {
+    name: "Niha",
+    role: "Sports Physiotherapist",
+    image: doctor4,
+  },
+  {
+    name: "Aashutosh Karna",
+    role: "Orthopaedic Physiotherapist",
+    image: doctor5,
+  },
+  {
+    name: "Malan Karthikeyan",
+    role: "Strength and Conditioning Coach",
+    image: doctor1,
+  },
+  {
+    name: "Nyja H A",
+    role: "Physiotherapist",
+    image: doctor2,
+  },
+  {
+    name: "Sindhura Udupa",
+    role: "Sports Physiotherapist",
+    image: doctor4,
+  },
+  {
+    name: "Achintya P R",
+    role: "Physiotherapist",
+    image: doctor5,
+  },
+  {
+    name: "Mihir Arun Rajani",
+    role: "Sports Physiotherapist",
+    image: doctor1,
+  },
+  {
+    name: "Ramya Shetty",
+    role: "Physiotherapist",
+    image: doctor2,
+  },
+];
+
+/* =========================================================
+   INDIRANAGAR
+========================================================= */
+
+const indiranagarTeam = [
+  {
+    name: "Niketh Madhu",
+    role: "Sports Physiotherapist",
+    image: doctor1,
+  },
+  {
+    name: "Varsha Gowda",
+    role: "Strength & Conditioning Coach",
+    image: doctor2,
+  },
+  {
+    name: "Jayani",
+    role: "Physiotherapist",
+    image: doctor4,
+  },
+  {
+    name: "Gokulnath G",
+    role: "Physiotherapist",
+    image: doctor5,
+  },
+  {
+    name: "Manoj Prasath",
+    role: "Sports Physiotherapist",
+    image: doctor1,
+  },
+  {
+    name: "Nithya Shree N",
+    role: "Physiotherapist",
+    image: doctor2,
+  },
+  {
+    name: "Sam Azariah Philip",
+    role: "Sports Physiotherapist",
+    image: doctor4,
+  },
+  {
+    name: "Devika R S",
+    role: "Physiotherapist",
+    image: doctor5,
+  },
+  {
+    name: "Bhavika Advani",
+    role: "Sports Physiotherapist",
+    image: doctor1,
+  },
+  {
+    name: "Bhumika B Rai",
+    role: "Physiotherapist",
+    image: doctor2,
+  },
+  {
+    name: "Akash Kumar S",
+    role: "Physiotherapist",
+    image: doctor4,
+  },
+];
+
+/* =========================================================
+   WHITEFIELD
+========================================================= */
+
+const whitefieldTeam = [
+  {
+    name: "Shivani Vyas",
+    role: "Sports Physiotherapist",
+    image: doctor1,
+  },
+  {
+    name: "Karthik A",
+    role: "Sports Physiotherapist",
+    image: doctor2,
+  },
+  {
+    name: "Tanushka Acharya",
+    role: "Physiotherapist",
+    image: doctor4,
+  },
+  {
+    name: "Imthiyaz Ibrahim",
+    role: "Sports Physiotherapist",
+    image: doctor5,
+  },
+  {
+    name: "Smriti Srivastava",
+    role: "Sports Physiotherapist",
+    image: doctor1,
+  },
+];
+
+/* =========================================================
+   ADMIN
+========================================================= */
+
+const adminTeam = [
+  {
+    name: "Sumalatha SP",
+    role: "Head Admin",
+    image: doctor4,
+  },
+  {
+    name: "Shuaib",
+    role: "Admin Ulsoor",
+    image: doctor2,
+  },
+  {
+    name: "Pavithra",
+    role: "Admin Koramangala",
+    image: doctor1,
+  },
+];
+
+/* =========================================================
+   FOUNDER
+========================================================= */
+
+const founders = [
+  {
+    name: "Somya Rout",
+    role: "Founder",
+    image: doctor5,
+    education:
+      "Bachelors in Physiotherapy. Post-Graduation in Clinical Research. Fellowship in Sports Sciences (Apollo Hospitals). Certification in Asian Football Sports Physiotherapy course (ASPETAR, Qatar). Certificate in Manual Therapy (MTFI). Certified Strength and Conditioning Trainer (Exercise and Sport Sciences International Consultancy). Certification in Cranial, Spinal Osteopathy (European Union). Member of Indian Association of Physiotherapists. Certificate Physiotherapy course in Marathon Running.",
+    experience:
+      "Former Head Physiotherapist for a Ranji Cricket Team and Academy. Former Head Physiotherapist for U19 and U17 Indian football team. Former Physiotherapist for a national player, Vietnam Tennis Open. Former Head Physiotherapist at Sports Authority of Gujarat. Somya worked closely with cricketer Michael Bevan from 2011-12. He was also a part of the physio team for the Asian Football Qualifiers in Kuwait and Asian football championship in Malaysia.",
+    currently:
+      "Founded STAIRS Physiotherapy and Fitness Centre (Ulsoor and Koramangala, Bangalore) in 2019.",
+  },
+  {
+    name: "Harinag S P",
+    role: "Co-Founder",
+    image: doctor4,
+    education:
+      "Harinag S P is one of the co-founders of Stairs and is also one of the strength and conditioning coaches at Stairs. He did his Bachelor's of Engineering in Civil Engineering.",
+    experience:
+      "He is a sports enthusiast since childhood, loves running, football and badminton and holds a black belt in Karate and won various state and national level tournaments. Expertized in Functional training and Plyometrics and has also been practicing Olympic lifting for many years. Loves to explore different forms of training and is creative and fun with training programs.",
+    currently:
+      "Apart from loving everything related to sports, Hari loves to meet new people and learn new skills. In his leisure time, he loves to challenge himself and takes up different fitness challenges.",
+  },
+];
+
+/* =========================================================
+   ANIMATION
+========================================================= */
 
 const reveal = {
   hidden: {
     opacity: 0,
-    y: 28,
+    y: 26,
   },
+
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.7,
+      duration: 0.65,
       ease: [0.22, 1, 0.36, 1],
     },
   },
@@ -61,222 +376,304 @@ const reveal = {
 
 const stagger = {
   hidden: {},
+
   visible: {
     transition: {
-      staggerChildren: 0.08,
+      staggerChildren: 0.055,
     },
   },
 };
 
+/* =========================================================
+   MEMBER CARD
+========================================================= */
+
+function MemberCard({ member, index }) {
+  return (
+    <motion.article
+      className="team-member-card-new"
+      variants={reveal}
+      whileHover={{
+        y: -7,
+      }}
+    >
+      <div className="team-member-photo-new">
+
+        <img
+          src={member.image}
+          alt={member.name}
+        />
+
+        <div className="team-member-photo-overlay-new" />
+
+        <span className="team-member-index-new">
+          {String(index + 1).padStart(2, "0")}
+        </span>
+
+      </div>
+
+      <div className="team-member-info-new">
+
+        <div className="team-member-red-line" />
+
+        <h3>
+          {member.name}
+        </h3>
+
+        <p>
+          {member.role}
+        </p>
+
+        <button
+          type="button"
+          className="team-read-more-new"
+        >
+          Read More
+          <FiArrowUpRight />
+        </button>
+
+      </div>
+    </motion.article>
+  );
+}
+
+/* =========================================================
+   TEAM SECTION
+========================================================= */
+
+function TeamSection({
+  id,
+  title,
+  members,
+}) {
+  return (
+    <section
+      id={id}
+      className="team-group-new"
+    >
+      <motion.div
+        className="team-group-title-new"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{
+          once: true,
+          amount: 0.15,
+        }}
+        variants={reveal}
+      >
+        <span>STAIRS TEAM</span>
+
+        <h2>
+          {title}
+        </h2>
+      </motion.div>
+
+      <motion.div
+        className="team-member-grid-new"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{
+          once: true,
+          amount: 0.05,
+        }}
+        variants={stagger}
+      >
+        {members.map((member, index) => (
+          <MemberCard
+            key={member.name}
+            member={member}
+            index={index}
+          />
+        ))}
+      </motion.div>
+    </section>
+  );
+}
+
+/* =========================================================
+   PAGE
+========================================================= */
+
 export default function Team() {
   return (
-    <main className="team-page">
+    <main className="team-page-new">
 
-      {/* =========================================
+      {/* =====================================================
           HERO
-      ========================================= */}
+      ===================================================== */}
 
-      <section className="team-hero">
+      <section className="team-page-new-hero">
 
-        <div className="team-hero-grid" />
+  {/* Background Grid */}
+  <div className="team-page-new-hero-grid" />
 
-        <div className="team-hero-circle team-hero-circle-one" />
-        <div className="team-hero-circle team-hero-circle-two" />
+  {/* Decorative Orbits */}
+  <motion.div
+    className="team-page-new-orbit team-orbit-main"
+    animate={{
+      rotate: 360,
+    }}
+    transition={{
+      duration: 28,
+      repeat: Infinity,
+      ease: "linear",
+    }}
+  >
+    <span />
+  </motion.div>
 
-        <div className="team-container">
+  <motion.div
+    className="team-page-new-orbit team-orbit-small"
+    animate={{
+      rotate: -360,
+    }}
+    transition={{
+      duration: 18,
+      repeat: Infinity,
+      ease: "linear",
+    }}
+  >
+    <span />
+  </motion.div>
 
-          <div className="team-hero-layout">
+  <div className="team-page-new-hero-image">
+    <img
+      src={doctor5}
+      alt="PhysioCare team"
+    />
 
-            <motion.div
-              className="team-hero-copy"
-              initial="hidden"
-              animate="visible"
-              variants={stagger}
-            >
+    <div className="team-page-new-hero-image-overlay" />
+  </div>
 
-              <motion.div
-                className="team-tag"
-                variants={reveal}
-              >
-                OUR TEAM
-              </motion.div>
+  <div className="team-container-new">
 
-              <motion.h1 variants={reveal}>
-                Meet the people
-                <span>behind your progress.</span>
-              </motion.h1>
+    <div className="team-page-new-hero-content">
 
-              <motion.p variants={reveal}>
-                Good physiotherapy starts with listening, communication and
-                clinical reasoning. Our team combines professional expertise
-                with an understanding of your goals.
-              </motion.p>
+      <motion.div
+        className="team-new-eyebrow team-new-eyebrow-light"
+        initial={{
+          opacity: 0,
+          y: 20,
+        }}
+        animate={{
+          opacity: 1,
+          y: 0,
+        }}
+        transition={{
+          duration: 0.6,
+        }}
+      >
+        OUR PEOPLE
+      </motion.div>
 
-              <motion.div
-                className="team-hero-actions"
-                variants={reveal}
-              >
-                <Link
-                  to="/contact"
-                  className="team-primary-btn"
-                >
-                  Meet Us Through an Assessment
-                  <FiArrowUpRight />
-                </Link>
+      <motion.h1
+        initial={{
+          opacity: 0,
+          y: 35,
+        }}
+        animate={{
+          opacity: 1,
+          y: 0,
+        }}
+        transition={{
+          duration: 0.8,
+          delay: 0.08,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+      >
+        Meet the
+        <span>team.</span>
+      </motion.h1>
 
-                <Link
-                  to="/about"
-                  className="team-text-btn"
-                >
-                  Our approach
-                  <FiArrowUpRight />
-                </Link>
-              </motion.div>
+      <motion.p
+        initial={{
+          opacity: 0,
+          y: 25,
+        }}
+        animate={{
+          opacity: 1,
+          y: 0,
+        }}
+        transition={{
+          duration: 0.7,
+          delay: 0.18,
+        }}
+      >
+        Physiotherapists, strength and conditioning coaches,
+        sports scientists and the wider team working together
+        behind the care.
+      </motion.p>
 
-              <motion.div
-                className="team-hero-note"
-                variants={reveal}
-              >
-                <span />
-                <p>
-                  Clinical expertise matters. So does feeling understood.
-                </p>
-              </motion.div>
+      <motion.div
+        className="team-page-new-hero-meta"
+        initial={{
+          opacity: 0,
+          y: 20,
+        }}
+        animate={{
+          opacity: 1,
+          y: 0,
+        }}
+        transition={{
+          duration: 0.6,
+          delay: 0.3,
+        }}
+      >
 
-            </motion.div>
-
-            <motion.div
-              className="team-hero-visual"
-              initial={{
-                opacity: 0,
-                scale: 0.96,
-                x: 28,
-              }}
-              animate={{
-                opacity: 1,
-                scale: 1,
-                x: 0,
-              }}
-              transition={{
-                duration: 0.9,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-            >
-
-              <div className="team-hero-image">
-                <img
-                  src={doctor5}
-                  alt="Physiotherapy team working together"
-                />
-              </div>
-
-              <div className="team-hero-label">
-                <span>PEOPLE</span>
-                <strong>BEHIND THE CARE</strong>
-              </div>
-
-              <motion.div
-                className="team-hero-orbit"
-                animate={{
-                  rotate: 360,
-                }}
-                transition={{
-                  duration: 24,
-                  repeat: Infinity,
-                  ease: "linear",
-                }}
-              >
-                <span />
-              </motion.div>
-
-              <motion.div
-                className="team-floating-card"
-                animate={{
-                  y: [0, -7, 0],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              >
-                <div className="team-floating-icon">
-                  <FiUsers />
-                </div>
-
-                <div>
-                  <strong>One team</strong>
-                  <span>One shared goal</span>
-                </div>
-              </motion.div>
-
-              <div className="team-dot-pattern" />
-
-            </motion.div>
-
-          </div>
+        <div>
+          <strong>01</strong>
+          <span>PEOPLE</span>
         </div>
-      </section>
 
-      {/* =========================================
-          TEAM INTRO
-      ========================================= */}
+        <i />
 
-      <section className="team-intro-section">
+        <div>
+          <strong>04</strong>
+          <span>LOCATIONS</span>
+        </div>
 
-        <div className="team-container">
+        <i />
+
+        <div>
+          <strong>01</strong>
+          <span>SHARED GOAL</span>
+        </div>
+
+      </motion.div>
+
+    </div>
+
+  </div>
+
+  <div className="team-page-new-hero-scroll">
+    <span>SCROLL TO MEET THE TEAM</span>
+    <i />
+  </div>
+
+</section>
+
+      {/* =====================================================
+          MEET THE TEAM
+      ===================================================== */}
+
+      <section className="team-meet-section">
+
+        <div className="team-container-new">
 
           <motion.div
-            className="team-intro-layout"
+            className="team-main-title"
             initial="hidden"
             whileInView="visible"
             viewport={{
               once: true,
-              amount: 0.2,
             }}
-            variants={stagger}
+            variants={reveal}
           >
-
-            <motion.div
-              className="team-intro-copy"
-              variants={reveal}
-            >
-
-              <div className="team-tag">
-                THE PEOPLE YOU MEET
-              </div>
-
-              <h2>
-                Expertise should feel
-                <span>personal.</span>
-              </h2>
-
-            </motion.div>
-
-            <motion.p
-              className="team-intro-text"
-              variants={reveal}
-            >
-              From your first conversation to your final progression goal,
-              your experience is shaped by people who listen, think carefully
-              and communicate clearly.
-            </motion.p>
-
+            <span>MEET THE TEAM</span>
           </motion.div>
 
-        </div>
-      </section>
-
-      {/* =========================================
-          TEAM MEMBERS
-      ========================================= */}
-
-      <section className="team-members-section">
-
-        <div className="team-container">
-
           <motion.div
-            className="team-members-grid"
+            className="team-location-grid-new"
             initial="hidden"
             whileInView="visible"
             viewport={{
@@ -286,52 +683,229 @@ export default function Team() {
             variants={stagger}
           >
 
-            {team.map((member, index) => (
-              <motion.article
-                key={member.number}
-                className="team-member-card" 
+            {locations.map((location) => (
+              <motion.a
+                key={location.target}
+                href={`#${location.target}`}
+                className="team-location-card-new"
                 variants={reveal}
                 whileHover={{
-                  y: -9,
+                  y: -6,
                 }}
               >
 
-                <div className="team-member-image">
+                <img
+                  src={location.image}
+                  alt={location.title}
+                />
+
+                <div className="team-location-overlay-new" />
+
+                <div className="team-location-content-new">
+
+                  <span>
+                    <FiMapPin />
+                  </span>
+
+                  <h2>
+                    {location.title}
+                  </h2>
+
+                  <strong>
+                    Click here
+                    <FiArrowUpRight />
+                  </strong>
+
+                </div>
+
+              </motion.a>
+            ))}
+
+          </motion.div>
+
+        </div>
+      </section>
+
+      {/* =====================================================
+          ULSOOR
+      ===================================================== */}
+
+      <TeamSection
+        id="ulsoor"
+        title="Ulsoor Team"
+        members={ulsoorTeam}
+      />
+
+      {/* =====================================================
+          KORAMANGALA
+      ===================================================== */}
+
+      <TeamSection
+        id="koramangala"
+        title="Koramangala Team"
+        members={koramangalaTeam}
+      />
+
+      {/* =====================================================
+          INDIRANAGAR
+      ===================================================== */}
+
+      <TeamSection
+        id="indiranagar"
+        title="Indiranagar Team"
+        members={indiranagarTeam}
+      />
+
+      {/* =====================================================
+          WHITEFIELD
+      ===================================================== */}
+
+      <TeamSection
+        id="whitefield"
+        title="Whitefield Team"
+        members={whitefieldTeam}
+      />
+
+      {/* =====================================================
+          JOIN OUR TEAM
+      ===================================================== */}
+
+      <section className="team-join-new">
+
+        <div className="team-join-pattern" />
+
+        <div className="team-container-new">
+
+          <div className="team-join-layout">
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{
+                once: true,
+                amount: 0.2,
+              }}
+              variants={reveal}
+            >
+
+              <div className="team-new-eyebrow team-new-eyebrow-light">
+                CAREER
+              </div>
+
+              <h2>
+                JOIN OUR
+                <span>TEAM</span>
+              </h2>
+
+            </motion.div>
+
+            <motion.div
+              className="team-join-copy"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{
+                once: true,
+                amount: 0.2,
+              }}
+              variants={reveal}
+            >
+
+              <p>
+                There's always room for growth! Click the button
+                below to send your resumé.
+              </p>
+
+              <a
+                href="mailto:hr@stairsphysiotherapy.in?subject=Job Application"
+                className="team-join-btn"
+              >
+                Send Your CV
+                <FiArrowUpRight />
+              </a>
+
+              <span className="team-join-note">
+                The HR team will get back to you within 7-10
+                working days.
+              </span>
+
+            </motion.div>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* =====================================================
+          ADMIN TEAM
+      ===================================================== */}
+
+      <section
+        id="admin"
+        className="team-admin-new"
+      >
+
+        <div className="team-container-new">
+
+          <motion.div
+            className="team-red-heading-new"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{
+              once: true,
+            }}
+            variants={reveal}
+          >
+            ADMIN TEAM
+          </motion.div>
+
+          <motion.div
+            className="team-admin-list-new"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{
+              once: true,
+              amount: 0.08,
+            }}
+            variants={stagger}
+          >
+
+            {adminTeam.map((member) => (
+              <motion.article
+                key={member.name}
+                className="team-admin-card-new"
+                variants={reveal}
+              >
+
+                <div className="team-admin-photo-new">
 
                   <img
                     src={member.image}
                     alt={member.name}
                   />
 
-                  <div className="team-member-image-overlay" />
-
-                  <span className="team-member-number">
-                    {member.number}
-                  </span>
-
-                  <div className="team-member-role">
-                    {member.role}
-                  </div>
-
                 </div>
 
-                <div className="team-member-content">
+                <div className="team-admin-content-new">
 
-                  <h3>{member.name}</h3>
+                  <span>
+                    ADMINISTRATION
+                  </span>
 
-                  <p className="team-member-qualification">
-                    {member.qualification}
+                  <h3>
+                    {member.name}
+                  </h3>
+
+                  <p>
+                    {member.role}
                   </p>
 
-                  <div className="team-member-focus">
-                    <span>AREA OF FOCUS</span>
-                    <strong>{member.focus}</strong>
-                  </div>
-
-                  <div className="team-member-bottom">
-                    <span>CLINICAL PROFILE</span>
+                  <button
+                    type="button"
+                    className="team-read-more-new"
+                  >
+                    Read More
                     <FiArrowUpRight />
-                  </div>
+                  </button>
 
                 </div>
 
@@ -343,297 +917,162 @@ export default function Team() {
         </div>
       </section>
 
-      {/* =========================================
-          PROFESSIONAL STANDARDS
-      ========================================= */}
+      {/* =====================================================
+          FOUNDERS
+      ===================================================== */}
 
-      <section className="team-standards-section">
+      <section
+        id="founders"
+        className="team-founders-new"
+      >
 
-        <div className="team-standards-shape team-standards-shape-one" />
-        <div className="team-standards-shape team-standards-shape-two" />
+        <div className="team-container-new">
 
-        <div className="team-container">
+          <motion.div
+            className="team-red-heading-new"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{
+              once: true,
+            }}
+            variants={reveal}
+          >
+            FOUNDERS
+          </motion.div>
 
-          <div className="team-standards-layout">
+          <div className="team-founder-list-new">
 
-            <motion.div
-              className="team-standards-copy"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{
-                once: true,
-                amount: 0.2,
-              }}
-              variants={stagger}
-            >
-
-              <motion.div
-                className="team-tag"
-                variants={reveal}
-              >
-                PROFESSIONAL STANDARDS
-              </motion.div>
-
-              <motion.h2 variants={reveal}>
-                Expertise should be
-                <span>clear and verifiable.</span>
-              </motion.h2>
-
-              <motion.p variants={reveal}>
-                Qualifications, experience and areas of practice should never
-                feel hidden. They form part of the trust between clinician and
-                patient.
-              </motion.p>
-
-              <motion.div
-                className="team-standard-points"
-                variants={stagger}
-              >
-
-                <motion.div
-                  className="team-standard-point"
-                  variants={reveal}
-                >
-                  <span>
-                    <FiAward />
-                  </span>
-
-                  <div>
-                    <strong>Qualifications</strong>
-                    <p>
-                      Display relevant degrees, registrations and verified
-                      certifications.
-                    </p>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  className="team-standard-point"
-                  variants={reveal}
-                >
-                  <span>
-                    <FiUser />
-                  </span>
-
-                  <div>
-                    <strong>Experience</strong>
-                    <p>
-                      Show the practical experience that shapes each
-                      clinician’s approach.
-                    </p>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  className="team-standard-point"
-                  variants={reveal}
-                >
-                  <span>
-                    <FiHeart />
-                  </span>
-
-                  <div>
-                    <strong>Patient centred care</strong>
-                    <p>
-                      Different expertise comes together around one shared
-                      goal: meaningful patient progress.
-                    </p>
-                  </div>
-                </motion.div>
-
-              </motion.div>
-
-            </motion.div>
-
-            <motion.div
-              className="team-standards-visual"
-              initial={{
-                opacity: 0,
-                x: 35,
-              }}
-              whileInView={{
-                opacity: 1,
-                x: 0,
-              }}
-              viewport={{
-                once: true,
-                amount: 0.18,
-              }}
-              transition={{
-                duration: 0.75,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-            >
-
-              <div className="team-standards-image">
-                <img
-                  src={doctor4}
-                  alt="Physiotherapist consulting with a patient"
-                />
-              </div>
-
-              <motion.div
-                className="team-standards-card"
-                animate={{
-                  y: [0, -6, 0],
+            {founders.map((founder, index) => (
+              <motion.article
+                key={founder.name}
+                className="team-founder-new-card"
+                initial={{
+                  opacity: 0,
+                  y: 35,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                viewport={{
+                  once: true,
+                  amount: 0.12,
                 }}
                 transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
+                  duration: 0.75,
+                  delay: index * 0.08,
                 }}
               >
-                <div className="team-standards-card-icon">
-                  <FiCheck />
+
+                <div className="team-founder-new-image">
+
+                  <img
+                    src={founder.image}
+                    alt={founder.name}
+                  />
+
                 </div>
 
-                <div>
-                  <span>THE STANDARD</span>
-                  <strong>
-                    Skill with genuine attention.
-                  </strong>
+                <div className="team-founder-new-content">
+
+                  <div className="team-founder-role">
+                    {founder.role}
+                  </div>
+
+                  <h2>
+                    {founder.name}
+                  </h2>
+
+                  <div className="team-founder-line" />
+
+                  <div className="team-founder-block">
+
+                    <strong>
+                      EDUCATION AND QUALIFICATIONS
+                    </strong>
+
+                    <p>
+                      {founder.education}
+                    </p>
+
+                  </div>
+
+                  <div className="team-founder-block">
+
+                    <strong>
+                      WORK EXPERIENCE
+                    </strong>
+
+                    <p>
+                      {founder.experience}
+                    </p>
+
+                  </div>
+
+                  <div className="team-founder-block">
+
+                    <strong>
+                      CURRENTLY
+                    </strong>
+
+                    <p>
+                      {founder.currently}
+                    </p>
+
+                  </div>
+
                 </div>
-              </motion.div>
 
-              <motion.div
-                className="team-standards-orbit"
-                animate={{
-                  rotate: 360,
-                }}
-                transition={{
-                  duration: 22,
-                  repeat: Infinity,
-                  ease: "linear",
-                }}
-              >
-                <span />
-              </motion.div>
-
-            </motion.div>
+              </motion.article>
+            ))}
 
           </div>
 
         </div>
       </section>
 
-      {/* =========================================
-          TEAM PHILOSOPHY
-      ========================================= */}
-
-      <section className="team-philosophy">
-
-        <div className="team-philosophy-grid" />
-
-        <motion.div
-          className="team-philosophy-circle"
-          animate={{
-            rotate: 360,
-          }}
-          transition={{
-            duration: 28,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-        />
-
-        <div className="team-container">
-
-          <motion.div
-            className="team-philosophy-content"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{
-              once: true,
-              amount: 0.22,
-            }}
-            variants={stagger}
-          >
-
-            <motion.div
-              className="team-light-tag"
-              variants={reveal}
-            >
-              OUR SHARED PHILOSOPHY
-            </motion.div>
-
-            <motion.h2 variants={reveal}>
-              Different expertise.
-              <span>One direction.</span>
-            </motion.h2>
-
-            <motion.p variants={reveal}>
-              Every clinician brings different knowledge and experience, but
-              the goal stays the same: helping you understand your body, move
-              with confidence and make meaningful progress.
-            </motion.p>
-
-          </motion.div>
-
-        </div>
-      </section>
-
-      {/* =========================================
+      {/* =====================================================
           FINAL CTA
-      ========================================= */}
+      ===================================================== */}
 
-      <section className="team-final">
+      <section className="team-final-new">
 
-        <div className="team-final-image">
-          <img
-            src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1800&q=90"
-            alt="Physiotherapy team"
-          />
-        </div>
+        <div className="team-final-new-grid" />
 
-        <div className="team-final-overlay" />
-        <div className="team-final-pattern" />
-
-        <motion.div
-          className="team-final-circle"
-          animate={{
-            rotate: 360,
-          }}
-          transition={{
-            duration: 30,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-        />
-
-        <div className="team-container">
+        <div className="team-container-new">
 
           <motion.div
-            className="team-final-content"
+            className="team-final-new-content"
             initial="hidden"
             whileInView="visible"
             viewport={{
               once: true,
-              amount: 0.25,
+              amount: 0.2,
             }}
             variants={stagger}
           >
 
             <motion.div
-              className="team-light-tag"
+              className="team-new-eyebrow team-new-eyebrow-light"
               variants={reveal}
             >
               YOUR NEXT STEP
             </motion.div>
 
-            <h2 >
-              The right care starts
-              <span>with the right conversation.</span>
-            </h2>
+            <motion.h2 variants={reveal}>
+              The right care
+              <span>starts with people.</span>
+            </motion.h2>
 
             <motion.p variants={reveal}>
-              Meet the team through an assessment and start with a plan built
-              around your goals.
+              Get to know the people behind the care and start
+              your journey with the right team.
             </motion.p>
 
             <motion.div variants={reveal}>
               <Link
                 to="/contact"
-                className="team-final-btn"
+                className="team-final-new-btn"
               >
                 Book Your Assessment
                 <FiArrowUpRight />
@@ -643,7 +1082,6 @@ export default function Team() {
           </motion.div>
 
         </div>
-
       </section>
 
     </main>

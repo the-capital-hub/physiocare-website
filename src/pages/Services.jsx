@@ -234,62 +234,81 @@ export default function Services() {
 
           </motion.div>
 
-          <motion.div
-            className="services-grid"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{
-              once: true,
-              amount: 0.08,
-            }}
-            variants={stagger}
-          >
+         <motion.div
+  className="services-grid"
+  initial="hidden"
+  whileInView="visible"
+  viewport={{
+    once: true,
+    amount: 0.08,
+  }}
+  variants={stagger}
+>
+  {services.map((service, index) => {
+    const Icon = service.icon;
 
-            {services.map((service, index) => {
-              const Icon = service.icon;
+    return (
+      <motion.article
+        key={service.number || index}
+        className="services-card"
+        variants={reveal}
+        whileHover={{
+          y: -8,
+        }}
+      >
+        {/* Background Image */}
+        <div className="services-card-image">
+          <img
+            src={service.image}
+            alt={service.title}
+          />
+        </div>
 
-              return (
-                <motion.article
-                  key={service.number || index}
-                  className="services-card"
-                  
-                  variants={reveal}
-                  whileHover={{
-                    y: -8,
-                  }}
-                >
+        {/* Dark overlay */}
+        <div className="services-card-overlay" />
 
-                  <div className="services-card-top">
-                    <span className="services-card-number">
-                      {service.number}
-                    </span>
+        {/* Red glow */}
+        <div className="services-card-glow" />
 
-                    <motion.div
-                      className="services-card-icon"
-                      whileHover={{
-                        rotate: 8,
-                        scale: 1.08,
-                      }}
-                    >
-                      <Icon />
-                    </motion.div>
-                  </div>
+        <div className="services-card-inner">
 
-                  <div className="services-card-content">
-                    <h3>{service.title}</h3>
-                    <p>{service.text}</p>
-                  </div>
+          <div className="services-card-top">
+            <span className="services-card-number">
+              {service.number}
+            </span>
 
-                  <div className="services-card-bottom">
-                    <span>EXPLORE</span>
-                    <FiArrowUpRight />
-                  </div>
+            <motion.div
+              className="services-card-icon"
+              whileHover={{
+                rotate: 8,
+                scale: 1.08,
+              }}
+            >
+              <Icon />
+            </motion.div>
+          </div>
 
-                </motion.article>
-              );
-            })}
+          <div className="services-card-content">
+            <span className="services-card-label">
+              PHYSIOCARE
+            </span>
 
-          </motion.div>
+            <p style={{color:"red", fontSize:"20px", fontWeight:"600"}}>{service.title}</p>
+
+            <p>{service.text}</p>
+          </div>
+
+          <div className="services-card-bottom">
+            <span>EXPLORE SERVICE</span>
+
+            <FiArrowUpRight />
+          </div>
+
+        </div>
+      </motion.article>
+    );
+  })}
+</motion.div>
 
         </div>
       </section>
