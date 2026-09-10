@@ -20,32 +20,32 @@ import "./Team.css";
 const locations = [
   {
     title: "Team Ulsoor",
-    image: doctor5,
+    image: "https://static.wixstatic.com/media/9c90f2_168477602b644cb9a5fd961958170594~mv2.jpg/v1/fill/w_613,h_315,al_t,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/9c90f2_168477602b644cb9a5fd961958170594~mv2.jpg",
     target: "ulsoor",
   },
   {
     title: "Team Koramangala",
-    image: doctor4,
+    image: "https://static.wixstatic.com/media/9c90f2_3b81dfbc3af145e7b22dbc32487d9239~mv2.jpg/v1/fill/w_613,h_315,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/9c90f2_3b81dfbc3af145e7b22dbc32487d9239~mv2.jpg",
     target: "koramangala",
   },
   {
     title: "Team Indiranagar",
-    image: doctor1,
+    image: "https://static.wixstatic.com/media/9c90f2_67d52bd68f6e44c793606813e04db906~mv2.jpg/v1/fill/w_613,h_315,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/9c90f2_67d52bd68f6e44c793606813e04db906~mv2.jpg",
     target: "indiranagar",
   },
   {
     title: "Team Whitefield",
-    image: doctor2,
+    image: "https://static.wixstatic.com/media/9c90f2_9ebc53e6934f41acac9a9b92e29a1b4c~mv2.jpg/v1/fill/w_613,h_315,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/9c90f2_9ebc53e6934f41acac9a9b92e29a1b4c~mv2.jpg",
     target: "whitefield",
   },
   {
     title: "Team Admin",
-    image: doctor4,
+    image: "https://static.wixstatic.com/media/9c90f2_905b79d8c8984949843447153e0ff037~mv2.jpg/v1/fill/w_613,h_315,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/9c90f2_905b79d8c8984949843447153e0ff037~mv2.jpg",
     target: "admin",
   },
   {
     title: "Meet our Founders",
-    image: doctor5,
+    image: "https://static.wixstatic.com/media/9c90f2_101423fd3692419983b39fa2d3d604b7~mv2.png/v1/fill/w_613,h_315,al_t,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/9c90f2_101423fd3692419983b39fa2d3d604b7~mv2.png",
     target: "founders",
   },
 ];
@@ -58,7 +58,12 @@ const ulsoorTeam = [
   {
     name: "Akshata Koli",
     role: "Sports Physiotherapist",
-    image: doctor1,
+    image: "https://static.wixstatic.com/media/9c90f2_d79421078b6c46a680c1e79739222804~mv2.jpg/v1/fill/w_346,h_429,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Image-empty-state.jpg",
+  },
+  {
+    name: "Rohan Charles",
+    role: "Strength & Conditioning Coach",
+    image: "https://static.wixstatic.com/media/9c90f2_3c6d315801d64195a51604768f289aac~mv2.jpg/v1/fill/w_346,h_429,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Image-empty-state.jpg",
   },
   {
     name: "Aadhav Panchu Thomas",
@@ -66,15 +71,21 @@ const ulsoorTeam = [
     image: doctor2,
   },
   {
+    name: "Riti Shetty",
+    role: "Sports Physiotherapist",
+    image: "https://static.wixstatic.com/media/9c90f2_cf8dfcc2606d428eb0dc58d24e558e1c~mv2.jpg/v1/fill/w_346,h_429,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Image-empty-state.jpg",
+  },
+  {
+    name: "Soumya Gowda",
+    role: "Strength & Conditioning Coach",
+    image: "https://static.wixstatic.com/media/9c90f2_12af576b5d8c49c7a26375c993f50997~mv2.jpg/v1/fill/w_346,h_429,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Image-empty-state.jpg",
+  },
+  {
     name: "Srijanya Rajesh",
     role: "Physiotherapist",
     image: doctor4,
   },
-  {
-    name: "Rohan Charles",
-    role: "Strength & Conditioning Coach",
-    image: doctor5,
-  },
+  
   {
     name: "Chaitra",
     role: "Sports Scientist",
@@ -85,11 +96,7 @@ const ulsoorTeam = [
     role: "Physiotherapist",
     image: doctor2,
   },
-  {
-    name: "Riti Shetty",
-    role: "Sports Physiotherapist",
-    image: doctor4,
-  },
+  
   {
     name: "Gautam Satish",
     role: "Physiotherapist",
@@ -100,11 +107,7 @@ const ulsoorTeam = [
     role: "Sports Scientist",
     image: doctor1,
   },
-  {
-    name: "Soumya Gowda",
-    role: "Strength & Conditioning Coach",
-    image: doctor2,
-  },
+  
   {
     name: "Soumya SK",
     role: "Physiotherapist",
@@ -120,12 +123,27 @@ const koramangalaTeam = [
   {
     name: "Gagan Gowda",
     role: "Strength and Conditioning Coach",
-    image: doctor1,
+    image: "https://static.wixstatic.com/media/9c90f2_4277b17d54c445d48885cd5d493d8280~mv2.jpg/v1/fill/w_349,h_420,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Image-empty-state.jpg",
   },
   {
     name: "Sairam M",
     role: "Sports Physiotherapist",
-    image: doctor2,
+    image: "https://static.wixstatic.com/media/9c90f2_1b05c88f8c6d4c5d80eba5d84d7371d5~mv2.jpg/v1/fill/w_349,h_420,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Image-empty-state.jpg",
+  },
+  {
+    name: "Martin Thomas",
+    role: "Strength and Conditioning Coach",
+    image: "https://static.wixstatic.com/media/9c90f2_9877ab031a164139afb5a941b67c9c8f~mv2.png/v1/fill/w_349,h_420,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Image-empty-state.png",
+  },
+  {
+    name: "Niha",
+    role: "Sports Physiotherapist",
+    image: "https://static.wixstatic.com/media/9c90f2_38a1b6731e0c40f4a17b771881e10c29~mv2.jpg/v1/fill/w_349,h_420,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Image-empty-state.jpg",
+  },
+  {
+    name: "Sindhura Udupa",
+    role: "Sports Physiotherapist",
+    image: "https://static.wixstatic.com/media/9c90f2_031cecc9867e4491ad2d02d0ea5375d0~mv2.jpg/v1/fill/w_349,h_420,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Image-empty-state.jpg",
   },
   {
     name: "Bijoy Joseph Bastian",
@@ -142,11 +160,7 @@ const koramangalaTeam = [
     role: "Physiotherapist",
     image: doctor1,
   },
-  {
-    name: "Martin Thomas",
-    role: "Strength and Conditioning Coach",
-    image: doctor2,
-  },
+  
   {
     name: "Aadhithya N R",
     role: "Strength and Conditioning Coach",
@@ -167,11 +181,7 @@ const koramangalaTeam = [
     role: "Physiotherapist",
     image: doctor2,
   },
-  {
-    name: "Niha",
-    role: "Sports Physiotherapist",
-    image: doctor4,
-  },
+  
   {
     name: "Aashutosh Karna",
     role: "Orthopaedic Physiotherapist",
@@ -187,11 +197,7 @@ const koramangalaTeam = [
     role: "Physiotherapist",
     image: doctor2,
   },
-  {
-    name: "Sindhura Udupa",
-    role: "Sports Physiotherapist",
-    image: doctor4,
-  },
+  
   {
     name: "Achintya P R",
     role: "Physiotherapist",
@@ -217,12 +223,22 @@ const indiranagarTeam = [
   {
     name: "Niketh Madhu",
     role: "Sports Physiotherapist",
-    image: doctor1,
+    image: "https://static.wixstatic.com/media/9c90f2_38ffdf7767994ccfb80911bdb898a098~mv2.jpg/v1/fill/w_349,h_356,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Image-empty-state.jpg",
   },
   {
     name: "Varsha Gowda",
     role: "Strength & Conditioning Coach",
-    image: doctor2,
+    image: "https://static.wixstatic.com/media/9c90f2_cf4a84dda610445fb4a3f114489f6736~mv2.jpg/v1/fill/w_349,h_356,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Image-empty-state.jpg",
+  },
+  {
+    name: "Manoj Prasath",
+    role: "Sports Physiotherapist",
+    image: "https://static.wixstatic.com/media/9c90f2_111037e0d0254d68b5cbc68983c647d9~mv2.jpg/v1/fill/w_349,h_356,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Image-empty-state.jpg",
+  },
+  {
+    name: "Bhavika Advani",
+    role: "Sports Physiotherapist",
+    image: "https://static.wixstatic.com/media/9c90f2_1adcd708dfce47c682d4d0d9aa4b7c63~mv2.jpg/v1/fill/w_349,h_356,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Image-empty-state.jpg",
   },
   {
     name: "Jayani",
@@ -234,11 +250,7 @@ const indiranagarTeam = [
     role: "Physiotherapist",
     image: doctor5,
   },
-  {
-    name: "Manoj Prasath",
-    role: "Sports Physiotherapist",
-    image: doctor1,
-  },
+  
   {
     name: "Nithya Shree N",
     role: "Physiotherapist",
@@ -254,11 +266,7 @@ const indiranagarTeam = [
     role: "Physiotherapist",
     image: doctor5,
   },
-  {
-    name: "Bhavika Advani",
-    role: "Sports Physiotherapist",
-    image: doctor1,
-  },
+  
   {
     name: "Bhumika B Rai",
     role: "Physiotherapist",
