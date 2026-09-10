@@ -100,8 +100,8 @@
 
   color: var(--black);
 
-  font-size:
-    clamp(46px, 5vw, 70px);
+  
+  font-size: clamp(57px, 6.2vw, 86px);
 
   font-weight: 850;
 
@@ -440,8 +440,8 @@
 
   color: #fff;
 
-  font-size:
-    clamp(76px, 9vw, 128px);
+  font-size: clamp(57px, 6.2vw, 86px);
+
 
   font-weight: 900;
 

@@ -38,6 +38,49 @@ const images = {
     home5,
 };
 
+
+const testimonials = [
+  {
+    name: "Sanjay Rajpal",
+    role: "Businessman",
+    rating: "4.8",
+    image: "https://static.wixstatic.com/media/9c90f2_bcd35b26d5524861b606fd8efecbb942~mv2.jpg/v1/crop/x_206,y_45,w_745,h_745/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/image_6487327_JPG.jpg",
+    text: "Stairs is God-sent for me. Absolutely awesome team and time at Stairs. Just can’t wait for my next session every single time. You guys make it so interesting and work towards the need and goal of the client, that ensures I skip my work but not my workout. Keep rocking TEAM STAIRS!",
+  },
+
+  {
+    name: "Rukmini Vijayakumar",
+    role: "Actor, Dancer",
+    rating: "4.8",
+    image: "https://static.wixstatic.com/media/9c90f2_ba3eaf045775474395d6f456ec12a64c~mv2.jpg/v1/crop/x_0,y_0,w_752,h_752/fill/w_400,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/a491be49038ea60c4f56b6d91be01d53.jpg",
+    text: "I have personally grown to understand my body better because of Somya. There is a warm environment that the trainers and therapists foster that is conducive to progress. Every person working in Stairs is kind and helpful and I love the place! I highly recommend coming to Stairs!",
+  },
+
+  {
+    name: "Shreyas Karnad",
+    role: "Running Coach",
+    rating: "4.5",
+    image: "https://static.wixstatic.com/media/9c90f2_97ec8de28d8e41fd9d1aba071c0767dd~mv2.png/v1/crop/x_74,y_38,w_285,h_284/fill/w_399,h_397,al_c,lg_1,q_85,enc_avif,quality_auto/Screenshot%202023-01-31%20114209.png",
+    text: "I’m proud to have a coach like Somya Rout, the team he is building and someone to speak to and someone who listens to me especially when you are in a profession it’s the other way round all the time. To Coach & To Be Coached is a perfect balance of learning & teaching.",
+  },
+
+  {
+    name: "Pragathi Gupta",
+    role: "Runner",
+    rating: "4.8",
+    image: "https://static.wixstatic.com/media/9c90f2_e3ea7ebcf7d046c1b32d54b3c23bf80c~mv2.png/v1/fill/w_400,h_400,al_c,lg_1,q_85,enc_avif,quality_auto/Screenshot%202023-02-01%20124539.png",
+    text: "Stairs is like my second home. Entire team at Stairs is so diligent & proficient. They not only strengthen us but understand the needs of our sport & train us efficaciously such that we are able to pursue our goals.",
+  },
+
+  {
+    name: "Janani Ananithakumar",
+    role: "Athlete, Badminton (India)",
+    rating: "4.8",
+    image: "https://static.wixstatic.com/media/9c90f2_0b04d4eb20284e669e52919081f24314~mv2.jpg/v1/crop/x_179,y_184,w_244,h_245/fill/w_342,h_342,al_c,lg_1,q_80,enc_avif,quality_auto/328679113_1377475206125975_6512486517842574151_n.jpg",
+    text: "Stairs isn’t just a fitness space; it's a home. Grateful for dedicated trainers, physios, and supportive members ensuring peak performance. Thank you, Team Stairs, for fostering excellence and positivity.",
+  },
+];
+
 const conditions = [
   {
     number: "01",
@@ -694,7 +737,7 @@ export default function Home() {
               WHO WE HELP
             </motion.div>
 
-            <h2 >
+            <h2 variants={reveal}>
               Different goals.
               <span> One place to start.</span>
             </h2>
@@ -1055,70 +1098,178 @@ export default function Home() {
       </section>
 
       {/* FIRST VISIT */}
-      <section className="home-section home-first-visit">
+      {/* =====================================================
+    TESTIMONIALS
+===================================================== */}
 
-        <div className="home-container">
+<section className="home-testimonials">
 
-          <motion.div
-            className="home-centered-heading"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{
-              once: true,
-              amount: 0.2,
-            }}
-            variants={stagger}
-          >
-            <motion.div
-              className="home-tag home-tag-center"
-              variants={reveal}
-            >
-              YOUR FIRST VISIT
-            </motion.div>
+  {/* Decorative graphics */}
 
-            <motion.h2 variants={reveal}>
-              Know what happens
-              <span> before you arrive.</span>
-            </motion.h2>
-          </motion.div>
+  <div className="home-testimonials-grid" />
 
-          <motion.div
-            className="home-visit-grid"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{
-              once: true,
-              amount: 0.1,
-            }}
-            variants={stagger}
-          >
-            {visits.map(([number, title, text]) => (
-              <motion.div
-                className="home-visit-card"
-                key={number}
-                variants={reveal}
-                whileHover={{ y: -7 }}
-              >
-                <div className="home-visit-number">
-                  {number}
-                </div>
+  <div className="home-testimonials-orbit home-testimonials-orbit-one">
+    <span />
+  </div>
 
-                <div className="home-visit-icon">
-                  <FiPlus />
-                </div>
+  <div className="home-testimonials-orbit home-testimonials-orbit-two">
+    <span />
+  </div>
 
-                <h3>{title}</h3>
+  <div className="home-container">
 
-                <p>{text}</p>
+    {/* HEADER */}
 
-                <span className="home-visit-arrow">
-                  <FiArrowUpRight />
-                </span>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+    <motion.div
+      className="home-testimonials-header"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{
+        once: true,
+        amount: 0.2,
+      }}
+      variants={stagger}
+    >
+
+      <motion.div
+        className="home-light-tag"
+        variants={reveal}
+      >
+        REAL EXPERIENCES
+      </motion.div>
+
+      <motion.h2 variants={reveal}>
+        Real people.
+        <span>Real progress.</span>
+      </motion.h2>
+
+      <motion.p variants={reveal}>
+        What matters most is how people feel, move and return
+        to the things they love.
+      </motion.p>
+
+    </motion.div>
+
+    {/* TESTIMONIAL CARDS */}
+
+    <motion.div
+      className="home-testimonials-grid-cards"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{
+        once: true,
+        amount: 0.08,
+      }}
+      variants={stagger}
+    >
+
+      {testimonials.map((item, index) => (
+        <motion.article
+          key={item.name}
+          className="home-testimonial-card"
+          variants={reveal}
+          whileHover={{
+            y: -10,
+          }}
+        >
+
+          {/* top */}
+
+          <div className="home-testimonial-card-top">
+
+            <span className="home-testimonial-index">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+
+            <span className="home-testimonial-big-quote">
+              “
+            </span>
+
+          </div>
+
+          {/* profile */}
+
+          <div className="home-testimonial-profile">
+
+  <div className="home-testimonial-image">
+    <img
+      src={item.image}
+      alt={item.name}
+      loading="lazy"
+    />
+  </div>
+
+  <div className="home-testimonial-person">
+
+    <h3>{item.name}</h3>
+
+    <span>{item.role}</span>
+
+    <div className="home-testimonial-rating">
+      <strong>{item.rating}</strong>
+
+      <span className="rating-stars">
+        ★★★★★
+      </span>
+    </div>
+
+  </div>
+
+</div>
+
+          {/* review */}
+
+          <p className="home-testimonial-review">
+            {item.text}
+          </p>
+
+          {/* footer */}
+
+
+        </motion.article>
+      ))}
+
+    </motion.div>
+
+    {/* bottom statement */}
+
+    <motion.div
+      className="home-testimonials-bottom"
+      initial={{
+        opacity: 0,
+        y: 20,
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+      }}
+      viewport={{
+        once: true,
+      }}
+      transition={{
+        duration: 0.6,
+      }}
+    >
+
+      <div className="home-testimonials-bottom-line" />
+
+      <span>
+        TRUST IS BUILT ONE EXPERIENCE AT A TIME.
+      </span>
+
+      <FiArrowUpRight />
+
+    </motion.div>
+
+  </div>
+
+</section>
+
+
+
+
+
+
 
       {/* FINAL CTA */}
       <section className="home-final">

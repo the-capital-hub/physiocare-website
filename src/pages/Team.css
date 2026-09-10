@@ -304,8 +304,8 @@
 
   color: #fff;
 
-  font-size:
-    clamp(68px, 8.4vw, 120px);
+    font-size: clamp(57px, 6.2vw, 86px);
+
 
   font-weight: 900;
 
