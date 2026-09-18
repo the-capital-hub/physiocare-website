@@ -194,7 +194,7 @@ export default function Footer() {
             {/* CARE */}
             <div className="footer-column">
               <span className="footer-column-number">02</span>
-
+ 
               <h3>Care</h3>
 
               <nav className="footer-links">
@@ -221,7 +221,7 @@ export default function Footer() {
 
                   <span>
                     <small>CALL US</small>
-                    <strong>[Phone Number]</strong>
+                    <strong>91+ 8310331077</strong>
                   </span>
                 </a>
 
@@ -235,7 +235,7 @@ export default function Footer() {
 
                   <span>
                     <small>EMAIL US</small>
-                    <strong>[Email Address]</strong>
+                    <strong>info@stairsphysiotherapy.in</strong>
                   </span>
                 </a>
 
@@ -246,7 +246,13 @@ export default function Footer() {
 
                   <span>
                     <small>VISIT US</small>
-                    <strong>[Clinic Address]</strong>
+                    <strong>(Swaasthya Physiotherapy and Fitness)
+
+Sree Bywaweshwara arcade,3rd Floor,
+
+Nallurahalli Main Rd, near Spectra Palmwoods, Siddapura, Whitefield, Bengaluru - 560066
+
+</strong>
                   </span>
                 </div>
               </div>

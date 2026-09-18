@@ -17,6 +17,7 @@ const links = [
   ["Team", "/team"],
   ["Stories", "/patient-stories"],
   ["FAQs", "/faqs"],
+  ["Admin", "/admin"]
 ];
 
 const LOGO_URL =

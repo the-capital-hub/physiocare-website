@@ -172,99 +172,151 @@ export default function FitToRun() {
           HERO
       ===================================================== */}
 
-      <section className="fit-hero">
+     <section className="fit-hero">
 
-        <div className="fit-hero-image">
-          <img
-            src={images.hero}
-            alt="Runner training outdoors"
-          />
-        </div>
+  <div className="fit-hero-background">
+    <img
+      src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=2000&q=90"
+      alt=""
+    />
+  </div>
 
-        <div className="fit-hero-overlay" />
+  <div className="fit-hero-background-overlay" />
 
-        <div className="fit-hero-grid" />
+  <div className="fit-hero-decor fit-hero-decor-one" />
+  <div className="fit-hero-decor fit-hero-decor-two" />
+
+  <div className="fit-container">
+
+    <div className="fit-hero-layout">
+
+      {/* LEFT CONTENT */}
+
+      <motion.div
+        className="fit-hero-content"
+        initial="hidden"
+        animate="visible"
+        variants={stagger}
+      >
 
         <motion.div
-          className="fit-hero-orbit"
-          animate={{ rotate: 360 }}
-          transition={{
-            duration: 28,
-            repeat: Infinity,
-            ease: "linear",
-          }}
+          className="fit-hero-eyebrow"
+          variants={reveal}
         >
-          <span />
+          RUNNING PHYSIOTHERAPY PROGRAM
         </motion.div>
 
-        <div className="fit-container">
+        <motion.h1 variants={reveal}>
+          Fit to Run.
+          <span>Run stronger.</span>
+        </motion.h1>
 
-          <div className="fit-hero-content">
+        <motion.p
+          className="fit-hero-description"
+          variants={reveal}
+        >
+          A specialised approach to help runners build strength,
+          improve movement and run with greater confidence.
+        </motion.p>
 
-            <motion.div
-              className="fit-eyebrow fit-eyebrow-light"
-              initial="hidden"
-              animate="visible"
-              variants={reveal}
-            >
-              RUNNING PHYSIOTHERAPY PROGRAM
-            </motion.div>
+        <motion.div
+          className="fit-hero-actions"
+          variants={reveal}
+        >
 
-            <h1
-              initial="hidden"
-              animate="visible"
-              transition={{ delay: 0.08 }}
-              variants={reveal}
-            >
-              Fit to Run.
-              
-            </h1>
+          <Link
+            to="/contact"
+            className="fit-primary-btn"
+          >
+            Start Your Running Assessment
 
-            <motion.p
-              initial="hidden"
-              animate="visible"
-              transition={{ delay: 0.15 }}
-              variants={reveal}
-            >
-              Run stronger. Run smarter. Build the strength, control and
-              confidence your running needs.
-            </motion.p>
+            <span>
+              <FiArrowUpRight />
+            </span>
+          </Link>
 
-            <motion.div
-              className="fit-hero-actions"
-              initial="hidden"
-              animate="visible"
-              transition={{ delay: 0.22 }}
-              variants={reveal}
-            >
+          <a
+            href="#program"
+            className="fit-secondary-btn"
+          >
+            Explore the Program
+            <FiArrowUpRight />
+          </a>
 
-              <Link
-                to="/contact"
-                className="fit-primary-btn"
-              >
-                Start Your Running Assessment
+        </motion.div>
 
-                <span>
-                  <FiArrowUpRight />
-                </span>
-              </Link>
-
-              <a
-                href="#program"
-                className="fit-outline-btn"
-              >
-                Explore the Program
-                <FiArrowUpRight />
-              </a>
-
-            </motion.div>
-
+        <motion.div
+          className="fit-hero-meta"
+          variants={reveal}
+        >
+          <div>
+            <strong>01</strong>
+            <span>ASSESS</span>
           </div>
 
-          
+          <div>
+            <strong>02</strong>
+            <span>BUILD</span>
+          </div>
+
+          <div>
+            <strong>03</strong>
+            <span>PERFORM</span>
+          </div>
+        </motion.div>
+
+      </motion.div>
+
+
+      {/* RIGHT VIDEO */}
+
+      <motion.div
+        className="fit-hero-video-area"
+        initial={{
+          opacity: 0,
+          x: 35,
+        }}
+        animate={{
+          opacity: 1,
+          x: 0,
+        }}
+        transition={{
+          duration: 0.85,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+      >
+
+        <div className="fit-hero-video-frame">
+
+          <iframe
+            src="https://www.youtube.com/embed/Xk93TAvj_gA?rel=0&modestbranding=1"
+            title="Fit to Run"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          />
 
         </div>
-      </section>
+
+        <div className="fit-video-caption">
+
+          <div>
+            <span>FIT TO RUN</span>
+            <strong>Running. Movement. Performance.</strong>
+          </div>
+
+          <div className="fit-video-arrow">
+            <FiArrowUpRight />
+          </div>
+
+        </div>
+
+      </motion.div>
+
+    </div>
+
+  </div>
+
+</section>
 
       {/* =====================================================
           INTRO

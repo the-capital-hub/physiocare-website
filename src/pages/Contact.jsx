@@ -53,6 +53,9 @@ const stagger = {
 export default function Contact() {
   const handleSubmit = (event) => {
     event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const message = `Appointment request\nName: ${data.get("name")}\nPhone: ${data.get("phone")}\nEmail: ${data.get("email")}\nService: ${data.get("service")}\nDate: ${data.get("date")}\nTime: ${data.get("time")}\nConcern: ${data.get("concern")}`;
+    window.open(`https://wa.me/918884807132?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -511,6 +514,8 @@ export default function Contact() {
                   <label className="contact-field">
                     <span>Full Name</span>
                     <input
+                      name="name"
+                      required
                       type="text"
                       placeholder="Enter your name"
                     />
@@ -519,6 +524,8 @@ export default function Contact() {
                   <label className="contact-field">
                     <span>Phone</span>
                     <input
+                      name="phone"
+                      required
                       type="tel"
                       placeholder="Enter your phone"
                     />
@@ -527,6 +534,7 @@ export default function Contact() {
                   <label className="contact-field">
                     <span>Email</span>
                     <input
+                      name="email"
                       type="email"
                       placeholder="Enter your email"
                     />
@@ -535,7 +543,7 @@ export default function Contact() {
                   <label className="contact-field">
                     <span>Service</span>
 
-                    <select defaultValue="">
+                    <select name="service" required defaultValue="">
                       <option value="" disabled>
                         Choose a service
                       </option>
@@ -572,18 +580,19 @@ export default function Contact() {
 
                   <label className="contact-field">
                     <span>Preferred Date</span>
-                    <input type="date" />
+                    <input name="date" required type="date" />
                   </label>
 
                   <label className="contact-field">
                     <span>Preferred Time</span>
-                    <input type="time" />
+                    <input name="time" required type="time" />
                   </label>
 
                   <label className="contact-field contact-field-full">
                     <span>Goal or Concern</span>
 
                     <textarea
+                      name="concern"
                       rows="5"
                       placeholder="Tell us briefly what you would like help with"
                     />

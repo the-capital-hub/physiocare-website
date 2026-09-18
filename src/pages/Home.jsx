@@ -11,6 +11,7 @@ import {
   FiTarget,
   FiPlus,
   FiCompass,
+  FiUsers,
 } from "react-icons/fi";
 import "./Home.css";
 import home1 from '../assets/home1.jpg'
@@ -124,16 +125,30 @@ const services = [
   },
   {
     number: "03",
-    title: "Rehabilitation",
-    text: "Build strength, control and confidence through a clear recovery plan.",
+    title: "Strength & Conditioning",
+    text: "Progressive strength and conditioning designed to improve strength, power, endurance, mobility and physical capacity for everyday life, rehabilitation and performance.",
     icon: FiShield,
   },
   {
     number: "04",
-    title: "Strength and Conditioning",
-    text: "Train with purpose and build the capacity to perform at your best.",
+    title: "Myofascial Release",
+    text: "Targeted hands-on techniques to address soft-tissue restrictions, improve mobility and help your body move more freely as part of a broader rehabilitation or performance plan.",
     icon: FiTrendingUp,
   },
+  {
+      number: "05",
+      icon: FiTarget,
+      title: "Sports Specific Training",
+      text: "Training designed around the physical demands of your sport, combining strength, stability, movement control, power and conditioning to help you return and perform with confidence.",
+      
+    },
+    {
+        number: "06",
+        icon: FiUsers,
+        title: "Group Sessions",
+        text: "Coach-led sessions focused on building strength, mobility, endurance, stability and movement quality in a supportive training environment.",
+       
+      },
 ];
 
 const people = [
