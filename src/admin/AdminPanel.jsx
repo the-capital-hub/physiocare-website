@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import "./AdminPanel.css";
 
 const API = (
@@ -6,6 +7,9 @@ const API = (
 ).replace(/\/$/, "");
 
 const TOKEN_KEY = "physiocare_admin_token";
+
+const LOGO_URL =
+  "https://static.wixstatic.com/media/9c90f2_9440af6822a34176b24b34906c2a25bb~mv2.png";
 
 const navItems = [
   "Overview",
@@ -299,9 +303,11 @@ export default function AdminPanel() {
 
     setLoggedIn(false);
     setTab("Overview");
+
     setAppointments([]);
     setRecords([]);
     setSettings({});
+
     setEditing(null);
     setForm({});
   };
@@ -318,6 +324,7 @@ export default function AdminPanel() {
 
   const beginEdit = (record) => {
     setEditing(record._id);
+
     setForm({
       ...record,
     });
@@ -344,7 +351,10 @@ export default function AdminPanel() {
         delete payload.age;
       }
 
-      if (payload.rating !== undefined && payload.rating !== "") {
+      if (
+        payload.rating !== undefined &&
+        payload.rating !== ""
+      ) {
         payload.rating = Number(payload.rating);
       }
 
@@ -485,7 +495,10 @@ export default function AdminPanel() {
             }
           >
             {options?.map((option) => (
-              <option key={option} value={option}>
+              <option
+                key={option}
+                value={option}
+              >
                 {option}
               </option>
             ))}
@@ -538,13 +551,23 @@ export default function AdminPanel() {
   if (!loggedIn) {
     return (
       <div className="admin-login-page">
+
         <div className="login-art">
-          <div className="brand-mark">
-            P<span>+</span>
-          </div>
+
+          <Link
+            to="/"
+            className="admin-logo-link"
+            aria-label="Go to Stairs home"
+          >
+            <img
+              src={LOGO_URL}
+              alt="Stairs Physiotherapy and Fitness Logo"
+              className="admin-login-logo"
+            />
+          </Link>
 
           <p className="eyebrow">
-            PHYSIOCARE ADMIN
+            STAIRS ADMIN
           </p>
 
           <h1>
@@ -557,14 +580,16 @@ export default function AdminPanel() {
             Manage appointments, patients and clinic
             content in one secure workspace.
           </p>
+
         </div>
 
         <form
           className="login-card"
           onSubmit={login}
         >
+
           <div className="brand-word">
-            PHYSIO<span>CARE</span>
+            STAIRS
           </div>
 
           <p className="eyebrow">
@@ -613,32 +638,46 @@ export default function AdminPanel() {
           >
             Sign in →
           </button>
+
         </form>
+
       </div>
     );
   }
 
   return (
     <div className="admin-app">
+
       <aside
         className={`admin-sidebar ${
           mobile ? "open" : ""
         }`}
       >
-        <div className="sidebar-brand">
-          <div className="brand-mark">
-            P<span>+</span>
-          </div>
 
-          <div>
+        <div className="sidebar-brand">
+
+          <Link
+            to="/"
+            className="admin-logo-link"
+            aria-label="Go to Stairs home"
+          >
+            <img
+              src={LOGO_URL}
+              alt="Stairs Physiotherapy and Fitness Logo"
+              className="admin-sidebar-logo"
+            />
+          </Link>
+
+          <div className="sidebar-brand-copy">
             <strong>
-              PHYSIO<span>CARE</span>
+              STAIRS
             </strong>
 
             <small>
               Admin workspace
             </small>
           </div>
+
         </div>
 
         <nav>
@@ -647,7 +686,9 @@ export default function AdminPanel() {
               type="button"
               key={item}
               className={
-                tab === item ? "active" : ""
+                tab === item
+                  ? "active"
+                  : ""
               }
               onClick={() => {
                 setTab(item);
@@ -668,48 +709,64 @@ export default function AdminPanel() {
         >
           ↪ Log out
         </button>
+
       </aside>
 
       <main className="admin-content">
+
         <header className="topbar">
+
           <button
             type="button"
             className="mobile-toggle"
-            onClick={() => setMobile(!mobile)}
+            onClick={() =>
+              setMobile(!mobile)
+            }
           >
             ☰
           </button>
 
           <div>
+
             <p className="eyebrow">
               CLINIC CONTROL CENTER
             </p>
 
             <h1>{tab}</h1>
+
           </div>
 
           <span className="online-dot">
             ● Online
           </span>
+
         </header>
 
         {notice && (
           <div className="notice">
-            <span>{notice}</span>
+
+            <span>
+              {notice}
+            </span>
 
             <button
               type="button"
-              onClick={() => setNotice("")}
+              onClick={() =>
+                setNotice("")
+              }
             >
               ×
             </button>
+
           </div>
         )}
 
         {tab === "Overview" && (
           <>
             <section className="welcome-panel">
+
               <div>
+
                 <p className="eyebrow">
                   GOOD TO SEE YOU
                 </p>
@@ -722,6 +779,7 @@ export default function AdminPanel() {
                   Track daily operations and
                   patient interactions.
                 </p>
+
               </div>
 
               <button
@@ -733,9 +791,11 @@ export default function AdminPanel() {
               >
                 View appointments →
               </button>
+
             </section>
 
             <section className="stats-grid">
+
               {[
                 [
                   "Total appointments",
@@ -767,20 +827,27 @@ export default function AdminPanel() {
                   className="stat-card"
                   key={label}
                 >
+
                   <div className="stat-label">
                     {label}
                   </div>
 
-                  <strong>{value}</strong>
+                  <strong>
+                    {value}
+                  </strong>
+
                 </div>
               ))}
+
             </section>
           </>
         )}
 
         {tab === "Appointments" && (
           <section className="panel">
+
             <div className="panel-heading">
+
               <h3>
                 Appointment management
               </h3>
@@ -794,6 +861,7 @@ export default function AdminPanel() {
                   ? "Refreshing…"
                   : "↻ Refresh"}
               </button>
+
             </div>
 
             <input
@@ -806,7 +874,9 @@ export default function AdminPanel() {
             />
 
             <div className="table-wrap">
+
               <table>
+
                 <thead>
                   <tr>
                     <th>Patient</th>
@@ -817,8 +887,9 @@ export default function AdminPanel() {
                 </thead>
 
                 <tbody>
-                  {filteredAppointments.length ===
-                  0 ? (
+
+                  {filteredAppointments.length === 0 ? (
+
                     <tr>
                       <td
                         colSpan="4"
@@ -827,11 +898,15 @@ export default function AdminPanel() {
                         No appointments found.
                       </td>
                     </tr>
+
                   ) : (
+
                     filteredAppointments.map(
                       (item) => (
                         <tr key={item._id}>
+
                           <td>
+
                             <strong>
                               {item.name ||
                                 "Unknown patient"}
@@ -847,6 +922,7 @@ export default function AdminPanel() {
                                 {item.email}
                               </small>
                             )}
+
                           </td>
 
                           <td>
@@ -855,14 +931,17 @@ export default function AdminPanel() {
                           </td>
 
                           <td>
+
                             {item.date || "—"}
 
                             <small>
                               {item.time || ""}
                             </small>
+
                           </td>
 
                           <td>
+
                             <select
                               className="status-select"
                               value={
@@ -876,6 +955,7 @@ export default function AdminPanel() {
                                 )
                               }
                             >
+
                               {statuses.map(
                                 (status) => (
                                   <option
@@ -886,21 +966,31 @@ export default function AdminPanel() {
                                   </option>
                                 )
                               )}
+
                             </select>
+
                           </td>
+
                         </tr>
                       )
                     )
+
                   )}
+
                 </tbody>
+
               </table>
+
             </div>
+
           </section>
         )}
 
         {config && (
           <section className="panel">
+
             <div className="panel-heading">
+
               <h3>
                 {config.title} management
               </h3>
@@ -912,22 +1002,30 @@ export default function AdminPanel() {
               >
                 + Add new
               </button>
+
             </div>
 
             {editing !== null ||
             Object.keys(form).length > 0 ? (
+
               <form
                 className="record-form"
                 onSubmit={saveRecord}
               >
-                {config.fields.map(renderField)}
+
+                {config.fields.map(
+                  renderField
+                )}
 
                 <div className="form-actions">
+
                   <button
                     type="submit"
                     className="primary-button"
                   >
-                    {editing ? "Update" : "Save"}
+                    {editing
+                      ? "Update"
+                      : "Save"}
                   </button>
 
                   <button
@@ -937,11 +1035,17 @@ export default function AdminPanel() {
                   >
                     Cancel
                   </button>
+
                 </div>
+
               </form>
+
             ) : (
+
               <div className="table-wrap">
+
                 <table>
+
                   <thead>
                     <tr>
                       <th>
@@ -953,71 +1057,97 @@ export default function AdminPanel() {
                   </thead>
 
                   <tbody>
+
                     {records.length === 0 ? (
+
                       <tr>
+
                         <td
                           colSpan="3"
                           className="empty-state"
                         >
                           No records found.
                         </td>
+
                       </tr>
+
                     ) : (
-                      records.map((item) => (
-                        <tr key={item._id}>
-                          <td>
-                            <strong>
-                              {item.name ||
-                                item.question ||
-                                "Record"}
-                            </strong>
-                          </td>
 
-                          <td>
-                            {item.role ||
-                              item.description ||
-                              item.text ||
-                              item.answer ||
-                              item.condition ||
-                              "—"}
-                          </td>
+                      records.map(
+                        (item) => (
+                          <tr
+                            key={item._id}
+                          >
 
-                          <td>
-                            <button
-                              type="button"
-                              className="text-button"
-                              onClick={() =>
-                                beginEdit(item)
-                              }
-                            >
-                              Edit
-                            </button>
+                            <td>
 
-                            <button
-                              type="button"
-                              className="text-button danger"
-                              onClick={() =>
-                                deleteRecord(
-                                  item._id
-                                )
-                              }
-                            >
-                              Delete
-                            </button>
-                          </td>
-                        </tr>
-                      ))
+                              <strong>
+                                {item.name ||
+                                  item.question ||
+                                  "Record"}
+                              </strong>
+
+                            </td>
+
+                            <td>
+                              {item.role ||
+                                item.description ||
+                                item.text ||
+                                item.answer ||
+                                item.condition ||
+                                "—"}
+                            </td>
+
+                            <td>
+
+                              <button
+                                type="button"
+                                className="text-button"
+                                onClick={() =>
+                                  beginEdit(
+                                    item
+                                  )
+                                }
+                              >
+                                Edit
+                              </button>
+
+                              <button
+                                type="button"
+                                className="text-button danger"
+                                onClick={() =>
+                                  deleteRecord(
+                                    item._id
+                                  )
+                                }
+                              >
+                                Delete
+                              </button>
+
+                            </td>
+
+                          </tr>
+                        )
+                      )
+
                     )}
+
                   </tbody>
+
                 </table>
+
               </div>
+
             )}
+
           </section>
         )}
 
         {tab === "Settings" && (
           <section className="panel">
+
             <div className="panel-heading">
+
               <h3>
                 Clinic settings
               </h3>
@@ -1031,27 +1161,36 @@ export default function AdminPanel() {
                   ? "Refreshing…"
                   : "↻ Refresh"}
               </button>
+
             </div>
 
             <form
               className="record-form"
               onSubmit={saveSettings}
             >
-              {settingFields.map(([key, label]) => (
-                <label key={key}>
-                  {label}
 
-                  <input
-                    value={settings[key] ?? ""}
-                    onChange={(event) =>
-                      setSettings({
-                        ...settings,
-                        [key]: event.target.value,
-                      })
-                    }
-                  />
-                </label>
-              ))}
+              {settingFields.map(
+                ([key, label]) => (
+                  <label key={key}>
+
+                    {label}
+
+                    <input
+                      value={
+                        settings[key] ?? ""
+                      }
+                      onChange={(event) =>
+                        setSettings({
+                          ...settings,
+                          [key]:
+                            event.target.value,
+                        })
+                      }
+                    />
+
+                  </label>
+                )
+              )}
 
               <button
                 type="submit"
@@ -1059,10 +1198,14 @@ export default function AdminPanel() {
               >
                 Save settings
               </button>
+
             </form>
+
           </section>
         )}
+
       </main>
+
     </div>
   );
 }

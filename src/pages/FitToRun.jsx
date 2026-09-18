@@ -844,7 +844,7 @@ export default function FitToRun() {
             >
 
               <div className="fit-do-header">
-                <span>DO</span>
+                <span>DO's</span>
                 <FiCheck />
               </div>
 
@@ -1145,6 +1145,252 @@ export default function FitToRun() {
 </div>
         </div>
       </section>
+
+
+
+
+
+      {/* =========================================
+    FIT TO RUN COLLECTION
+========================================= */}
+
+<section className="fit-collection">
+
+  <div className="fit-collection-glow" />
+
+  <div className="fit-container">
+
+    <motion.div
+      className="fit-collection-header"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={stagger}
+    >
+
+      <motion.div
+        className="fit-collection-label"
+        variants={reveal}
+      >
+        FIT TO RUN COLLECTION
+      </motion.div>
+
+      <motion.h2 variants={reveal}>
+        Made for the
+        <span>running journey.</span>
+      </motion.h2>
+
+      <motion.p variants={reveal}>
+        Explore the Fit to Run collection created around the spirit
+        of movement and running.
+      </motion.p>
+
+    </motion.div>
+
+
+    <motion.div
+      className="fit-collection-grid"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.12 }}
+      variants={stagger}
+    >
+
+      {/* PRODUCT 01 */}
+
+      <motion.article
+        className="fit-collection-card"
+        variants={reveal}
+        whileHover={{ y: -10 }}
+      >
+
+        <a
+          href="https://www.stairsphysiotherapy.in/product-page/fit-to-run-tshirt"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="fit-collection-image"
+        >
+
+          <span className="fit-collection-number">
+            01
+          </span>
+
+          <img
+            src="https://static.wixstatic.com/media/9c90f2_b65ce4c05ed14888b38fe24cb066e7fb~mv2.png/v1/fit/w_1200,h_900,q_90/file.png"
+            alt="Fit to Run Tshirt"
+          />
+
+          <span className="fit-collection-image-arrow">
+            <FiArrowUpRight />
+          </span>
+
+        </a>
+
+        <div className="fit-collection-info">
+
+          <div className="fit-collection-meta">
+            <span>FIT TO RUN</span>
+            <strong>₹700</strong>
+          </div>
+
+          <h3>
+            Fit to Run Tshirt
+          </h3>
+
+          <a
+            href="https://www.stairsphysiotherapy.in/product-page/fit-to-run-tshirt"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="fit-collection-link"
+          >
+            View Product
+            <FiArrowUpRight />
+          </a>
+
+        </div>
+
+      </motion.article>
+
+
+      {/* PRODUCT 02 */}
+
+      <motion.article
+        className="fit-collection-card"
+        variants={reveal}
+        whileHover={{ y: -10 }}
+      >
+
+        <a
+          href="https://www.stairsphysiotherapy.in/product-page/fit-to-run-purple-tshirt"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="fit-collection-image"
+        >
+
+          <span className="fit-collection-number">
+            02
+          </span>
+
+          <img
+            src="https://static.wixstatic.com/media/9c90f2_bed55035a6dd489eba8fa5ef02ee2273~mv2.png/v1/fit/w_1200,h_900,q_90/file.png"
+            alt="Fit to Run Purple Tshirt"
+          />
+
+          <span className="fit-collection-image-arrow">
+            <FiArrowUpRight />
+          </span>
+
+        </a>
+
+        <div className="fit-collection-info">
+
+          <div className="fit-collection-meta">
+            <span>FIT TO RUN</span>
+            <strong>₹700</strong>
+          </div>
+
+          <h3>
+            Fit to Run Purple Tshirt
+          </h3>
+
+          <a
+            href="https://www.stairsphysiotherapy.in/product-page/fit-to-run-purple-tshirt"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="fit-collection-link"
+          >
+            View Product
+            <FiArrowUpRight />
+          </a>
+
+        </div>
+
+      </motion.article>
+
+
+      {/* PRODUCT 03 */}
+
+      <motion.article
+        className="fit-collection-card"
+        variants={reveal}
+        whileHover={{ y: -10 }}
+      >
+
+        <a
+          href="https://www.stairsphysiotherapy.in/product-page/fit-to-run-singlet"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="fit-collection-image"
+        >
+
+          <span className="fit-collection-number">
+            03
+          </span>
+
+          <img
+            src="https://static.wixstatic.com/media/9c90f2_df876cf811b64d389aefd76b9f82da43~mv2.png/v1/fit/w_1200,h_900,q_90/file.png"
+            alt="Fit to Run Singlet"
+          />
+
+          <span className="fit-collection-image-arrow">
+            <FiArrowUpRight />
+          </span>
+
+        </a>
+
+        <div className="fit-collection-info">
+
+          <div className="fit-collection-meta">
+            <span>FIT TO RUN</span>
+            <strong>₹700</strong>
+          </div>
+
+          <h3>
+            Fit to Run Singlet
+          </h3>
+
+          <a
+            href="https://www.stairsphysiotherapy.in/product-page/fit-to-run-singlet"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="fit-collection-link"
+          >
+            View Product
+            <FiArrowUpRight />
+          </a>
+
+        </div>
+
+      </motion.article>
+
+    </motion.div>
+
+  </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       {/* =====================================================
           FINAL CTA

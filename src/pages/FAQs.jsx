@@ -12,55 +12,54 @@ import "./FAQs.css";
 
 const faqs = [
   [
-    "What happens during the first appointment?",
-    "We discuss your symptoms, history, lifestyle and goals, then assess relevant movement, strength, balance or function. We explain our findings and discuss the next steps.",
+    "How do I schedule an appointment?",
+    "You can schedule an appointment by contacting our team through our website or phone. Our staff will help you choose a convenient time and guide you through the booking process.",
   ],
   [
-    "Do I need a referral?",
-    "Use the clinic’s confirmed referral policy here. If direct access is available, state it clearly.",
+    "What is Physical Therapy?",
+    "Physical therapy is a healthcare approach focused on relieving pain, restoring movement, improving function and preventing recurring injuries. Our physiotherapists assess your condition and create a personalized treatment plan using exercises, hands-on techniques and other appropriate methods.",
   ],
   [
-    "What should I wear?",
-    "Wear comfortable clothing that allows the clinician to observe and assess the relevant body area and movement.",
+    "How do we treat Physical Therapy at Stairs?",
+    "At Stairs, we begin with a detailed assessment of your movement, symptoms, strength and functional needs. Based on your condition and goals, we combine personalized exercises, manual therapy, movement training and rehabilitation techniques to support long-term recovery.",
   ],
   [
-    "How long is a session?",
-    "Typically 45 to 60 minutes. Replace this with the clinic’s confirmed duration.",
+    "To what extent are our physical therapists and coaches qualified?",
+    "Our physiotherapists and coaches are committed to professional practice, patient safety and evidence-informed care. They assess each individual’s needs and provide guidance based on their condition, goals and rehabilitation requirements.",
   ],
   [
-    "How many sessions will I need?",
-    "It depends on your condition, goals, progress and response to treatment. Your plan should be reviewed as you progress.",
+    "How long does a physiotherapy/training session last?",
+    "The duration of each session depends on the type of service, your condition and your treatment goals. Please contact our team for details about the expected duration of your appointment.",
   ],
   [
-    "Will I get exercises?",
-    "When appropriate, your plan may include exercises for mobility, strength, control, conditioning and independent progress.",
+    "Is physiotherapy painful?",
+    "Physiotherapy should be performed according to your comfort level and condition. Some exercises or techniques may cause mild discomfort, but your therapist will adjust the treatment as needed. Always communicate any pain or discomfort during your session.",
   ],
   [
-    "Is physiotherapy only for pain?",
-    "No. Physiotherapy can also support rehabilitation, movement quality, injury prevention, preparation for activity or surgery and return to sport.",
+    "How many sessions do I need before I can fully recover from an injury?",
+    "The number of sessions required depends on the type and severity of your injury, your goals, progress and response to treatment. Your physiotherapist will regularly review your condition and recommend an appropriate treatment plan.",
   ],
   [
-    "What is a biomechanical assessment?",
-    "It is a structured assessment of how you move, helping identify movement patterns, mobility or strength limitations and other factors relevant to your goals.",
+    "How can you treat my injury without touching me?",
+    "Physiotherapy can include exercise therapy, movement retraining, posture correction, education and guided rehabilitation. These approaches can help improve strength, mobility and function even when hands-on treatment is not required.",
   ],
   [
-    "Can I have an assessment without an injury?",
-    "Yes. Assessment can be useful when you want to understand movement, improve performance, prepare for activity or reduce avoidable limitations.",
+    "Are online sessions available?",
+    "Online sessions may be available depending on your condition and the type of treatment required. Please contact our team to confirm online consultation availability and suitability for your needs.",
   ],
   [
-    "Do you offer online sessions?",
-    "Add the clinic’s confirmed online physiotherapy or consultation policy here.",
+    "What if I’m not sure if I’m doing my prescribed exercises right?",
+    "If you are unsure about your exercises, contact your physiotherapist for guidance. Your therapist can review your technique, correct your movements and make adjustments to help you perform the exercises safely and effectively.",
   ],
   [
-    "Will treatment hurt?",
-    "Some techniques or exercises may feel challenging, but care should be appropriately dosed and communicated. Tell your clinician about discomfort during a session.",
+    "What is our cancellation and reschedule policy?",
+    "If you need to cancel or reschedule your appointment, please inform our team as early as possible. Contact us directly to understand the applicable cancellation and rescheduling terms.",
   ],
   [
-    "I do not know which service I need.",
-    "That is okay. Start with an assessment and the team can guide you toward the most appropriate pathway.",
+    "What forms of payment do you accept?",
+    "For information about accepted payment methods, please contact our team. We will guide you regarding the available payment options for your selected service.",
   ],
 ];
-
 const reveal = {
   hidden: {
     opacity: 0,

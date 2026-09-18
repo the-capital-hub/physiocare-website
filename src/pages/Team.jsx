@@ -640,57 +640,7 @@ export default function Team() {
         </div>
       </section>
 
-      <section id="admin" className="team-admin-new">
-        <div className="team-container-new">
-          <motion.div
-            className="team-red-heading-new"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{
-              once: true,
-            }}
-            variants={reveal}
-          >
-            ADMIN TEAM
-          </motion.div>
-
-          <motion.div
-            className="team-admin-list-new"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{
-              once: true,
-              amount: 0.08,
-            }}
-            variants={stagger}
-          >
-            {adminTeam.map((member) => (
-              <motion.article
-                key={member.name}
-                className="team-admin-card-new"
-                variants={reveal}
-              >
-                <div className="team-admin-photo-new">
-                  <img src={member.image} alt={member.name} />
-                </div>
-
-                <div className="team-admin-content-new">
-                  <span>ADMINISTRATION</span>
-
-                  <h3>{member.name}</h3>
-
-                  <p>{member.role}</p>
-
-                  <button type="button" className="team-read-more-new">
-                    Read More
-                    <FiArrowUpRight />
-                  </button>
-                </div>
-              </motion.article>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+      
 
       <section id="founders" className="team-founders-new">
         <div className="team-container-new">
@@ -760,6 +710,59 @@ export default function Team() {
               </motion.article>
             ))}
           </div>
+        </div>
+      </section>
+
+
+      <section id="admin" className="team-admin-new">
+        <div className="team-container-new">
+          <motion.div
+            className="team-red-heading-new"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{
+              once: true,
+            }}
+            variants={reveal}
+          >
+            ADMIN TEAM
+          </motion.div>
+
+          <motion.div
+            className="team-admin-list-new"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{
+              once: true,
+              amount: 0.08,
+            }}
+            variants={stagger}
+          >
+            {adminTeam.map((member) => (
+              <motion.article
+                key={member.name}
+                className="team-admin-card-new"
+                variants={reveal}
+              >
+                <div className="team-admin-photo-new">
+                  <img src={member.image} alt={member.name} />
+                </div>
+
+                <div className="team-admin-content-new">
+                  <span>ADMINISTRATION</span>
+
+                  <h3>{member.name}</h3>
+
+                  <p>{member.role}</p>
+
+                  <button type="button" className="team-read-more-new">
+                    Read More
+                    <FiArrowUpRight />
+                  </button>
+                </div>
+              </motion.article>
+            ))}
+          </motion.div>
         </div>
       </section>
 
@@ -877,14 +880,14 @@ export default function Team() {
               }}
               variants={reveal}
             >
-              <div className="team-new-eyebrow team-new-eyebrow-light">
+              <div className="team-new-eyebrow team-new-eyebrow-light team-heading">
                 CAREER
               </div>
 
-              <h2>
-                JOIN OUR
-                <span>TEAM</span>
-              </h2>
+              <p style={{fontSize:"48px"}}>
+                JOIN OUR TEAM
+                
+              </p>
             </motion.div>
 
             <motion.div

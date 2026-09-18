@@ -79,6 +79,9 @@
 .team-new-eyebrow-light {
   color: var(--red-light);
 }
+.team-heading p{
+  font-size: 64px;
+}
 
 /* =========================================================
    HERO
