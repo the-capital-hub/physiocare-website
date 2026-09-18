@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./AdminPanel.css";
 
 const API = (
-  import.meta.env.VITE_API_URL || "http://localhost:5000/api"
+  import.meta.env.VITE_API_URL || "https://physiotherapy-backend-wfyg.onrender.com/"
 ).replace(/\/$/, "");
 
 const TOKEN_KEY = "physiocare_admin_token";
