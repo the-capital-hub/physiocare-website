@@ -51,11 +51,49 @@ const stagger = {
 };
 
 export default function Contact() {
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const message = `Appointment request\nName: ${data.get("name")}\nPhone: ${data.get("phone")}\nEmail: ${data.get("email")}\nService: ${data.get("service")}\nDate: ${data.get("date")}\nTime: ${data.get("time")}\nConcern: ${data.get("concern")}`;
-    window.open(`https://wa.me/918884807132?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    const payload = {
+      name: String(data.get("name") || "").trim(),
+      phone: String(data.get("phone") || "").trim(),
+      email: String(data.get("email") || "").trim(),
+      service: String(data.get("service") || "").trim(),
+      date: String(data.get("date") || "").trim(),
+      time: String(data.get("time") || "").trim(),
+      concern: String(data.get("concern") || "").trim(),
+      status: "New",
+    };
+
+    const apiBase = (
+      import.meta.env.VITE_API_URL ||
+      "https://physiotherapy-backend-wfyg.onrender.com/api"
+    ).replace(/\/$/, "");
+
+    try {
+      const response = await fetch(`${apiBase}/appointments`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        const error = await response.json().catch(() => ({}));
+        throw new Error(error.message || "Unable to submit appointment");
+      }
+
+      window.alert("Thank you! Your appointment request has been submitted.");
+      form.reset();
+    } catch {
+      const message = `Appointment request\nName: ${payload.name}\nPhone: ${payload.phone}\nEmail: ${payload.email}\nService: ${payload.service}\nDate: ${payload.date}\nTime: ${payload.time}\nConcern: ${payload.concern}`;
+      window.open(
+        `https://wa.me/918884807132?text=${encodeURIComponent(message)}`,
+        "_blank",
+        "noopener,noreferrer"
+      );
+    }
   };
 
   return (
