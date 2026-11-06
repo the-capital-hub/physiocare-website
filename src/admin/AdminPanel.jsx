@@ -508,6 +508,141 @@ function inputDate(value) {
    ADMIN PANEL COMPONENT
 ========================================= */
 
+
+/* Report helpers: normalize common API response shapes without changing API contracts. */
+function reportRows(payload) {
+  if (Array.isArray(payload)) return payload.filter((item) => item && typeof item === "object");
+  if (!payload || typeof payload !== "object") return [];
+  for (const key of ["data", "items", "rows", "results", "trend", "monthly", "records"]) {
+    if (Array.isArray(payload[key])) {
+      return payload[key].filter((item) => item && typeof item === "object");
+    }
+  }
+  for (const value of Object.values(payload)) {
+    if (Array.isArray(value) && value.some((item) => item && typeof item === "object")) {
+      return value.filter((item) => item && typeof item === "object");
+    }
+  }
+  return [];
+}
+
+function reportMetricEntries(payload) {
+  if (!payload || typeof payload !== "object" || Array.isArray(payload)) return [];
+  const source = payload.summary && typeof payload.summary === "object"
+    ? payload.summary
+    : payload.kpis && typeof payload.kpis === "object"
+      ? payload.kpis
+      : payload;
+  return Object.entries(source)
+    .filter(([, value]) => ["string", "number", "boolean"].includes(typeof value))
+    .slice(0, 8);
+}
+
+function ReportCard({ reportKey, payload }) {
+  const rows = reportRows(payload);
+  const metrics = reportMetricEntries(payload);
+  const isError = Boolean(payload?.error);
+  const numericKey = (row) => Object.keys(row || {}).find((key) =>
+    typeof row[key] === "number" && /(revenue|amount|total|count|expense|patient|appointment|paid|pending|balance|value)/i.test(key)
+  ) || Object.keys(row || {}).find((key) => typeof row[key] === "number");
+  const labelKey = (row) => Object.keys(row || {}).find((key) =>
+    typeof row[key] === "string" && /(month|label|name|date|period|status|department|category)/i.test(key)
+  ) || Object.keys(row || {}).find((key) => typeof row[key] === "string");
+  const chartRows = rows.map((row, index) => ({
+    label: String(labelKey(row) ? row[labelKey(row)] : `Item ${index + 1}`),
+    value: Number(numericKey(row) ? row[numericKey(row)] : 0),
+  })).filter((item) => Number.isFinite(item.value));
+  const maxValue = Math.max(1, ...chartRows.map((item) => Math.abs(item.value)));
+  const title = humanize(reportKey);
+  const linePoints = chartRows.slice(0, 12).map((item, index, list) => {
+    const x = list.length <= 1 ? 50 : 12 + (index / (list.length - 1)) * 276;
+    const y = 94 - (Math.abs(item.value) / maxValue) * 76;
+    return `${x},${y}`;
+  }).join(" ");
+
+  return (
+    <article className={`report-card panel ${reportKey === "revenue-trend" ? "report-card-wide" : ""}`}>
+      <div className="report-card-heading">
+        <div>
+          <p className="eyebrow">ANALYTICS</p>
+          <h3>{title}</h3>
+          <span className="report-card-subtitle">{chartRows.length} data points available</span>
+        </div>
+        <span className="report-card-mark" aria-hidden="true">↗</span>
+      </div>
+
+      {isError ? (
+        <p className="report-error">{payload.error}</p>
+      ) : (
+        <>
+          {metrics.length > 0 && (
+            <div className="report-metrics">
+              {metrics.map(([key, value]) => (
+                <div className="report-metric" key={key}>
+                  <span>{humanize(key)}</span>
+                  <strong>{typeof value === "number" && /(revenue|amount|expense|balance|receivable)/i.test(key) ? money(value) : displayValue(value)}</strong>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {chartRows.length > 0 ? (
+            <div className="report-visual">
+              {chartRows.length > 1 && (
+                <div className="report-line-chart">
+                  <div className="report-chart-caption">
+                    <span>Trend overview</span>
+                    <strong>{chartRows.length} records</strong>
+                  </div>
+                  <svg viewBox="0 0 300 112" role="img" aria-label={`${title} trend graph`} preserveAspectRatio="none">
+                    <defs>
+                      <linearGradient id={`report-fill-${reportKey}`} x1="0" x2="0" y1="0" y2="1">
+                        <stop offset="0%" stopColor="#f04452" stopOpacity=".28" />
+                        <stop offset="100%" stopColor="#f04452" stopOpacity="0" />
+                      </linearGradient>
+                    </defs>
+                    {[18, 43, 68, 94].map((y) => <line key={y} x1="8" y1={y} x2="292" y2={y} className="report-grid-line" />)}
+                    <polygon points={`12,94 ${linePoints} 288,94`} fill={`url(#report-fill-${reportKey})`} />
+                    <polyline points={linePoints} className="report-line-path" />
+                    {chartRows.slice(0, 12).map((item, index, list) => {
+                      const x = list.length <= 1 ? 50 : 12 + (index / (list.length - 1)) * 276;
+                      const y = 94 - (Math.abs(item.value) / maxValue) * 76;
+                      return <circle key={`${item.label}-${index}`} cx={x} cy={y} r="3.5" className="report-line-dot"><title>{`${item.label}: ${item.value}`}</title></circle>;
+                    })}
+                  </svg>
+                  <div className="report-line-labels">
+                    <span>{chartRows[0]?.label}</span>
+                    <span>{chartRows[Math.min(chartRows.length - 1, 11)]?.label}</span>
+                  </div>
+                </div>
+              )}
+              <div className="report-chart">
+                <div className="report-chart-caption"><span>Record breakdown</span><strong>{chartRows.length} total</strong></div>
+                {chartRows.slice(0, 10).map((item, index) => (
+                  <div className="report-bar-row" key={`${item.label}-${index}`}>
+                    <span className="report-bar-label" title={item.label}>{item.label}</span>
+                    <div className="report-bar-track">
+                      <i style={{ width: `${Math.max(2, (Math.abs(item.value) / maxValue) * 100)}%` }} />
+                    </div>
+                    <strong>{Number(item.value).toLocaleString("en-IN")}</strong>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <p className="empty-state">The report returned data, but no numeric series was detected for charting.</p>
+          )}
+        </>
+      )}
+
+      <details className="report-raw-data">
+        <summary>View complete original report data</summary>
+        <pre>{JSON.stringify(payload, null, 2)}</pre>
+      </details>
+    </article>
+  );
+}
+
 export default function AdminPanel() {
   const [loggedIn, setLoggedIn] = useState(
     Boolean(getToken())
@@ -2279,16 +2414,11 @@ export default function AdminPanel() {
             ) : (
               <div className="report-grid">
                 {Object.entries(reports).map(([key, value]) => (
-                  <article
-                    className="stat-card report-card"
+                  <ReportCard
                     key={key}
-                  >
-                    <h3>{humanize(key)}</h3>
-
-                    <pre>
-                      {JSON.stringify(value, null, 2)}
-                    </pre>
-                  </article>
+                    reportKey={key}
+                    payload={value}
+                  />
                 ))}
               </div>
             )}
