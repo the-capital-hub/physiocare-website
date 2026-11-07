@@ -1,0 +1,1 @@
+export default function AdminNotice({ notice, onDismiss }) { if(!notice) return null; return <div className="notice" role="status"><span>{notice}</span><button type="button" onClick={onDismiss}>×</button></div>; }

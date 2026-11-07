@@ -1,0 +1,1 @@
+export default function ActionTabs({ items, active, onChange, labels }) { return <div className="form-actions">{items.map(key=><button type="button" key={key} className={active===key ? "primary-button" : "secondary-button"} onClick={()=>onChange(key)}>{labels?.[key] || key}</button>)}</div>; }

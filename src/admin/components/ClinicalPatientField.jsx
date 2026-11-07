@@ -1,0 +1,1 @@
+export default function ClinicalPatientField({ value, onChange }) { return <label>Patient MongoDB ID<input value={value} onChange={e=>onChange(e.target.value)} placeholder="Paste patient _id"/></label>; }

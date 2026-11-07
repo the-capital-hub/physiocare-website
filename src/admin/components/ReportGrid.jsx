@@ -1,0 +1,1 @@
+export default function ReportGrid({ reports, ReportCard }) { return <div className="report-grid">{Object.entries(reports).map(([key,value])=><ReportCard key={key} reportKey={key} payload={value}/>)}</div>; }

@@ -1,0 +1,1 @@
+export default function NotificationActions({ onRefresh, onReadAll, loading }) { return <div className="form-actions"><button type="button" className="secondary-button" onClick={onRefresh} disabled={loading}>↻ Refresh</button><button type="button" className="primary-button" onClick={onReadAll}>Mark all read</button></div>; }

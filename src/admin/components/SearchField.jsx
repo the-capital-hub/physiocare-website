@@ -1,0 +1,1 @@
+export default function SearchField({ value, onChange, placeholder="Search records..." }) { return <input className="search-input" value={value} onChange={e=>onChange(e.target.value)} placeholder={placeholder}/>; }

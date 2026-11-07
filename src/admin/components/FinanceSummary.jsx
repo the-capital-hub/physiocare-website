@@ -1,0 +1,2 @@
+import StatsGrid from "./StatsGrid";
+export default function FinanceSummary({ summary, loading, humanize, displayValue, money }) { return <StatsGrid>{Object.entries(summary || {}).map(([key,value])=><article className="stat-card" key={key}><div className="stat-label">{humanize(key)}</div><strong>{/count|invoices/i.test(key)?displayValue(value):money(value)}</strong></article>)}{!summary && <p className="empty-state">{loading?"Loading finance summary...":"Finance summary unavailable."}</p>}</StatsGrid>; }

@@ -1,6 +1,34 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import "./AdminPanel.css";
+import DashboardOverview from "./dashboard/DashboardOverview";
+import AdminSidebar from "./components/AdminSidebar";
+import AdminTopbar from "./components/AdminTopbar";
+import AdminLoginScreen from "./components/AdminLoginScreen";
+import SessionLoading from "./components/SessionLoading";
+import AdminNotice from "./components/AdminNotice";
+import AdminFooter from "./components/AdminFooter";
+import PanelHeader from "./components/PanelHeader";
+import EmptyState from "./components/EmptyState";
+import ActionTabs from "./components/ActionTabs";
+import SearchField from "./components/SearchField";
+import ReportGrid from "./components/ReportGrid";
+import RecordForm from "./components/RecordForm";
+import DataTable from "./components/DataTable";
+import ModulePanel from "./components/ModulePanel";
+import FinanceSummary from "./components/FinanceSummary";
+import ClinicalPatientField from "./components/ClinicalPatientField";
+import NotificationActions from "./components/NotificationActions";
+import PatientsManagement from "./components/PatientsManagement";
+import AppointmentsManagement from "./components/AppointmentsManagement";
+import EmployeesManagement from "./components/EmployeesManagement";
+import AttendanceLeavesManagement from "./components/AttendanceLeavesManagement";
+import PayrollFinanceManagement from "./components/PayrollFinanceManagement";
+import BranchesManagement from "./components/BranchesManagement";
+import ReportsAnalytics from "./components/ReportsAnalytics";
+import SettingsManagement from "./components/SettingsManagement";
+import WebsiteContent from "./components/WebsiteContent/WebsiteContent";
+
 
 /* =========================================
    STAIRS OS V1 ADMIN PANEL
@@ -698,7 +726,7 @@ export default function AdminPanel() {
 
     try {
       const result = await apiRequest("reports/overview");
-      setOverview(result.kpis || {});
+      setOverview({ ...(result.kpis || {}), branchPerformance: result.branchPerformance || [] });
     } catch (error) {
       setOverview(null);
       setNotice(error.message);
@@ -1760,104 +1788,9 @@ export default function AdminPanel() {
      SESSION LOADING SCREEN
   ========================================= */
 
-  if (authChecking) {
-    return (
-      <div className="admin-login-page">
-        <div className="login-card">
-          <div className="brand-word">STAIRS</div>
-          <p>Verifying secure session...</p>
-        </div>
-      </div>
-    );
-  }
+  if (authChecking) return <SessionLoading />;
 
-  /* =========================================
-     LOGIN SCREEN
-  ========================================= */
-
-  if (!loggedIn) {
-    return (
-      <div className="admin-login-page">
-        <div className="login-art">
-          <Link
-            to="/"
-            className="admin-logo-link"
-            aria-label="Go to STAIRS home"
-          >
-            <img
-              src={LOGO_URL}
-              alt="STAIRS Physiotherapy"
-              className="admin-login-logo"
-            />
-          </Link>
-
-          <p className="eyebrow">STAIRS OS V1 ADMIN</p>
-
-          <h1>
-            Care management,
-            <br />
-            <em>made simple.</em>
-          </h1>
-
-          <p>
-            Manage branches, workforce, patients,
-            appointments and clinic operations in
-            one secure workspace.
-          </p>
-        </div>
-
-        <form className="login-card" onSubmit={login}>
-          <div className="brand-word">STAIRS</div>
-
-          <p className="eyebrow">WELCOME BACK</p>
-
-          <h2>Sign in to your account</h2>
-
-          <label>
-            Email address
-
-            <input
-              type="email"
-              value={email}
-              onChange={(event) =>
-                setEmail(event.target.value)
-              }
-              autoComplete="username"
-              required
-            />
-          </label>
-
-          <label>
-            Password
-
-            <input
-              type="password"
-              value={password}
-              onChange={(event) =>
-                setPassword(event.target.value)
-              }
-              autoComplete="current-password"
-              required
-            />
-          </label>
-
-          {loginError && (
-            <div className="form-error" role="alert">
-              {loginError}
-            </div>
-          )}
-
-          <button
-            type="submit"
-            className="primary-button"
-            disabled={loading}
-          >
-            {loading ? "Signing in..." : "Sign in →"}
-          </button>
-        </form>
-      </div>
-    );
-  }
+  if (!loggedIn) return <AdminLoginScreen logoUrl={LOGO_URL} email={email} setEmail={setEmail} password={password} setPassword={setPassword} login={login} loginError={loginError} loading={loading} />;
 
   /* =========================================
      DASHBOARD
@@ -1865,194 +1798,33 @@ export default function AdminPanel() {
 
   return (
     <div className="admin-app">
-      <aside
-        className={`admin-sidebar ${mobile ? "open" : ""}`}
-      >
-        <div className="sidebar-brand">
-          <Link
-            to="/"
-            className="admin-logo-link"
-            aria-label="Go to STAIRS home"
-          >
-            <img
-              src={LOGO_URL}
-              alt="STAIRS logo"
-              className="admin-sidebar-logo"
-            />
-          </Link>
-
-          <div className="sidebar-brand-copy">
-            <strong>STAIRS</strong>
-            <small>OS V1 workspace</small>
-          </div>
-        </div>
-
-        <nav>
-          {NAV_GROUPS.map((group) => (
-            <div className="nav-group" key={group.title}>
-              <p className="eyebrow nav-group-title">
-                {group.title}
-              </p>
-
-              {group.items.map((item) => (
-                <button
-                  type="button"
-                  key={item}
-                  className={tab === item ? "active" : ""}
-                  onClick={() => {
-                    setTab(item);
-                    setMobile(false);
-                    setEditing(null);
-                    setForm({});
-                    setSearch("");
-                    setNotice("");
-                  }}
-                >
-                  <span>{item}</span>
-                </button>
-              ))}
-            </div>
-          ))}
-        </nav>
-
-        <button
-          type="button"
-          className="logout-button"
-          onClick={logout}
-        >
-          ↪ Log out
-        </button>
-      </aside>
+      <AdminSidebar mobile={mobile} groups={NAV_GROUPS} activeTab={tab} logoUrl={LOGO_URL} onLogout={logout} onNavigate={(item) => { setTab(item); setMobile(false); setEditing(null); setForm({}); setSearch(""); setNotice(""); }} />
 
       <main className="admin-content">
-        <header className="topbar">
-          <button
-            type="button"
-            className="mobile-toggle"
-            onClick={() => setMobile((value) => !value)}
-          >
-            ☰
-          </button>
+        <AdminTopbar mobile={mobile} onToggleMobile={() => setMobile(value => !value)} tab={tab} user={user} humanize={humanize} />
 
-          <div>
-            <p className="eyebrow">
-              STAIRS OS V1 · CLINIC CONTROL CENTER
-            </p>
-
-            <h1>{tab}</h1>
-          </div>
-
-          <div className="admin-user-meta">
-            <span className="online-dot">● Online</span>
-
-            <small>
-              {user?.email || ""}
-              {user?.role ? ` · ${humanize(user.role)}` : ""}
-            </small>
-          </div>
-        </header>
-
-        {notice && (
-          <div className="notice" role="status">
-            <span>{notice}</span>
-
-            <button
-              type="button"
-              onClick={() => setNotice("")}
-            >
-              ×
-            </button>
-          </div>
-        )}
+        <AdminNotice notice={notice} onDismiss={() => setNotice("")} />
 
         {/* =====================================
             OVERVIEW
         ===================================== */}
 
         {tab === "Overview" && (
-          <>
-            <section className="welcome-panel">
-              <div>
-                <p className="eyebrow">GOOD TO SEE YOU</p>
-
-                <h2>Clinic operations at a glance.</h2>
-
-                <p>
-                  Live dashboard metrics from STAIRS OS.
-                </p>
-              </div>
-
-              <button
-                type="button"
-                className="secondary-button"
-                onClick={loadOverview}
-                disabled={loading}
-              >
-                {loading ? "Refreshing..." : "↻ Refresh"}
-              </button>
-            </section>
-
-            {overview ? (
-              <section className="stats-grid">
-                {Object.entries(overview).map(([key, value]) => (
-                  <article className="stat-card" key={key}>
-                    <div className="stat-label">
-                      {humanize(key)}
-                    </div>
-
-                    <strong>
-                      {typeof value === "number" &&
-                      /revenue|expenses|cashflow|outstanding/i.test(key)
-                        ? money(value)
-                        : displayValue(value)}
-                    </strong>
-                  </article>
-                ))}
-              </section>
-            ) : (
-              <section className="panel">
-                <p className="empty-state">
-                  {loading
-                    ? "Loading dashboard..."
-                    : "Dashboard metrics unavailable. Check dashboard.read permission."}
-                </p>
-              </section>
-            )}
-
-            <section className="panel">
-              <div className="panel-heading">
-                <h3>Quick access</h3>
-              </div>
-
-              <div className="quick-links">
-                {[
-                  "Appointments",
-                  "Patients",
-                  "Employees",
-                  "Leads",
-                  "Finance",
-                  "Reports",
-                ].map((item) => (
-                  <button
-                    type="button"
-                    className="secondary-button"
-                    key={item}
-                    onClick={() => setTab(item)}
-                  >
-                    {item} →
-                  </button>
-                ))}
-              </div>
-            </section>
-          </>
+          <DashboardOverview
+            overview={overview}
+            loading={loading}
+            user={user}
+            onRefresh={loadOverview}
+            onNavigate={setTab}
+          />
         )}
 
         {/* =====================================
             STANDARD MODULES
         ===================================== */}
 
-        {module && (
-          <section className="panel">
+        {module && !["Patients", "Appointments", "Employees", "Attendance", "Leaves", "Payroll", "Branches"].includes(tab) && (
+          <ModulePanel>
             <div className="panel-heading">
               <div>
                 <p className="eyebrow">STAIRS OS MODULE</p>
@@ -2280,7 +2052,103 @@ export default function AdminPanel() {
                 linked to the logged in account.
               </p>
             )}
-          </section>
+          </ModulePanel>
+        )}
+
+        {/* =====================================
+            PHASE 3 TO 8 DEDICATED MODULES
+        ===================================== */}
+
+        {tab === "Patients" && (
+          <PatientsManagement
+            data={data}
+            filteredData={filteredData}
+            search={search}
+            onSearchChange={setSearch}
+            loading={loading}
+            editing={editing}
+            form={form}
+            module={module}
+            renderField={renderField}
+            onAdd={startAdd}
+            onEdit={startEdit}
+            onDeactivate={deactivateRecord}
+            onSave={saveRecord}
+            onCancel={() => { setEditing(null); setForm({}); }}
+            onRefresh={loadModule}
+          />
+        )}
+
+        {tab === "Appointments" && (
+          <AppointmentsManagement
+            data={data}
+            loading={loading}
+            onRefresh={loadModule}
+            onStatusChange={updateAppointmentStatus}
+          />
+        )}
+
+        {tab === "Employees" && (
+          <EmployeesManagement
+            data={data}
+            filteredData={filteredData}
+            search={search}
+            onSearchChange={setSearch}
+            loading={loading}
+            editing={editing}
+            form={form}
+            module={module}
+            renderField={renderField}
+            onAdd={startAdd}
+            onEdit={startEdit}
+            onDeactivate={deactivateRecord}
+            onSave={saveRecord}
+            onCancel={() => { setEditing(null); setForm({}); }}
+            onRefresh={loadModule}
+          />
+        )}
+
+        { ["Attendance", "Leaves"].includes(tab) && (
+          <AttendanceLeavesManagement
+            data={data}
+            search={search}
+            onSearchChange={setSearch}
+            loading={loading}
+            onRefresh={loadModule}
+            onMarkAttendance={async (payload) => {
+              try {
+                await apiRequest("attendance/mark", {
+                  method: "POST",
+                  body: JSON.stringify(payload),
+                });
+                setNotice("Attendance marked successfully.");
+                await loadModule();
+              } catch (error) {
+                setNotice(error.message);
+              }
+            }}
+            onReviewLeave={reviewLeave}
+          />
+        )}
+
+        {tab === "Branches" && (
+          <BranchesManagement
+            data={data}
+            filteredData={filteredData}
+            search={search}
+            onSearchChange={setSearch}
+            loading={loading}
+            editing={editing}
+            form={form}
+            module={module}
+            renderField={renderField}
+            onAdd={startAdd}
+            onEdit={startEdit}
+            onDeactivate={deactivateRecord}
+            onSave={saveRecord}
+            onCancel={() => { setEditing(null); setForm({}); }}
+            onRefresh={loadModule}
+          />
         )}
 
         {/* =====================================
@@ -2288,99 +2156,29 @@ export default function AdminPanel() {
         ===================================== */}
 
         {tab === "Finance" && (
-          <section className="panel">
-            <div className="panel-heading">
-              <div>
-                <p className="eyebrow">PHASE 7</p>
-                <h3>Finance Management</h3>
-              </div>
+          <PayrollFinanceManagement
+            tab={tab}
+            data={data}
+            loading={loading}
+            financeTab={financeTab}
+            setFinanceTab={setFinanceTab}
+            financeSummary={financeSummary}
+            onRefresh={loadFinance}
+            onPayrollStatus={updatePayrollStatus}
+          />
+        )}
 
-              <button
-                type="button"
-                className="secondary-button"
-                onClick={loadFinance}
-                disabled={loading}
-              >
-                ↻ Refresh
-              </button>
-            </div>
-
-            <div className="form-actions finance-tabs">
-              {FINANCE_TABS.map((key) => (
-                <button
-                  type="button"
-                  key={key}
-                  className={
-                    financeTab === key
-                      ? "primary-button"
-                      : "secondary-button"
-                  }
-                  onClick={() => setFinanceTab(key)}
-                >
-                  {humanize(key)}
-                </button>
-              ))}
-            </div>
-
-            {financeTab === "summary" ? (
-              <section className="stats-grid">
-                {Object.entries(financeSummary || {}).map(
-                  ([key, value]) => (
-                    <article className="stat-card" key={key}>
-                      <div className="stat-label">
-                        {humanize(key)}
-                      </div>
-
-                      <strong>
-                        {/count|invoices/i.test(key)
-                          ? displayValue(value)
-                          : money(value)}
-                      </strong>
-                    </article>
-                  )
-                )}
-
-                {!financeSummary && (
-                  <p className="empty-state">
-                    {loading
-                      ? "Loading finance summary..."
-                      : "Finance summary unavailable."}
-                  </p>
-                )}
-              </section>
-            ) : (
-              renderTable(
-                data,
-                financeTab === "payments"
-                  ? [
-                      "receiptNumber",
-                      "patientId.name",
-                      "amount",
-                      "method",
-                      "status",
-                      "paidAt",
-                    ]
-                  : financeTab === "invoices"
-                    ? [
-                        "invoiceNumber",
-                        "patientId.name",
-                        "total",
-                        "amountPaid",
-                        "balanceDue",
-                        "status",
-                        "dueDate",
-                      ]
-                    : [
-                        "expenseNumber",
-                        "category",
-                        "description",
-                        "amount",
-                        "expenseDate",
-                        "status",
-                      ]
-              )
-            )}
-          </section>
+        {tab === "Payroll" && (
+          <PayrollFinanceManagement
+            tab={tab}
+            data={data}
+            loading={loading}
+            financeTab={financeTab}
+            setFinanceTab={setFinanceTab}
+            financeSummary={financeSummary}
+            onRefresh={loadModule}
+            onPayrollStatus={updatePayrollStatus}
+          />
         )}
 
         {/* =====================================
@@ -2388,41 +2186,11 @@ export default function AdminPanel() {
         ===================================== */}
 
         {tab === "Reports" && (
-          <section className="panel">
-            <div className="panel-heading">
-              <div>
-                <p className="eyebrow">PHASE 8</p>
-                <h3>Reports and Analytics</h3>
-              </div>
-
-              <button
-                type="button"
-                className="secondary-button"
-                onClick={loadReports}
-                disabled={loading}
-              >
-                ↻ Refresh reports
-              </button>
-            </div>
-
-            {Object.keys(reports).length === 0 ? (
-              <p className="empty-state">
-                {loading
-                  ? "Loading reports..."
-                  : "No report data available."}
-              </p>
-            ) : (
-              <div className="report-grid">
-                {Object.entries(reports).map(([key, value]) => (
-                  <ReportCard
-                    key={key}
-                    reportKey={key}
-                    payload={value}
-                  />
-                ))}
-              </div>
-            )}
-          </section>
+          <ReportsAnalytics
+            reports={reports}
+            loading={loading}
+            onRefresh={loadReports}
+          />
         )}
 
         {/* =====================================
@@ -2430,7 +2198,7 @@ export default function AdminPanel() {
         ===================================== */}
 
         {tab === "Clinical" && (
-          <section className="panel">
+          <ModulePanel>
             <div className="panel-heading">
               <div>
                 <p className="eyebrow">PHASE 4</p>
@@ -2447,17 +2215,7 @@ export default function AdminPanel() {
               </button>
             </div>
 
-            <label>
-              Patient MongoDB ID
-
-              <input
-                value={clinicalPatientId}
-                onChange={(event) =>
-                  setClinicalPatientId(event.target.value)
-                }
-                placeholder="Paste patient _id"
-              />
-            </label>
+            <ClinicalPatientField value={clinicalPatientId} onChange={setClinicalPatientId} />
 
             <div className="form-actions clinical-tabs">
               {CLINICAL_TABS.map((key) => (
@@ -2543,7 +2301,7 @@ export default function AdminPanel() {
                       "progress",
                     ]
             )}
-          </section>
+          </ModulePanel>
         )}
 
         {/* =====================================
@@ -2551,7 +2309,7 @@ export default function AdminPanel() {
         ===================================== */}
 
         {tab === "Notifications" && (
-          <section className="panel">
+          <ModulePanel>
             <div className="panel-heading">
               <div>
                 <p className="eyebrow">PHASE 9</p>
@@ -2608,7 +2366,7 @@ export default function AdminPanel() {
                   )
               )
             )}
-          </section>
+          </ModulePanel>
         )}
 
         {/* =====================================
@@ -2616,50 +2374,12 @@ export default function AdminPanel() {
         ===================================== */}
 
         {tab === "Settings" && (
-          <section className="panel">
-            <div className="panel-heading">
-              <div>
-                <p className="eyebrow">PHASE 9</p>
-                <h3>System Settings</h3>
-              </div>
-
-              <button
-                type="button"
-                className="secondary-button"
-                onClick={loadSettings}
-                disabled={loading}
-              >
-                ↻ Refresh
-              </button>
-            </div>
-
-            {settings.length === 0 ? (
-              <p className="empty-state">
-                {loading
-                  ? "Loading settings..."
-                  : "No settings found or access is not available."}
-              </p>
-            ) : (
-              renderTable(
-                settings,
-                ["key", "value", "updatedAt"],
-                (row) => (
-                  <button
-                    type="button"
-                    className="text-button"
-                    onClick={() => saveSetting(row)}
-                  >
-                    Edit
-                  </button>
-                )
-              )
-            )}
-
-            <p className="empty-state">
-              Settings access is controlled by backend permissions.
-              Personal preferences are handled separately.
-            </p>
-          </section>
+          <SettingsManagement
+            settings={settings}
+            loading={loading}
+            onRefresh={loadSettings}
+            onEdit={saveSetting}
+          />
         )}
 
         {/* =====================================
@@ -2667,51 +2387,14 @@ export default function AdminPanel() {
         ===================================== */}
 
         {tab === "Website Content" && (
-          <section className="panel">
-            <div className="panel-heading">
-              <div>
-                <p className="eyebrow">WEBSITE CONTENT</p>
-                <h3>Clinic Website Content</h3>
-              </div>
+  <WebsiteContent
+    apiRequest={apiRequest}
+    loading={loading}
+    onNotice={setNotice}
+  />
+)}
 
-              <button
-                type="button"
-                className="secondary-button"
-                onClick={loadContent}
-                disabled={loading}
-              >
-                ↻ Refresh
-              </button>
-            </div>
-
-            <div className="form-actions content-tabs">
-              {Object.keys(CONTENT_MODULES).map((key) => (
-                <button
-                  type="button"
-                  key={key}
-                  className={
-                    contentTab === key
-                      ? "primary-button"
-                      : "secondary-button"
-                  }
-                  onClick={() => setContentTab(key)}
-                >
-                  {key}
-                </button>
-              ))}
-            </div>
-
-            {renderTable(
-              contentData,
-              CONTENT_MODULES[contentTab].columns
-            )}
-          </section>
-        )}
-
-        <footer className="admin-footer">
-          <span>STAIRS OS V1</span>
-          <span>Secure clinic operations workspace</span>
-        </footer>
+        <AdminFooter />
       </main>
     </div>
   );

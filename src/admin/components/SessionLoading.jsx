@@ -1,0 +1,1 @@
+export default function SessionLoading(){ return <div className="admin-login-page"><div className="login-card"><div className="brand-word">STAIRS</div><p>Verifying secure session...</p></div></div>; }

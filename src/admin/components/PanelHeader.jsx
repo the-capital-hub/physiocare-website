@@ -1,0 +1,1 @@
+export default function PanelHeader({ eyebrow="STAIRS OS MODULE", title, children }) { return <div className="panel-heading"><div><p className="eyebrow">{eyebrow}</p><h3>{title}</h3></div>{children && <div className="form-actions">{children}</div>}</div>; }
