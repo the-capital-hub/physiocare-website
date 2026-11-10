@@ -1,345 +1,292 @@
-import React, { useMemo } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import "./DashboardOverview.css";
 
-const currencyKeys = /revenue|income|collection|expense|payment|receivable|balance|amount|sales/i;
-const patientKeys = /patient/i;
-const appointmentKeys = /appointment|booking|session/i;
+const API = (import.meta.env.VITE_API_URL || "http://localhost:5000/api").trim().replace(/\/$/, "");
+const TOKEN_KEY = "physiocare_admin_token";
 
-const LABELS = {
-  totalRevenue: "Total revenue",
-  revenue: "Total revenue",
-  totalPatients: "Total patients",
-  patients: "Total patients",
-  newPatients: "New patients",
-  activePatients: "Active patients",
-  totalAppointments: "Appointments",
-  appointments: "Appointments",
-  completedAppointments: "Completed appointments",
-  cancelledAppointments: "Cancelled appointments",
-  pendingPayments: "Pending payments",
-  pendingAmount: "Pending payments",
-  totalEmployees: "Team members",
-  employees: "Team members",
-  totalBranches: "Branches",
+const request = async (path) => {
+  const token = localStorage.getItem(TOKEN_KEY);
+  const response = await fetch(`${API}/${path.replace(/^\/+/, "")}`, {
+    headers: token ? { Authorization: `Bearer ${token}` } : {},
+  });
+  const type = response.headers.get("content-type") || "";
+  const payload = type.includes("application/json")
+    ? await response.json().catch(() => ({}))
+    : {};
+  if (!response.ok) throw new Error(payload.message || `Unable to load ${path}`);
+  return payload;
 };
 
-const number = (value) => {
-  const parsed = Number(value);
-  return Number.isFinite(parsed) ? parsed : 0;
+const firstArray = (payload, keys = []) => {
+  if (Array.isArray(payload)) return payload;
+  for (const key of [...keys, "data", "items", "rows", "results", "records"]) {
+    if (Array.isArray(payload?.[key])) return payload[key];
+  }
+  for (const value of Object.values(payload || {})) {
+    if (Array.isArray(value)) return value;
+  }
+  return [];
 };
 
-const formatNumber = (value) =>
-  number(value).toLocaleString("en-IN", { maximumFractionDigits: 0 });
+const firstObject = (payload) => {
+  if (!payload || typeof payload !== "object" || Array.isArray(payload)) return {};
+  return payload.summary || payload.kpis || payload.data || payload;
+};
 
-const formatMoney = (value) =>
-  new Intl.NumberFormat("en-IN", {
-    style: "currency",
-    currency: "INR",
-    maximumFractionDigits: 0,
-  }).format(number(value));
+const numeric = (value) => {
+  const n = Number(value);
+  return Number.isFinite(n) ? n : 0;
+};
+const money = (value) => new Intl.NumberFormat("en-IN", {
+  style: "currency", currency: "INR", maximumFractionDigits: 0,
+}).format(numeric(value));
+const count = (value) => numeric(value).toLocaleString("en-IN", { maximumFractionDigits: 0 });
+const titleCase = (value = "") => String(value).replace(/([a-z0-9])([A-Z])/g, "$1 $2").replace(/[_-]/g, " ").replace(/\b\w/g, c => c.toUpperCase());
 
-const humanize = (key) =>
-  LABELS[key] ||
-  String(key)
-    .replace(/([a-z0-9])([A-Z])/g, "$1 $2")
-    .replace(/[_-]/g, " ")
-    .replace(/\b\w/g, (letter) => letter.toUpperCase());
-
-const getMetricValue = (source, patterns) => {
-  const entry = Object.entries(source || {}).find(([key, value]) =>
-    patterns.test(key) &&
+const findNumber = (object, patterns) => {
+  const entry = Object.entries(object || {}).find(([key, value]) =>
+    patterns.some(pattern => pattern.test(key)) &&
+    value !== null && value !== "" &&
     ["number", "string"].includes(typeof value) &&
-    value !== "" &&
     Number.isFinite(Number(value))
   );
-  return entry ? number(entry[1]) : null;
+  return entry ? numeric(entry[1]) : null;
 };
 
-const getBranchName = (branch, index) =>
-  branch?.branchName ||
-  branch?.name ||
-  branch?.branch?.name ||
-  branch?.branchId?.name ||
-  `Branch ${index + 1}`;
+const getLabel = (row, index) => {
+  const key = Object.keys(row || {}).find(k => /(month|label|name|date|period|day|status)/i.test(k) && typeof row[k] === "string");
+  return key ? String(row[key]) : `Item ${index + 1}`;
+};
+const getValue = (row) => {
+  const key = Object.keys(row || {}).find(k => typeof row[k] === "number" && /(revenue|amount|total|count|patient|appointment|paid|pending|value|expense)/i.test(k))
+    || Object.keys(row || {}).find(k => typeof row[k] === "number");
+  return key ? numeric(row[key]) : null;
+};
 
-function MetricCard({ label, value, icon, tone, hint, index }) {
-  return (
-    <article
-      className={`stairs-metric-card ${tone || ""}`}
-      style={{ "--metric-index": index }}
-    >
-      <div className="stairs-metric-top">
-        <span className="stairs-metric-icon" aria-hidden="true">{icon}</span>
-        <span className="stairs-metric-hint">{hint}</span>
-      </div>
-      <p>{label}</p>
-      <strong>{value}</strong>
-      <span className="stairs-metric-accent" aria-hidden="true" />
-    </article>
-  );
+function Panel({ title, eyebrow, action, className = "", children }) {
+  return <section className={`so-panel ${className}`}>
+    <div className="so-panel-head">
+      <div><span className="so-eyebrow">{eyebrow}</span><h3>{title}</h3></div>
+      {action && <span className="so-panel-action">{action}</span>}
+    </div>
+    {children}
+  </section>;
+}
+
+function MetricCard({ icon, label, value, foot, tone }) {
+  return <article className={`so-kpi so-${tone}`}>
+    <div className="so-kpi-top"><span className="so-kpi-icon">{icon}</span><span className="so-kpi-live"><i /> LIVE</span></div>
+    <span className="so-kpi-label">{label}</span>
+    <strong>{value}</strong>
+    <span className="so-kpi-foot">{foot}</span>
+    <span className="so-kpi-glow" />
+  </article>;
+}
+
+function EmptyChart({ text = "No report data available yet" }) {
+  return <div className="so-empty-chart"><span className="so-empty-symbol">⌁</span><p>{text}</p></div>;
+}
+
+function RevenueChart({ payload }) {
+  const rows = useMemo(() => firstArray(payload, ["trend", "monthly", "revenue", "records"])
+    .map((row, i) => ({ label: getLabel(row, i), value: getValue(row) }))
+    .filter(item => item.value !== null).slice(-10), [payload]);
+  if (!rows.length) return <EmptyChart />;
+  const max = Math.max(1, ...rows.map(x => x.value));
+  const points = rows.map((item, i) => {
+    const x = rows.length === 1 ? 50 : 8 + i * (284 / (rows.length - 1));
+    const y = 112 - (item.value / max) * 88;
+    return `${x},${y}`;
+  }).join(" ");
+  const area = `8,112 ${points} 292,112`;
+  return <div className="so-revenue-chart">
+    <div className="so-chart-total"><span>Reported revenue</span><strong>{money(rows.reduce((s, x) => s + x.value, 0))}</strong></div>
+    <svg viewBox="0 0 300 132" role="img" aria-label="Revenue trend chart" preserveAspectRatio="none">
+      <defs><linearGradient id="soRevenueFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#f04452" stopOpacity=".34"/><stop offset="100%" stopColor="#f04452" stopOpacity="0"/></linearGradient></defs>
+      {[24, 52, 80, 112].map(y => <line key={y} x1="5" x2="295" y1={y} y2={y} className="so-grid-line" />)}
+      <polygon points={area} fill="url(#soRevenueFill)" />
+      <polyline points={points} className="so-revenue-line" />
+      {rows.map((item, i) => {
+        const x = rows.length === 1 ? 50 : 8 + i * (284 / (rows.length - 1));
+        const y = 112 - (item.value / max) * 88;
+        return <circle key={i} cx={x} cy={y} r="3.5" className="so-revenue-dot"><title>{`${item.label}: ${money(item.value)}`}</title></circle>;
+      })}
+    </svg>
+    <div className="so-axis-labels"><span>{rows[0].label}</span><span>{rows[rows.length - 1].label}</span></div>
+  </div>;
+}
+
+function StatusChart({ payload }) {
+  const source = firstObject(payload);
+  const entries = Object.entries(source).filter(([key, value]) =>
+    /(completed|pending|cancelled|canceled|noShow|confirmed|scheduled)/i.test(key) && Number.isFinite(Number(value))
+  ).slice(0, 5);
+  const rows = entries.map(([key, value]) => ({ label: titleCase(key), value: numeric(value) })).filter(x => x.value >= 0);
+  if (!rows.length) {
+    const data = firstArray(payload, ["statuses", "breakdown", "appointments"]);
+    data.forEach((row, i) => {
+      const label = row.status || row._id || row.label || row.name || `Status ${i + 1}`;
+      const value = row.count ?? row.total ?? row.value;
+      if (Number.isFinite(Number(value))) rows.push({ label: titleCase(label), value: numeric(value) });
+    });
+  }
+  if (!rows.length) return <EmptyChart />;
+  const total = rows.reduce((s, x) => s + x.value, 0);
+  const palette = ["#f04452", "#6e91ff", "#b28cff", "#e7a75a", "#56c7b3"];
+  let offset = 0;
+  const segments = rows.map((row, i) => {
+    const dash = total ? row.value / total * 100 : 0;
+    const segment = <circle key={row.label} r="38" cx="50" cy="50" fill="none" stroke={palette[i % palette.length]} strokeWidth="10"
+      strokeDasharray={`${dash} ${100 - dash}`} strokeDashoffset={-offset} pathLength="100" />;
+    offset += dash;
+    return segment;
+  });
+  return <div className="so-status-wrap">
+    <svg viewBox="0 0 100 100" className="so-donut" role="img" aria-label="Appointment status breakdown">
+      <circle r="38" cx="50" cy="50" fill="none" stroke="#252b37" strokeWidth="10" />
+      <g transform="rotate(-90 50 50)">{segments}</g>
+      <text x="50" y="47" textAnchor="middle" className="so-donut-number">{count(total)}</text>
+      <text x="50" y="59" textAnchor="middle" className="so-donut-caption">TOTAL</text>
+    </svg>
+    <div className="so-legend">{rows.map((row, i) => <div key={row.label}><i style={{ background: palette[i % palette.length] }} /><span>{row.label}</span><strong>{count(row.value)}</strong></div>)}</div>
+  </div>;
+}
+
+function PatientChart({ payload }) {
+  const rows = useMemo(() => firstArray(payload, ["trend", "monthly", "patients", "registrations"])
+    .map((row, i) => ({ label: getLabel(row, i), value: getValue(row) }))
+    .filter(x => x.value !== null).slice(-8), [payload]);
+  if (!rows.length) return <EmptyChart />;
+  const max = Math.max(1, ...rows.map(x => x.value));
+  return <div className="so-growth-chart">
+    {rows.map((row, i) => <div className="so-growth-col" key={`${row.label}-${i}`}>
+      <strong>{count(row.value)}</strong>
+      <div className="so-growth-track"><i style={{ height: `${Math.max(4, row.value / max * 100)}%` }} /></div>
+      <span title={row.label}>{row.label}</span>
+    </div>)}
+  </div>;
+}
+
+function AppointmentList({ payload }) {
+  const rows = firstArray(payload, ["appointments", "todayAppointments", "items"]).slice(0, 5);
+  if (!rows.length) return <div className="so-inline-empty">No appointment records returned by the API.</div>;
+  return <div className="so-table-wrap"><table className="so-table"><thead><tr><th>Patient</th><th>Time</th><th>Service</th><th>Status</th></tr></thead>
+    <tbody>{rows.map((row, i) => {
+      const patient = row.patient?.name || row.patientName || row.name || row.patient?.fullName || "Patient";
+      const time = row.time || row.appointmentTime || row.startTime || (row.date ? new Date(row.date).toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit" }) : "—");
+      const service = row.service?.name || row.serviceName || row.treatment || "—";
+      const status = row.status || "Scheduled";
+      return <tr key={row._id || i}><td><strong>{patient}</strong></td><td>{time}</td><td>{service}</td><td><span className={`so-status-pill ${String(status).toLowerCase().replace(/\s+/g, "")}`}>{titleCase(status)}</span></td></tr>;
+    })}</tbody></table></div>;
+}
+
+function ActivityList({ payload }) {
+  const rows = firstArray(payload, ["items", "notifications", "activities", "data"]).slice(0, 5);
+  if (!rows.length) return <div className="so-inline-empty">No recent activity available.</div>;
+  return <div className="so-activity-list">{rows.map((row, i) => {
+    const label = row.title || row.message || row.description || row.type || "Workspace update";
+    const when = row.createdAt || row.updatedAt || row.date;
+    return <div className="so-activity-item" key={row._id || i}><span className="so-activity-dot" /><div><strong>{label}</strong><small>{when ? new Date(when).toLocaleString("en-IN", { dateStyle: "medium", timeStyle: "short" }) : "Recent update"}</small></div></div>;
+  })}</div>;
 }
 
 function BranchPerformance({ branches }) {
-  if (!branches.length) {
-    return (
-      <section className="stairs-dashboard-panel stairs-branch-panel stairs-panel-empty">
-        <div className="stairs-section-heading">
-          <div>
-            <span className="stairs-section-kicker">LOCATION INSIGHTS</span>
-            <h3>Branch performance</h3>
-            <p>Branch level performance will appear when available.</p>
-          </div>
-        </div>
-        <div className="stairs-branch-placeholder">
-          <span className="stairs-placeholder-mark">⌖</span>
-          <span>Branch data is not available yet</span>
-        </div>
-      </section>
-    );
-  }
-
-  const normalized = branches.map((branch, index) => ({
-    name: getBranchName(branch, index),
-    revenue: getMetricValue(branch, /revenue|collection|income|amount/i) ?? 0,
-    patients: getMetricValue(branch, /patient/i) ?? 0,
-    appointments: getMetricValue(branch, /appointment|booking|session/i) ?? 0,
+  if (!branches.length) return <div className="so-inline-empty">Branch performance data is not available yet.</div>;
+  const rows = branches.slice(0, 5).map((branch, i) => ({
+    name: branch.branchName || branch.name || branch.branch?.name || branch.branchId?.name || `Branch ${i + 1}`,
+    revenue: findNumber(branch, [/revenue/i, /collection/i, /income/i, /amount/i]) ?? 0,
+    patients: findNumber(branch, [/patient/i]) ?? 0,
+    appointments: findNumber(branch, [/appointment/i, /booking/i]) ?? 0,
   }));
-
-  const maxRevenue = Math.max(1, ...normalized.map((item) => item.revenue));
-
-  return (
-    <section className="stairs-dashboard-panel stairs-branch-panel">
-      <div className="stairs-section-heading">
-        <div>
-          <span className="stairs-section-kicker">LOCATION INSIGHTS</span>
-          <h3>Branch performance</h3>
-          <p>Compare activity across your clinic locations</p>
-        </div>
-        <span className="stairs-section-count">{branches.length} locations</span>
-      </div>
-
-      <div className="stairs-branch-list">
-        {normalized.map((branch, index) => (
-          <article className="stairs-branch-row" key={`${branch.name}-${index}`}>
-            <div className="stairs-branch-identity">
-              <span className="stairs-branch-number">{String(index + 1).padStart(2, "0")}</span>
-              <div>
-                <strong>{branch.name}</strong>
-                <span>
-                  {formatNumber(branch.patients)} patients
-                  <i aria-hidden="true" />
-                  {formatNumber(branch.appointments)} appointments
-                </span>
-              </div>
-            </div>
-            <div className="stairs-branch-revenue">
-              <strong>{formatMoney(branch.revenue)}</strong>
-              <div
-                className="stairs-branch-track"
-                role="progressbar"
-                aria-label={`${branch.name} revenue share relative to highest branch`}
-                aria-valuemin="0"
-                aria-valuemax="100"
-                aria-valuenow={Math.round((branch.revenue / maxRevenue) * 100)}
-              >
-                <i style={{ width: `${Math.max(3, (branch.revenue / maxRevenue) * 100)}%` }} />
-              </div>
-            </div>
-          </article>
-        ))}
-      </div>
-    </section>
-  );
+  const max = Math.max(1, ...rows.map(x => x.revenue));
+  return <div className="so-branch-list">{rows.map((row, i) => <div className="so-branch-row" key={`${row.name}-${i}`}>
+    <div className="so-branch-info"><span className="so-branch-index">{String(i + 1).padStart(2, "0")}</span><div><strong>{row.name}</strong><small>{count(row.patients)} patients <b>·</b> {count(row.appointments)} appointments</small></div></div>
+    <div className="so-branch-value"><strong>{money(row.revenue)}</strong><div><i style={{ width: `${Math.max(3, row.revenue / max * 100)}%` }} /></div></div>
+  </div>)}</div>;
 }
 
-function QuickActions({ onNavigate }) {
-  const shortcuts = [
-    { label: "Add patient", detail: "Register a new patient", icon: "＋", tab: "Patients", tone: "red" },
-    { label: "Book appointment", detail: "Manage clinic schedule", icon: "▦", tab: "Appointments", tone: "blue" },
-    { label: "Add employee", detail: "Grow your care team", icon: "♙", tab: "Employees", tone: "violet" },
-    { label: "Record payment", detail: "Update a payment record", icon: "₹", tab: "Finance", tone: "amber" },
-  ];
+export default function DashboardOverview({ overview, loading = false, user, onRefresh, onNavigate }) {
+  const [reports, setReports] = useState({});
+  const [appointments, setAppointments] = useState(null);
+  const [activities, setActivities] = useState(null);
+  const [reportLoading, setReportLoading] = useState(false);
+  const [reportError, setReportError] = useState("");
 
-  return (
-    <section className="stairs-dashboard-panel stairs-operations-panel">
-      <div className="stairs-section-heading">
-        <div>
-          <span className="stairs-section-kicker">WORKSPACE</span>
-          <h3>Quick actions</h3>
-          <p>Jump directly into everyday tasks</p>
-        </div>
-        <span className="stairs-action-mark" aria-hidden="true">↗</span>
-      </div>
-      <div className="stairs-shortcut-list">
-        {shortcuts.map((item, index) => (
-          <button
-            type="button"
-            className={`stairs-shortcut ${item.tone}`}
-            key={item.label}
-            onClick={() => onNavigate?.(item.tab)}
-            style={{ "--action-index": index }}
-          >
-            <span className="stairs-shortcut-icon">{item.icon}</span>
-            <span className="stairs-shortcut-copy">
-              <strong>{item.label}</strong>
-              <small>{item.detail}</small>
-            </span>
-            <span className="stairs-shortcut-arrow">↗</span>
-          </button>
-        ))}
-      </div>
-    </section>
-  );
-}
+  const loadDashboardDetails = useCallback(async () => {
+    setReportLoading(true);
+    setReportError("");
+    const endpoints = ["revenue-trend", "appointments", "patients"];
+    const results = await Promise.allSettled(endpoints.map(key => request(`reports/${key}`)));
+    const next = {};
+    results.forEach((result, i) => {
+      if (result.status === "fulfilled") next[endpoints[i]] = result.value;
+      else next[endpoints[i]] = { error: result.reason?.message || "Report unavailable" };
+    });
+    setReports(next);
 
-export default function DashboardOverview({
-  overview,
-  loading = false,
-  user,
-  onRefresh,
-  onNavigate,
-}) {
-  const metrics = useMemo(() => {
-    const source = overview && typeof overview === "object" ? overview : {};
-    const entries = Object.entries(source).filter(([key, value]) =>
-      key !== "branchPerformance" &&
-      key !== "branches" &&
-      ["number", "string"].includes(typeof value) &&
-      value !== "" &&
-      Number.isFinite(Number(value))
-    );
+    const [appointmentResult, activityResult] = await Promise.allSettled([
+      request("appointments"),
+      request("notifications"),
+    ]);
+    if (appointmentResult.status === "fulfilled") setAppointments(appointmentResult.value);
+    if (activityResult.status === "fulfilled") setActivities(activityResult.value);
+    setReportLoading(false);
+  }, []);
 
+  useEffect(() => { loadDashboardDetails(); }, [loadDashboardDetails]);
+
+  const kpis = useMemo(() => {
+    const source = overview?.kpis || overview || {};
     const definitions = [
-      { key: "revenue", label: "Total revenue", icon: "₹", tone: "revenue", pattern: /totalRevenue|revenue|collection/i, money: true, hint: "Business performance" },
-      { key: "patients", label: "Total patients", icon: "✚", tone: "patients", pattern: /totalPatients|patients/i, hint: "Patient database" },
-      { key: "appointments", label: "Appointments", icon: "▦", tone: "appointments", pattern: /totalAppointments|appointments/i, hint: "Clinic activity" },
-      { key: "pending", label: "Pending payments", icon: "◷", tone: "pending", pattern: /pendingPayments|pendingAmount|receivable/i, money: true, hint: "Needs attention" },
-      { key: "newPatients", label: "New patients", icon: "＋", tone: "new", pattern: /newPatients/i, hint: "Recently registered" },
-      { key: "activePatients", label: "Active patients", icon: "♥", tone: "active", pattern: /activePatients/i, hint: "Currently in care" },
+      { label: "Total patients", icon: "♙", tone: "red", patterns: [/totalPatients/i, /^patients$/i, /patientCount/i], money: false, foot: "Patient records" },
+      { label: "Appointments", icon: "▦", tone: "blue", patterns: [/totalAppointments/i, /^appointments$/i, /appointmentCount/i], money: false, foot: "Clinic activity" },
+      { label: "Total revenue", icon: "₹", tone: "violet", patterns: [/totalRevenue/i, /^revenue$/i, /totalCollection/i], money: true, foot: "Business collections" },
+      { label: "Pending payments", icon: "◷", tone: "amber", patterns: [/pendingPayments/i, /pendingAmount/i, /receivable/i], money: true, foot: "Outstanding balance" },
+      { label: "Active employees", icon: "✚", tone: "teal", patterns: [/activeEmployees/i, /totalEmployees/i, /^employees$/i], money: false, foot: "Care team" },
     ];
-
-    const cards = definitions.map((definition) => {
-      const match = entries.find(([key]) => definition.pattern.test(key));
-      if (!match) return null;
-      return {
-        ...definition,
-        value: definition.money ? formatMoney(match[1]) : formatNumber(match[1]),
-      };
+    return definitions.map(def => {
+      const value = findNumber(source, def.patterns);
+      return value === null ? null : { ...def, value: def.money ? money(value) : count(value) };
     }).filter(Boolean);
-
-    if (cards.length) return cards;
-
-    return entries.slice(0, 6).map(([key, value], index) => ({
-      key,
-      label: humanize(key),
-      icon: ["◈", "✚", "▦", "◷", "＋", "●"][index],
-      value: currencyKeys.test(key) ? formatMoney(value) : formatNumber(value),
-      tone: ["revenue", "patients", "appointments", "pending", "new", "active"][index],
-      hint: "Live business metric",
-    }));
   }, [overview]);
 
-  const branchPerformance = Array.isArray(overview?.branchPerformance)
-    ? overview.branchPerformance
-    : Array.isArray(overview?.branches)
-      ? overview.branches
-      : [];
+  const branches = overview?.branchPerformance || overview?.branches || [];
+  const firstName = user?.name ? user.name.trim().split(/\s+/)[0] : "there";
 
-  const rawEntries = Object.entries(overview || {}).filter(([key, value]) =>
-    key !== "branchPerformance" &&
-    key !== "branches" &&
-    value !== null &&
-    ["number", "string", "boolean"].includes(typeof value)
-  );
-
-  const appointmentCount = getMetricValue(overview, appointmentKeys);
-  const patientCount = getMetricValue(overview, patientKeys);
-  const firstName = user?.name ? user.name.trim().split(/\s+/)[0] : "";
-
-  return (
-    <div className="stairs-dashboard">
-      <section className="stairs-dashboard-hero">
-        <div className="stairs-hero-copy">
-          <div className="stairs-hero-eyebrow">
-            <span className="stairs-hero-brand-dot" />
-            <span className="stairs-section-kicker">STAIRS OS / BUSINESS OVERVIEW</span>
-          </div>
-          <h2>{firstName ? `Welcome back, ${firstName}` : "Welcome to your workspace"}</h2>
-          <p>Your clinic at a glance. Track care delivery and business performance from one place.</p>
-          <div className="stairs-live-indicator"><i /> Connected workspace</div>
+  return <div className="stairs-overview-v2">
+    <section className="so-welcome">
+      <div className="so-welcome-content">
+        <span className="so-welcome-tag"><i /> STAIRS OS <b>/</b> OVERVIEW</span>
+        <h2>Welcome back, {firstName}</h2>
+        <p>Your clinic operations, patient care and business performance in one place.</p>
+        <div className="so-welcome-actions">
+          <button onClick={() => onNavigate?.("Patients")}><span>＋</span> Add patient</button>
+          <button onClick={() => onNavigate?.("Appointments")}><span>▦</span> Book appointment</button>
+          <button onClick={() => onNavigate?.("Employees")}><span>♙</span> Add employee</button>
+          <button onClick={() => onNavigate?.("Finance")}><span>₹</span> Record payment</button>
         </div>
-        <button className="stairs-refresh-button" type="button" onClick={onRefresh} disabled={loading}>
-          <span className={loading ? "stairs-spin" : ""}>↻</span>
-          {loading ? "Updating" : "Refresh data"}
-        </button>
-        <div className="stairs-hero-orb" aria-hidden="true" />
-        <div className="stairs-hero-grid" aria-hidden="true" />
-      </section>
-
-      <div className="stairs-overview-heading">
-        <div>
-          <span className="stairs-section-kicker">YOUR CLINIC</span>
-          <h3>Business snapshot</h3>
-        </div>
-        <span className="stairs-data-caption">Live metrics from your workspace</span>
       </div>
+      <div className="so-welcome-art" aria-hidden="true"><div className="so-art-ring ring-one" /><div className="so-art-ring ring-two" /><div className="so-art-core">S</div><span className="so-art-cross">✦</span></div>
+      <button className="so-refresh" onClick={() => { onRefresh?.(); loadDashboardDetails(); }} disabled={loading || reportLoading}><span className={loading || reportLoading ? "so-spin" : ""}>↻</span> Refresh</button>
+    </section>
 
-      {loading && !overview ? (
-        <div className="stairs-dashboard-loading">
-          <span className="stairs-loading-pulse" />
-          <span>Preparing your business overview</span>
-        </div>
-      ) : metrics.length ? (
-        <section className="stairs-metrics-grid">
-          {metrics.map((metric, index) => (
-            <MetricCard key={metric.key} {...metric} index={index} />
-          ))}
-        </section>
-      ) : (
-        <section className="stairs-dashboard-panel stairs-empty-panel">
-          <span className="stairs-empty-icon">◈</span>
-          <div>
-            <strong>Your overview is ready for data</strong>
-            <p>Once the reports endpoint returns KPI values, they will appear here automatically.</p>
-          </div>
-        </section>
-      )}
+    <div className="so-section-title"><div><span className="so-eyebrow">AT A GLANCE</span><h3>Business snapshot</h3></div><span className="so-updated"><i /> Live workspace data</span></div>
+    {kpis.length ? <div className="so-kpi-grid">{kpis.map(item => <MetricCard key={item.label} {...item} />)}</div> :
+      <div className="so-no-kpis"><span>◈</span><div><strong>KPI data is not available</strong><p>Check the reports overview API response to populate these cards.</p></div></div>}
 
-      <div className="stairs-dashboard-lower">
-        <BranchPerformance branches={branchPerformance} />
-        <QuickActions onNavigate={onNavigate} />
-      </div>
-
-      {rawEntries.length > 0 && (
-        <details className="stairs-data-details">
-          <summary>
-            <span>Additional workspace metrics</span>
-            <span className="stairs-details-count">{rawEntries.length} values</span>
-          </summary>
-          <div className="stairs-extra-metrics">
-            {rawEntries.map(([key, value]) => (
-              <div key={key}>
-                <span>{humanize(key)}</span>
-                <strong>
-                  {currencyKeys.test(key)
-                    ? formatMoney(value)
-                    : typeof value === "boolean"
-                      ? value ? "Yes" : "No"
-                      : formatNumber(value)}
-                </strong>
-              </div>
-            ))}
-          </div>
-        </details>
-      )}
-
-      <div className="stairs-dashboard-footnote">
-        <span>STAIRS OS V1</span>
-        <span>
-          {patientCount !== null ? `${formatNumber(patientCount)} patients` : "Clinic workspace"}
-          {appointmentCount !== null ? ` · ${formatNumber(appointmentCount)} appointments` : ""}
-        </span>
-      </div>
+    <div className="so-chart-grid">
+      <Panel title="Revenue overview" eyebrow="FINANCIAL PERFORMANCE" action="REPORT DATA"><RevenueChart payload={reports["revenue-trend"]} /></Panel>
+      <Panel title="Appointments by status" eyebrow="CLINIC OPERATIONS" action="STATUS BREAKDOWN"><StatusChart payload={reports.appointments} /></Panel>
+      <Panel title="Patient growth" eyebrow="PATIENT ACQUISITION" action="REGISTRATION TREND"><PatientChart payload={reports.patients} /></Panel>
     </div>
-  );
+
+    <div className="so-section-title so-lower-title"><div><span className="so-eyebrow">DAILY OPERATIONS</span><h3>Clinic activity</h3></div></div>
+    <div className="so-bottom-grid">
+      <Panel title="Appointments" eyebrow="SCHEDULE" action="LATEST RECORDS" className="so-appointments-panel"><AppointmentList payload={appointments} /></Panel>
+      <Panel title="Recent activity" eyebrow="WORKSPACE FEED" action="LATEST UPDATES"><ActivityList payload={activities} /></Panel>
+    </div>
+    <Panel title="Branch performance" eyebrow="LOCATION INSIGHTS" action={`${Array.isArray(branches) ? branches.length : 0} LOCATIONS`} className="so-branch-panel"><BranchPerformance branches={Array.isArray(branches) ? branches : []} /></Panel>
+    {(reportLoading || reportError) && <p className="so-data-note">{reportLoading ? "Updating dashboard reports…" : reportError}</p>}
+    <div className="so-footer-line"><span>STAIRS OS V1</span><span>Management overview</span></div>
+  </div>;
 }
